@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Datos pesados
+data/raw/*
+data/interim/*
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+*.tif
+*.nc
+*.h5
+*.hdf
+
+# Secretos y credenciales (Earthdata, Google Cloud, etc.)
+.env
+*.netrc
+credentials*.json
+
+# Sistema
+.DS_Store
+Thumbs.db

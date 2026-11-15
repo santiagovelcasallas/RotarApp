@@ -1,0 +1,18 @@
+# Área de estudio: zona plana del Valle del Cauca (aprox. Jamundí → Cartago).
+# Bounding box APROXIMADO; reemplazar por el polígono real de la zona plana.
+[zona]
+nombre = "Valle del Cauca - zona plana"
+crs = "EPSG:4326"
+lon_min = -76.70
+lon_max = -75.90
+lat_min = 3.00
+lat_max = 4.90
+
+[rejilla]
+crs_proyectado = "EPSG:9377"  # MAGNA-SIRGAS / Origen Nacional (Colombia)
+resolucion_m = 100
+
+[simulacion]
+paso_dias = 10
+anios_historicos = [2001, 2025]
+escenarios_por_rotacion = 50
