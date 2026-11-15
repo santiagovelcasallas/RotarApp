@@ -99,7 +99,7 @@ def main() -> None:
     finca = finca_desde_poligono(z, entrada_json["poligono"])
     calib = json.loads((RAIZ / "data/processed/modelo/calibracion/posterior.json").read_text(encoding="utf-8"))
     metr = json.loads((RAIZ / "data/processed/modelo/calibracion/metricas.json").read_text(encoding="utf-8"))
-    metr["n_train"] = metr["metricas"]["train"]["n_segmentos"]["n"]
+    metr["n_train"] = metr["metricas"]["train"]["n_segmentos"]
     ref = Referencia.desde_json((RAIZ / "data/processed/microbiota/palmira_candelaria/referencia_suelos.json").read_text(encoding="utf-8"))
 
     entrada = dc.Entrada(entrada_json.get("cultivo_anterior"), entrada_json.get("plagas_anteriores", []),
@@ -121,7 +121,6 @@ def main() -> None:
                 "p_mejor_finca": round(float(dec.p_mejor[k].mean()), 3),
                 "ingreso_p50": float(np.nanmedian(evals[k].ingreso)),
                 "riego_p50": float(np.nanmedian(evals[k].riego)), "ibs_p50": float(np.nanmedian(evals[k].ibs)),
-                "salud_p50": float(np.nanmedian(evals[k].salud)),
                 "erosion_p50": float(np.nanmedian(evals[k].erosion)),
                 "rendimiento_p50_kg_ha": {c: float(np.nanmedian(v)) for c, v in evals[k].rendimientos.items()}}
                for k in orden]
@@ -129,7 +128,7 @@ def main() -> None:
                    "nota": "ingreso sin dato: falta el precio de " + ", ".join(
                        cultivos[c].nombre.lower() for c in e.rendimientos if entrada.precio(cultivos[c]) is None),
                    "riego_p50": float(np.nanmedian(e.riego)), "ibs_p50": float(np.nanmedian(e.ibs)),
-                   "salud_p50": float(np.nanmedian(e.salud)), "erosion_p50": float(np.nanmedian(e.erosion)),
+                   "erosion_p50": float(np.nanmedian(e.erosion)),
                    "rendimiento_p50_kg_ha": {c: float(np.nanmedian(v)) for c, v in e.rendimientos.items()}}
                   for e in evals if not np.isfinite(e.ingreso).any()]
     resultado = {
@@ -145,7 +144,7 @@ def main() -> None:
                      "p_mejor": {dec.planes[k].id: round(float(dec.p_mejor[k, i]), 3) for k in orden if dec.p_mejor[k, i] > 0}}
                     for i, (a, b) in enumerate(zip(lon, lat))],
         "modelo": {"muestras": int(esc.lluvia.shape[1]), "escenarios_climaticos": int(esc.lluvia.shape[1] // 4),
-                   "planes_evaluados": len(planes), "calibracion_val": metr["metricas"]["val"]["simulador_bayesiano"],
+                   "planes_evaluados": len(planes), "calibracion_val": metr["metricas"]["val"],
                    "aviso": "Herramienta de apoyo: no reemplaza el criterio del agricultor ni la asesoría agronómica local."},
     }
     nombre = re.sub(r"[^a-z0-9]+", "_", (entrada_json.get("nombre") or "finca").lower()).strip("_")[:40]
@@ -156,9 +155,9 @@ def main() -> None:
 
     print(f"{finca.n} píxeles ({resultado['area_ha']} ha), clases {resultado['clases_igac']}, {len(planes)} planes, {time.time() - t0:.0f}s")
     for r in ranking:
-        print(f"  {r['nombre']:45s} P={r['p_mejor_finca']:.2f} ingreso={r['ingreso_p50']/1e6:6.1f}M riego={r['riego_p50']:5.0f} IBS={r['ibs_p50']:4.1f} salud={r['salud_p50']:4.1f} eros={r['erosion_p50']:.2f} rend={ {k: round(v) for k, v in r['rendimiento_p50_kg_ha'].items()} }")
+        print(f"  {r['nombre']:45s} P={r['p_mejor_finca']:.2f} ingreso={r['ingreso_p50']/1e6:6.1f}M riego={r['riego_p50']:5.0f} IBS={r['ibs_p50']:4.1f} eros={r['erosion_p50']:.2f} rend={ {k: round(v) for k, v in r['rendimiento_p50_kg_ha'].items()} }")
     for r in sin_precio[:8]:
-        print(f"  (sin precio) {r['nombre']:45s} riego={r['riego_p50']:5.0f} IBS={r['ibs_p50']:4.1f} salud={r['salud_p50']:4.1f} eros={r['erosion_p50']:.2f}")
+        print(f"  (sin precio) {r['nombre']:45s} riego={r['riego_p50']:5.0f} IBS={r['ibs_p50']:4.1f} eros={r['erosion_p50']:.2f}")
     for k, v in dec.estrategias.items():
         mm = v["metricas"]
         print(f"[{k}] {v['nombre']}: {resultado['estrategias'][k]['nombres']}")

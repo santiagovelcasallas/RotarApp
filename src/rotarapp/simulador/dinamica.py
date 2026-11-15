@@ -1,5 +1,8 @@
 """Simulador por píxel: ecuaciones diferenciales de agua del suelo y dosel, paso de 10 días.
 
+Cada siembra (o rebrote de caña) empieza con suelo sin dosel: el cultivo emerge tras una
+latencia (décadas). Esa ventana de suelo desnudo es la que mide el IBS.
+
 Estado por píxel y por muestra (escenario climático × parámetros del posterior):
   W  agua disponible en la zona de raíces (mm), entre 0 y TAW
   V  fracción de dosel (0..1); NDVI = a + (NDVI_max − a)·V
@@ -40,6 +43,10 @@ class Parametros:
     p_agot: F       # fracción de TAW agotable sin estrés
     riego: F        # fracción del déficit que se repone con riego (0 = secano)
     v0: F           # dosel al emerger o rebrotar
+    latencia: F | None = None   # décadas sin dosel tras la siembra o la cosecha (None = 0)
+
+    def lat(self) -> F:
+        return np.zeros_like(self.k_mult) if self.latencia is None else self.latencia
 
     @property
     def n(self) -> int:
@@ -112,8 +119,9 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
             kb, ksen, sen, L = k_cache[i]
             edad = t - s.inicio
             if edad == 0:
-                V = np.broadcast_to(th.v0, forma).astype(np.float32).copy()
+                V = np.full(forma, V_COSECHA, np.float32)
                 Vp = V.copy()
+                emergio = np.zeros(forma, bool)
             taw = (awc_mm_m * c.raiz_m).astype(np.float32)
             kc_mid = c.kc
             fT = f_temperatura(temp[t], c)
@@ -134,22 +142,25 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
         eta = ks * etc
         deficit = etc - eta
         W = np.clip(W + lluvia[t] - eta, 0.0, taw)
-        # Se reporta el estado al inicio de la década (lo que ve el satélite en ese paso); en la
-        # década de siembra o rebrote el lote se ve recién cosechado o preparado
-        out_V[t] = V_COSECHA if (i >= 0 and edad == 0) else V
+        # Se reporta el estado al inicio de la década (lo que ve el satélite en ese paso)
+        out_V[t] = V
         out_ks[t], out_def[t] = ks, deficit
 
         if i >= 0:
+            nuevo = ~emergio & (edad >= th.lat())
+            V = np.where(nuevo, th.v0, V)
+            Vp = np.where(nuevo, th.v0, Vp)
+            emergio = emergio | nuevo
             if edad < sen:
                 V = V + kb * fT * ks * V * (1 - V)
                 Vp = Vp + kb * Vp * (1 - Vp)
             else:
                 V = V * np.exp(-ksen)
                 Vp = Vp * np.exp(-ksen)
-            V = np.clip(V, 0.0, 1.0)
-            Vp = np.clip(Vp, 0.0, 1.0)
-            real[i] += V * fT * ks
-            pot[i] += Vp
+            V = np.where(emergio, np.clip(V, 0.0, 1.0), V_COSECHA).astype(np.float32)
+            Vp = np.where(emergio, np.clip(Vp, 0.0, 1.0), V_COSECHA).astype(np.float32)
+            real[i] += np.where(emergio, V * fT * ks, 0.0)
+            pot[i] += np.where(emergio, Vp, 0.0)
             if t + 1 == s.fin or t + 1 == T:
                 V = np.full(forma, V_COSECHA, np.float32)
                 Vp = V.copy()

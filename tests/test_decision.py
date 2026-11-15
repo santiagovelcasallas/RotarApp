@@ -35,7 +35,8 @@ def _ref() -> Referencia:
 def _esc(clima: ClimaDecadal) -> dc.Escenarios:
     m = {"k_mult": np.array([1.1], np.float32), "ndvi_suelo": np.array([0.25], np.float32),
          "ndvi_max": np.array([0.85], np.float32), "p_agot": np.array([0.5], np.float32),
-         "riego": np.array([0.0], np.float32), "v0": np.array([0.1], np.float32)}
+         "riego": np.array([0.0], np.float32), "v0": np.array([0.1], np.float32),
+         "latencia": np.array([2.0], np.float32)}
     return dc.escenarios(clima, m, np.array([1.0], np.float32), s0=32, k_post=2)
 
 
@@ -89,11 +90,11 @@ def test_probabilidades_validas_y_tres_estrategias(base) -> None:
 def test_secuencia_renovacion_de_cana() -> None:
     sec = dc.secuencia(dc.Plan("crotalaria", "cana_azucar"), C)
     assert sec[0].cultivo.id == "crotalaria" and sec[1].cultivo.id == "cana_azucar"
-    assert sec[1].inicio == sec[0].fin + 1
+    assert sec[1].inicio == sec[0].fin + 4          # barbecho de 40 días entre cosecha y siembra
     assert all(s.fin <= dc.HORIZONTE for s in sec)
 
 
 def test_salud_premia_cobertura_continua(base) -> None:
-    abono = _eval(dc.Plan("mucuna", "maiz"), base).salud
-    solo = _eval(dc.Plan(None, "maiz"), base).salud
+    abono = _eval(dc.Plan("mucuna", "maiz"), base).ibs
+    solo = _eval(dc.Plan(None, "maiz"), base).ibs
     assert np.nanmedian(abono) > np.nanmedian(solo)

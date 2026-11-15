@@ -65,3 +65,12 @@ def test_secuencia_y_broadcast_muestras_por_pixeles() -> None:
     assert r.ndvi.shape == (T, D, P)
     assert list(r.activo[:10]) == [0] * 8 + [-1, 1]
     assert all(x.shape == (D, P) for x in r.rend_relativo)
+
+
+def test_latencia_mantiene_suelo_desnudo_tras_la_siembra() -> None:
+    one = np.ones((1, 1), np.float32)
+    th = Parametros(k_mult=one, ndvi_suelo=0.2 * one, ndvi_max=0.85 * one, p_agot=0.5 * one,
+                    riego=0 * one, v0=0.05 * one, latencia=4 * one)
+    r = simular(_maiz(16), *_clima(16, lluvia=80), np.full((1, 1), 150, np.float32), th)
+    assert np.allclose(r.ndvi[:5, 0, 0], r.ndvi[0, 0, 0])      # 4 décadas + la de emergencia sin dosel
+    assert r.V[8].item() > 0.3

@@ -33,14 +33,25 @@ def factor_ls(pendiente_pct: NDArray[np.floating], largo_m: float = 30.0) -> F:
     return ((largo_m / 22.13) ** m * s).astype(np.float32)
 
 
-def factor_c(ndvi: NDArray[np.floating]) -> F:
-    """Cobertura desde NDVI (van der Knijff et al., 2000), promediado en el tiempo (eje 0)."""
+def cobertura_residuo_pct(ndti: NDArray[np.floating]) -> F:
+    """% del suelo cubierto por residuo desde NDTI (lineal: 0,05 → 0 %, 0,15 → 80 %; supuesto a
+    calibrar con fotos de campo)."""
+    return (80.0 * np.clip((np.asarray(ndti) - 0.05) / 0.10, 0.0, 1.0)).astype(np.float32)
+
+
+def factor_c(ndvi: NDArray[np.floating], ndti: NDArray[np.floating] | None = None) -> F:
+    """Cobertura: dosel desde NDVI (van der Knijff et al., 2000) × subfactor de cobertura del
+    suelo de RUSLE, exp(−0,05 × % cubierto por residuo). Promediado en el tiempo (eje 0)."""
     n = np.clip(ndvi, 0.0, 0.95)
-    return np.clip(np.exp(-2.0 * n / (1.0 - n)), 0.0, 1.0).mean(axis=0).astype(np.float32)
+    c = np.clip(np.exp(-2.0 * n / (1.0 - n)), 0.0, 1.0)
+    if ndti is not None:
+        c = c * np.exp(-0.05 * cobertura_residuo_pct(ndti))
+    return c.mean(axis=0).astype(np.float32)
 
 
 def erosion(lluvia_anual_mm: NDArray[np.floating], arcilla_pct: NDArray[np.floating],
             soc_pct: NDArray[np.floating], pendiente_pct: NDArray[np.floating],
-            ndvi_serie: NDArray[np.floating], p_practicas: float = 1.0) -> F:
+            ndvi_serie: NDArray[np.floating], p_practicas: float = 1.0,
+            ndti_serie: NDArray[np.floating] | None = None) -> F:
     return (factor_r(lluvia_anual_mm) * factor_k(arcilla_pct, soc_pct) * factor_ls(pendiente_pct)
-            * factor_c(ndvi_serie) * p_practicas).astype(np.float32)
+            * factor_c(ndvi_serie, ndti_serie) * p_practicas).astype(np.float32)

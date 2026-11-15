@@ -32,24 +32,19 @@
      "p90": NaN
     },
     "riego": {
-     "p10": 387.0491973876953,
-     "p50": 593.8892211914062,
-     "p90": 960.9974975585938
+     "p10": 387.87950744628904,
+     "p50": 612.0293579101562,
+     "p90": 945.4606018066407
     },
     "ibs": {
-     "p10": 80.33277893066406,
-     "p50": 80.33277893066406,
-     "p90": 80.33277893066406
-    },
-    "salud": {
-     "p10": 93.33334350585938,
-     "p50": 93.33334350585938,
-     "p90": 99.0740966796875
+     "p10": 78.80794525146484,
+     "p50": 78.80794525146484,
+     "p90": 78.80794525146484
     },
     "erosion": {
-     "p10": 0.39670718610286715,
-     "p50": 0.7518289983272552,
-     "p90": 1.1760020971298217
+     "p10": 0.12877456843852997,
+     "p50": 0.22088538110256195,
+     "p90": 0.3636143445968628
     }
    },
    "nombres": [
@@ -60,12 +55,12 @@
      "Es lo que hay hoy: caña de azúcar sin cambios. Es la línea base contra la que se comparan las otras."
     ],
     "evidencia": [
-     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.100, el intervalo del 80 % contuvo el 82% de lo observado.",
+     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.101, el intervalo del 80 % contuvo el 81% de lo observado.",
      "Clima: NASA POWER 2001–2023 corregido por altitud (23 escenarios de 2 años). Suelo: IGAC-CVC 1:25.000. Erosión: RUSLE con pendiente NASADEM. Salud del suelo: IBS (validado en Iowa)."
     ],
     "beneficios": [
      "No exige cambiar manejo, maquinaria ni mercado.",
-     "Riego para no tener estrés: 594 mm/año; IBS 80; erosión 0.75 t/ha/año."
+     "Riego para no tener estrés: 612 mm/año; IBS 79; erosión 0.22 t/ha/año."
     ],
     "vacios": [
      "No hay costos de producción: el ingreso es bruto, no ganancia.",
@@ -75,7 +70,7 @@
     "riesgos": [
      "Repetir caña de azúcar mantiene todo el ciclo de sus plagas en el lote.",
      "Barrenadores del tallo (reportada) también ataca caña de azúcar: la rotación no corta su ciclo.",
-     "En un año seco el riego necesario sube a 961 mm/año.",
+     "En un año seco el riego necesario sube a 945 mm/año.",
      "Validar fechas de siembra, variedades y mercado local con un agrónomo antes de decidir."
     ]
    }
@@ -87,34 +82,29 @@
    ],
    "metricas": {
     "ingreso": {
-     "p10": 24587633.6,
-     "p50": 32300495.0,
-     "p90": 36130156.800000004
+     "p10": 21876870.8,
+     "p50": 28081389.0,
+     "p90": 32141711.0
     },
     "riego": {
-     "p10": 115.24845733642579,
-     "p50": 217.32672882080078,
-     "p90": 379.8496307373047
+     "p10": 37.68277816772461,
+     "p50": 116.30016708374023,
+     "p90": 261.2657897949219
     },
     "ibs": {
-     "p10": 14.121914863586426,
-     "p50": 14.123282432556152,
-     "p90": 14.161767959594727
-    },
-    "salud": {
-     "p10": 63.05554962158203,
-     "p50": 64.44445037841797,
-     "p90": 65.37036895751953
+     "p10": 21.176698684692383,
+     "p50": 21.176698684692383,
+     "p90": 21.176698684692383
     },
     "erosion": {
-     "p10": 2.336308169364929,
-     "p50": 3.982855439186096,
-     "p90": 6.12132887840271
+     "p10": 1.2433567762374877,
+     "p50": 2.195791721343994,
+     "p90": 3.4902326345443724
     },
     "utilidad": {
-     "p10": 0.6291597843170166,
-     "p50": 0.6730313003063202,
-     "p90": 0.6936947703361511
+     "p10": 0.5959244847297669,
+     "p50": 0.6550406813621521,
+     "p90": 0.6755198776721955
     }
    },
    "nombres": [
@@ -125,15 +115,15 @@
      "Es el plan único con mayor utilidad esperada en toda la finca según tus prioridades (ingreso 25%, ahorro de agua 25%, salud del suelo 25%, control de erosión 25%)."
     ],
     "evidencia": [
-     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.100, el intervalo del 80 % contuvo el 82% de lo observado.",
+     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.101, el intervalo del 80 % contuvo el 81% de lo observado.",
      "Clima: NASA POWER 2001–2023 corregido por altitud (23 escenarios de 2 años). Suelo: IGAC-CVC 1:25.000. Erosión: RUSLE con pendiente NASADEM. Salud del suelo: IBS (validado en Iowa).",
      "Crotalaria juncea (abono verde), Hortalizas (general): no aparecen en las imágenes de la zona; se simulan con los rangos agronómicos de la tabla (prior) y los parámetros de sensor calibrados en caña."
     ],
     "beneficios": [
-     "Agua: necesitaría 217 mm/año de riego para no tener estrés (−377 mm frente a hoy).",
-     "Salud del suelo: índice comparativo 64/100 (-29 frente a hoy); IBS 14 (-66; 50 = lo típico de ese suelo, que aquí es caña).",
-     "Erosión: 3.98 t/ha/año (+3.23 frente a hoy).",
-     "Ingreso bruto: 32.3 millones COP/ha/año (año malo 24.6, año bueno 36.1).",
+     "Agua: necesitaría 116 mm/año de riego para no tener estrés (−496 mm frente a hoy).",
+     "Salud del suelo (IBS en las ventanas de suelo desnudo): 21 (-58 frente a hoy; 50 = lo típico de ese suelo).",
+     "Erosión: 2.20 t/ha/año (+1.97 frente a hoy).",
+     "Ingreso bruto: 28.1 millones COP/ha/año (año malo 21.9, año bueno 32.1).",
      "Barrenadores del tallo (reportada) no ataca a ningún cultivo de este plan según el JSON de plagas: la rotación corta su ciclo."
     ],
     "vacios": [
@@ -142,7 +132,7 @@
      "El IBS no está validado en el Valle (no hay datos de manejo); el aporte de N de las leguminosas y la mineralización son supuestos."
     ],
     "riesgos": [
-     "En un año seco el riego necesario sube a 380 mm/año.",
+     "En un año seco el riego necesario sube a 261 mm/año.",
      "El 43% de la finca es clase IGAC 4: transitorios solo con prácticas de conservación (siembra en contorno, cobertura permanente).",
      "Validar fechas de siembra, variedades y mercado local con un agrónomo antes de decidir."
     ]
@@ -151,70 +141,63 @@
   "C": {
    "nombre": "Rotación por zonas",
    "planes": [
-    "crotalaria>hortalizas",
-    "mucuna>hortalizas"
+    "crotalaria>hortalizas"
    ],
    "metricas": {
     "ingreso": {
-     "p10": 24054117.0,
-     "p50": 31180129.0,
-     "p90": 35211899.2
+     "p10": 21876870.8,
+     "p50": 28081389.0,
+     "p90": 32141711.0
     },
     "riego": {
-     "p10": 124.03083267211915,
-     "p50": 230.5873565673828,
-     "p90": 402.92170410156257
+     "p10": 37.68277816772461,
+     "p50": 116.30016708374023,
+     "p90": 261.2657897949219
     },
     "ibs": {
-     "p10": 14.12547779083252,
-     "p50": 14.175973892211914,
-     "p90": 20.290754508972167
-    },
-    "salud": {
-     "p10": 64.42049179077148,
-     "p50": 65.33362579345703,
-     "p90": 66.16862640380859
+     "p10": 21.176698684692383,
+     "p50": 21.176698684692383,
+     "p90": 21.176698684692383
     },
     "erosion": {
-     "p10": 2.2061097383499146,
-     "p50": 3.7730815410614014,
-     "p90": 5.665853118896485
+     "p10": 1.2433567762374877,
+     "p50": 2.195791721343994,
+     "p90": 3.4902326345443724
     },
     "utilidad": {
-     "p10": 0.6261060893535614,
-     "p50": 0.6744717061519623,
-     "p90": 0.6964132010936737
+     "p10": 0.5959244847297669,
+     "p50": 0.6550406813621521,
+     "p90": 0.6755198776721955
     }
    },
-   "p_mejor_que_B": 0.5978260869565217,
+   "p_mejor_que_B": 0.0,
    "nombres": [
-    "Crotalaria juncea (abono verde) (descanso) → hortalizas (general)",
-    "Mucuna (abono verde) (descanso) → hortalizas (general)"
+    "Crotalaria juncea (abono verde) (descanso) → hortalizas (general)"
    ],
    "explicacion": {
     "por_que": [
-     "Cada zona recibe el plan que más probablemente es el mejor en esos píxeles (Crotalaria juncea (abono verde) (descanso) → hortalizas (general): 12.06 ha; Mucuna (abono verde) (descanso) → hortalizas (general): 4.95 ha).",
-     "Probabilidad de que la rotación por zonas supere al mejor plan único: 60%."
+     "Cada zona recibe el plan que más probablemente es el mejor en esos píxeles (Crotalaria juncea (abono verde) (descanso) → hortalizas (general): 17.01 ha).",
+     "Probabilidad de que la rotación por zonas supere al mejor plan único: 0%."
     ],
     "evidencia": [
-     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.100, el intervalo del 80 % contuvo el 82% de lo observado.",
+     "Simulador por píxel calibrado con 7252 curvas de rebrote de caña observadas por NASA HLS (2020–2023). En validación (2024): error RMSE de NDVI 0.101, el intervalo del 80 % contuvo el 81% de lo observado.",
      "Clima: NASA POWER 2001–2023 corregido por altitud (23 escenarios de 2 años). Suelo: IGAC-CVC 1:25.000. Erosión: RUSLE con pendiente NASADEM. Salud del suelo: IBS (validado en Iowa).",
-     "Crotalaria juncea (abono verde), Hortalizas (general), Mucuna (abono verde): no aparecen en las imágenes de la zona; se simulan con los rangos agronómicos de la tabla (prior) y los parámetros de sensor calibrados en caña."
+     "Crotalaria juncea (abono verde), Hortalizas (general): no aparecen en las imágenes de la zona; se simulan con los rangos agronómicos de la tabla (prior) y los parámetros de sensor calibrados en caña."
     ],
     "beneficios": [
-     "Agua: necesitaría 231 mm/año de riego para no tener estrés (−363 mm frente a hoy).",
-     "Salud del suelo: índice comparativo 65/100 (-28 frente a hoy); IBS 14 (-66; 50 = lo típico de ese suelo, que aquí es caña).",
-     "Erosión: 3.77 t/ha/año (+3.02 frente a hoy).",
-     "Ingreso bruto: 31.2 millones COP/ha/año (año malo 24.1, año bueno 35.2).",
+     "Agua: necesitaría 116 mm/año de riego para no tener estrés (−496 mm frente a hoy).",
+     "Salud del suelo (IBS en las ventanas de suelo desnudo): 21 (-58 frente a hoy; 50 = lo típico de ese suelo).",
+     "Erosión: 2.20 t/ha/año (+1.97 frente a hoy).",
+     "Ingreso bruto: 28.1 millones COP/ha/año (año malo 21.9, año bueno 32.1).",
      "Barrenadores del tallo (reportada) no ataca a ningún cultivo de este plan según el JSON de plagas: la rotación corta su ciclo."
     ],
     "vacios": [
      "No hay costos de producción: el ingreso es bruto, no ganancia.",
-     "Sin datos de plagas en el JSON: Crotalaria juncea (abono verde), Mucuna (abono verde) (se asume presión baja).",
+     "Sin datos de plagas en el JSON: Crotalaria juncea (abono verde) (se asume presión baja).",
      "El IBS no está validado en el Valle (no hay datos de manejo); el aporte de N de las leguminosas y la mineralización son supuestos."
     ],
     "riesgos": [
-     "En un año seco el riego necesario sube a 403 mm/año.",
+     "En un año seco el riego necesario sube a 261 mm/año.",
      "El 43% de la finca es clase IGAC 4: transitorios solo con prácticas de conservación (siembra en contorno, cobertura permanente).",
      "Validar fechas de siembra, variedades y mercado local con un agrónomo antes de decidir."
     ]
@@ -224,83 +207,71 @@
  "zonas": [
   {
    "plan": "crotalaria>hortalizas",
-   "pixeles": 134,
-   "area_ha": 12.06,
-   "p_mejor_media": 0.6838902831077576,
+   "pixeles": 189,
+   "area_ha": 17.01,
+   "p_mejor_media": 0.8677825331687927,
    "nombre": "Crotalaria juncea (abono verde) (descanso) → hortalizas (general)"
-  },
-  {
-   "plan": "mucuna>hortalizas",
-   "pixeles": 55,
-   "area_ha": 4.95,
-   "p_mejor_media": 0.560869574546814,
-   "nombre": "Mucuna (abono verde) (descanso) → hortalizas (general)"
   }
  ],
  "ranking_planes": [
   {
    "plan": "crotalaria>hortalizas",
    "nombre": "Crotalaria juncea (abono verde) (descanso) → hortalizas (general)",
-   "p_mejor_finca": 0.603,
-   "ingreso_p50": 31365200.0,
-   "riego_p50": 217.33157348632812,
-   "ibs_p50": 17.657669067382812,
-   "salud_p50": 64.44445037841797,
-   "erosion_p50": 3.660264015197754,
+   "p_mejor_finca": 0.868,
+   "ingreso_p50": 26945680.0,
+   "riego_p50": 116.30852508544922,
+   "ibs_p50": 26.480335235595703,
+   "erosion_p50": 1.9954427480697632,
    "rendimiento_p50_kg_ha": {
-    "hortalizas": 3661.038818359375
-   }
-  },
-  {
-   "plan": "mucuna>hortalizas",
-   "nombre": "Mucuna (abono verde) (descanso) → hortalizas (general)",
-   "p_mejor_finca": 0.307,
-   "ingreso_p50": 26486462.0,
-   "riego_p50": 278.5303955078125,
-   "ibs_p50": 17.76571273803711,
-   "salud_p50": 67.77777862548828,
-   "erosion_p50": 3.0645923614501953,
-   "rendimiento_p50_kg_ha": {
-    "hortalizas": 4053.7138671875
-   }
-  },
-  {
-   "plan": "crotalaria>aji",
-   "nombre": "Crotalaria juncea (abono verde) (descanso) → ají",
-   "p_mejor_finca": 0.036,
-   "ingreso_p50": 23659780.0,
-   "riego_p50": 283.8599548339844,
-   "ibs_p50": 17.685766220092773,
-   "salud_p50": 67.22222137451172,
-   "erosion_p50": 2.9682908058166504,
-   "rendimiento_p50_kg_ha": {
-    "aji": 5329.0703125
-   }
-  },
-  {
-   "plan": "sin_descanso>aji",
-   "nombre": "Ají sin descanso",
-   "p_mejor_finca": 0.028,
-   "ingreso_p50": 23583238.0,
-   "riego_p50": 368.4559631347656,
-   "ibs_p50": 1.5919380187988281,
-   "salud_p50": 34.907405853271484,
-   "erosion_p50": 2.18365478515625,
-   "rendimiento_p50_kg_ha": {
-    "aji": 3298.89892578125
+    "hortalizas": 3669.71923828125
    }
   },
   {
    "plan": "canavalia>hortalizas",
    "nombre": "Canavalia (abono verde) (descanso) → hortalizas (general)",
-   "p_mejor_finca": 0.022,
-   "ingreso_p50": 27393300.0,
-   "riego_p50": 273.11712646484375,
-   "ibs_p50": 17.657669067382812,
-   "salud_p50": 65.60185241699219,
-   "erosion_p50": 3.3577566146850586,
+   "p_mejor_finca": 0.123,
+   "ingreso_p50": 22592100.0,
+   "riego_p50": 153.2066650390625,
+   "ibs_p50": 26.480335235595703,
+   "erosion_p50": 1.9549310207366943,
    "rendimiento_p50_kg_ha": {
-    "hortalizas": 3478.51416015625
+    "hortalizas": 3237.45703125
+   }
+  },
+  {
+   "plan": "canavalia>maiz",
+   "nombre": "Canavalia (abono verde) (descanso) → maíz",
+   "p_mejor_finca": 0.008,
+   "ingreso_p50": 8232091.5,
+   "riego_p50": 123.58789825439453,
+   "ibs_p50": 55.52885055541992,
+   "erosion_p50": 1.1109473705291748,
+   "rendimiento_p50_kg_ha": {
+    "maiz": 3336.88330078125
+   }
+  },
+  {
+   "plan": "crotalaria>maiz",
+   "nombre": "Crotalaria juncea (abono verde) (descanso) → maíz",
+   "p_mejor_finca": 0.001,
+   "ingreso_p50": 8295934.0,
+   "riego_p50": 100.94586944580078,
+   "ibs_p50": 52.3215217590332,
+   "erosion_p50": 1.1140830516815186,
+   "rendimiento_p50_kg_ha": {
+    "maiz": 2923.216796875
+   }
+  },
+  {
+   "plan": "mucuna>hortalizas",
+   "nombre": "Mucuna (abono verde) (descanso) → hortalizas (general)",
+   "p_mejor_finca": 0.0,
+   "ingreso_p50": 19316346.0,
+   "riego_p50": 198.93063354492188,
+   "ibs_p50": 26.480335235595703,
+   "erosion_p50": 2.0012264251708984,
+   "rendimiento_p50_kg_ha": {
+    "hortalizas": 3679.30419921875
    }
   }
  ],
@@ -309,113 +280,104 @@
    "plan": "actual:cana_azucar",
    "nombre": "Seguir con caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de caña de azúcar",
-   "riego_p50": 593.889404296875,
-   "ibs_p50": 82.57276916503906,
-   "salud_p50": 93.33334350585938,
-   "erosion_p50": 0.6738133430480957,
+   "riego_p50": 612.0294799804688,
+   "ibs_p50": 86.19612121582031,
+   "erosion_p50": 0.2048681229352951,
    "rendimiento_p50_kg_ha": {
-    "cana_azucar": 32260.79296875
+    "cana_azucar": 32570.900390625
    }
   },
   {
    "plan": "frijol>cana_azucar",
    "nombre": "Fríjol (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de caña de azúcar",
-   "riego_p50": 543.3978271484375,
-   "ibs_p50": 41.449859619140625,
-   "salud_p50": 85.09259033203125,
-   "erosion_p50": 2.133981704711914,
+   "riego_p50": 488.366943359375,
+   "ibs_p50": 39.09352493286133,
+   "erosion_p50": 1.1221016645431519,
    "rendimiento_p50_kg_ha": {
-    "frijol": 220.82589721679688,
-    "cana_azucar": 33927.03125
+    "frijol": 231.12222290039062,
+    "cana_azucar": 34793.34765625
    }
   },
   {
    "plan": "soya>cana_azucar",
    "nombre": "Soya (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de soya, caña de azúcar",
-   "riego_p50": 545.1563720703125,
-   "ibs_p50": 41.54567337036133,
-   "salud_p50": 85.55554962158203,
-   "erosion_p50": 2.0480942726135254,
+   "riego_p50": 447.42303466796875,
+   "ibs_p50": 39.09352493286133,
+   "erosion_p50": 1.1978259086608887,
    "rendimiento_p50_kg_ha": {
-    "soya": 1360.90673828125,
-    "cana_azucar": 34375.703125
+    "soya": 1450.6361083984375,
+    "cana_azucar": 35032.8046875
    }
   },
   {
    "plan": "mani>cana_azucar",
    "nombre": "Maní (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de maní, caña de azúcar",
-   "riego_p50": 545.40380859375,
-   "ibs_p50": 41.54567337036133,
-   "salud_p50": 85.55554962158203,
-   "erosion_p50": 2.0680625438690186,
+   "riego_p50": 420.29730224609375,
+   "ibs_p50": 39.09352493286133,
+   "erosion_p50": 1.2530282735824585,
    "rendimiento_p50_kg_ha": {
-    "mani": 303.96636962890625,
-    "cana_azucar": 33205.5234375
+    "mani": 319.5858459472656,
+    "cana_azucar": 33603.484375
    }
   },
   {
    "plan": "caupi>cana_azucar",
    "nombre": "Fríjol caupí (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de fríjol caupí, caña de azúcar",
-   "riego_p50": 522.9991455078125,
-   "ibs_p50": 41.48799514770508,
-   "salud_p50": 85.09259033203125,
-   "erosion_p50": 2.128023147583008,
+   "riego_p50": 475.80242919921875,
+   "ibs_p50": 39.09352493286133,
+   "erosion_p50": 1.1269872188568115,
    "rendimiento_p50_kg_ha": {
-    "caupi": 687.6559448242188,
-    "cana_azucar": 33352.49609375
+    "caupi": 711.34033203125,
+    "cana_azucar": 34013.4765625
    }
   },
   {
    "plan": "canavalia>cana_azucar",
    "nombre": "Canavalia (abono verde) (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de caña de azúcar",
-   "riego_p50": 537.28173828125,
-   "ibs_p50": 50.30665969848633,
-   "salud_p50": 91.11111450195312,
-   "erosion_p50": 2.034827470779419,
+   "riego_p50": 452.37109375,
+   "ibs_p50": 52.3215217590332,
+   "erosion_p50": 0.9882084131240845,
    "rendimiento_p50_kg_ha": {
-    "cana_azucar": 34468.2109375
+    "cana_azucar": 35105.890625
    }
   },
   {
    "plan": "crotalaria>cana_azucar",
    "nombre": "Crotalaria juncea (abono verde) (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de caña de azúcar",
-   "riego_p50": 521.66357421875,
-   "ibs_p50": 50.30665969848633,
-   "salud_p50": 90.64815521240234,
-   "erosion_p50": 2.121610641479492,
+   "riego_p50": 476.6351318359375,
+   "ibs_p50": 52.3215217590332,
+   "erosion_p50": 0.9682303071022034,
    "rendimiento_p50_kg_ha": {
-    "cana_azucar": 33866.3046875
+    "cana_azucar": 34311.265625
    }
   },
   {
    "plan": "mucuna>cana_azucar",
    "nombre": "Mucuna (abono verde) (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de caña de azúcar",
-   "riego_p50": 505.2726745605469,
-   "ibs_p50": 50.30665969848633,
-   "salud_p50": 91.11111450195312,
-   "erosion_p50": 2.027836322784424,
+   "riego_p50": 364.9517822265625,
+   "ibs_p50": 52.3215217590332,
+   "erosion_p50": 1.1205532550811768,
    "rendimiento_p50_kg_ha": {
-    "cana_azucar": 33947.62109375
+    "cana_azucar": 36719.56640625
    }
   },
   {
    "plan": "guandul>cana_azucar",
    "nombre": "Guandul (descanso) → caña de azúcar",
    "nota": "ingreso sin dato: falta el precio de guandul, caña de azúcar",
-   "riego_p50": 330.28875732421875,
-   "ibs_p50": 41.408050537109375,
-   "salud_p50": 84.62963104248047,
-   "erosion_p50": 2.3716635704040527,
+   "riego_p50": 254.10507202148438,
+   "ibs_p50": 39.09352493286133,
+   "erosion_p50": 1.288599967956543,
    "rendimiento_p50_kg_ha": {
-    "guandul": 914.1685791015625,
-    "cana_azucar": 32380.39453125
+    "guandul": 930.2759399414062,
+    "cana_azucar": 34675.734375
    }
   }
  ],
@@ -423,11 +385,10 @@
   {
    "lon": -76.356222,
    "lat": 3.580732,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.467,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -435,9 +396,8 @@
    "lat": 3.580732,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -445,9 +405,8 @@
    "lat": 3.580733,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -455,19 +414,19 @@
    "lat": 3.580733,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.522,
-    "mucuna>hortalizas": 0.457,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
    "lon": -76.355142,
    "lat": 3.580734,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.489,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.717,
+    "canavalia>hortalizas": 0.239,
+    "canavalia>maiz": 0.022,
+    "mucuna>hortalizas": 0.022
    }
   },
   {
@@ -475,60 +434,54 @@
    "lat": 3.580734,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.587,
-    "mucuna>hortalizas": 0.38,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.859,
+    "canavalia>hortalizas": 0.141
    }
   },
   {
    "lon": -76.354602,
    "lat": 3.580734,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.457,
-    "mucuna>hortalizas": 0.489,
-    "crotalaria>aji": 0.011,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.163,
+    "canavalia>maiz": 0.043
    }
   },
   {
    "lon": -76.356222,
    "lat": 3.580461,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.402,
-    "mucuna>hortalizas": 0.565,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355952,
    "lat": 3.580461,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.446,
-    "mucuna>hortalizas": 0.522,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355682,
    "lat": 3.580461,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.467,
-    "mucuna>hortalizas": 0.5,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355412,
    "lat": 3.580462,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -536,9 +489,8 @@
    "lat": 3.580462,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.554,
-    "mucuna>hortalizas": 0.435,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -546,59 +498,58 @@
    "lat": 3.580463,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.63,
-    "mucuna>hortalizas": 0.337,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.859,
+    "canavalia>hortalizas": 0.141
    }
   },
   {
    "lon": -76.354602,
    "lat": 3.580463,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.489,
-    "mucuna>hortalizas": 0.467,
-    "crotalaria>aji": 0.011,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.826,
+    "canavalia>hortalizas": 0.163,
+    "canavalia>maiz": 0.011
    }
   },
   {
    "lon": -76.354332,
    "lat": 3.580463,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.272,
-    "mucuna>hortalizas": 0.674,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.609,
+    "canavalia>hortalizas": 0.217,
+    "canavalia>maiz": 0.174
    }
   },
   {
    "lon": -76.354062,
    "lat": 3.580464,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.304,
-    "mucuna>hortalizas": 0.685,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.533,
+    "canavalia>hortalizas": 0.207,
+    "canavalia>maiz": 0.261
    }
   },
   {
    "lon": -76.353792,
    "lat": 3.580464,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.598,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.674,
+    "canavalia>hortalizas": 0.185,
+    "canavalia>maiz": 0.141
    }
   },
   {
    "lon": -76.353521,
    "lat": 3.580465,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.446,
-    "mucuna>hortalizas": 0.554
+    "crotalaria>hortalizas": 0.783,
+    "canavalia>hortalizas": 0.185,
+    "canavalia>maiz": 0.033
    }
   },
   {
@@ -606,69 +557,63 @@
    "lat": 3.580465,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.402,
-    "mucuna>hortalizas": 0.576,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.63,
+    "canavalia>hortalizas": 0.315,
+    "canavalia>maiz": 0.054
    }
   },
   {
    "lon": -76.352981,
    "lat": 3.580465,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.293,
-    "mucuna>hortalizas": 0.696,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.565,
+    "canavalia>hortalizas": 0.435
    }
   },
   {
    "lon": -76.352711,
    "lat": 3.580466,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.38,
-    "mucuna>hortalizas": 0.609,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.696,
+    "canavalia>hortalizas": 0.304
    }
   },
   {
    "lon": -76.356222,
    "lat": 3.580189,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355952,
    "lat": 3.58019,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.402,
-    "mucuna>hortalizas": 0.565,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355681,
    "lat": 3.58019,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.413,
-    "mucuna>hortalizas": 0.554,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355411,
    "lat": 3.580191,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.467,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -676,9 +621,8 @@
    "lat": 3.580191,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -686,40 +630,38 @@
    "lat": 3.580191,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.587,
-    "mucuna>hortalizas": 0.38,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.663,
+    "canavalia>hortalizas": 0.337
    }
   },
   {
    "lon": -76.354601,
    "lat": 3.580192,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.457,
-    "mucuna>hortalizas": 0.489,
-    "crotalaria>aji": 0.011,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.163,
+    "canavalia>maiz": 0.022
    }
   },
   {
    "lon": -76.354331,
    "lat": 3.580192,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.315,
-    "mucuna>hortalizas": 0.63,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.707,
+    "canavalia>hortalizas": 0.207,
+    "canavalia>maiz": 0.087
    }
   },
   {
    "lon": -76.354061,
    "lat": 3.580193,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.402,
-    "mucuna>hortalizas": 0.554,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.772,
+    "canavalia>hortalizas": 0.185,
+    "canavalia>maiz": 0.043
    }
   },
   {
@@ -727,19 +669,17 @@
    "lat": 3.580193,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.489,
-    "mucuna>hortalizas": 0.467,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.353521,
    "lat": 3.580193,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.413,
-    "mucuna>hortalizas": 0.543,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.837,
+    "canavalia>hortalizas": 0.163
    }
   },
   {
@@ -747,8 +687,9 @@
    "lat": 3.580194,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.511,
-    "mucuna>hortalizas": 0.489
+    "crotalaria>hortalizas": 0.783,
+    "canavalia>hortalizas": 0.196,
+    "canavalia>maiz": 0.022
    }
   },
   {
@@ -756,68 +697,63 @@
    "lat": 3.580194,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.511,
-    "mucuna>hortalizas": 0.489
+    "crotalaria>hortalizas": 0.717,
+    "canavalia>hortalizas": 0.196,
+    "canavalia>maiz": 0.087
    }
   },
   {
    "lon": -76.352711,
    "lat": 3.580195,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.326,
-    "mucuna>hortalizas": 0.652,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.565,
+    "canavalia>hortalizas": 0.435
    }
   },
   {
    "lon": -76.356221,
    "lat": 3.579918,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.38,
-    "mucuna>hortalizas": 0.587,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355951,
    "lat": 3.579918,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355681,
    "lat": 3.579919,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355411,
    "lat": 3.579919,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.424,
-    "mucuna>hortalizas": 0.543,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355141,
    "lat": 3.57992,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -825,39 +761,36 @@
    "lat": 3.57992,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.511,
-    "mucuna>hortalizas": 0.457,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.685,
+    "canavalia>hortalizas": 0.315
    }
   },
   {
    "lon": -76.354601,
    "lat": 3.57992,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.457,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.354331,
    "lat": 3.579921,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.609,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.761,
+    "canavalia>hortalizas": 0.185,
+    "canavalia>maiz": 0.054
    }
   },
   {
    "lon": -76.354061,
    "lat": 3.579921,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.837,
+    "canavalia>hortalizas": 0.163
    }
   },
   {
@@ -865,9 +798,8 @@
    "lat": 3.579922,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.587,
-    "mucuna>hortalizas": 0.37,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -875,9 +807,8 @@
    "lat": 3.579922,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.533,
-    "mucuna>hortalizas": 0.435,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.185
    }
   },
   {
@@ -885,11 +816,8 @@
    "lat": 3.579922,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.065,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -897,11 +825,10 @@
    "lat": 3.579923,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.685,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.033,
-    "sin_descanso>aji": 0.163,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.783,
+    "canavalia>hortalizas": 0.022,
+    "canavalia>maiz": 0.076,
+    "crotalaria>maiz": 0.12
    }
   },
   {
@@ -909,100 +836,91 @@
    "lat": 3.579923,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.815,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.033,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.663,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.196,
+    "crotalaria>maiz": 0.076
    }
   },
   {
    "lon": -76.356221,
    "lat": 3.579647,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355951,
    "lat": 3.579647,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.413,
-    "mucuna>hortalizas": 0.554,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355681,
    "lat": 3.579647,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.38,
-    "mucuna>hortalizas": 0.587,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355411,
    "lat": 3.579648,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.413,
-    "mucuna>hortalizas": 0.554,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.355141,
    "lat": 3.579648,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.467,
-    "mucuna>hortalizas": 0.5,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.354871,
    "lat": 3.579649,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.641,
+    "canavalia>hortalizas": 0.359
    }
   },
   {
    "lon": -76.354601,
    "lat": 3.579649,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.446,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
    "lon": -76.35433,
    "lat": 3.579649,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.359,
-    "mucuna>hortalizas": 0.609,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.185
    }
   },
   {
    "lon": -76.35406,
    "lat": 3.57965,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.413,
-    "mucuna>hortalizas": 0.554,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.185
    }
   },
   {
@@ -1010,9 +928,8 @@
    "lat": 3.57965,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.185
    }
   },
   {
@@ -1020,10 +937,8 @@
    "lat": 3.579651,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.815,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1031,10 +946,8 @@
    "lat": 3.579651,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.815,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.065,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1042,11 +955,8 @@
    "lat": 3.579651,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.587,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.054,
-    "sin_descanso>aji": 0.174,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1054,19 +964,18 @@
    "lat": 3.579652,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.783,
-    "mucuna>hortalizas": 0.163,
-    "sin_descanso>aji": 0.033
+    "crotalaria>hortalizas": 0.87,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.065
    }
   },
   {
    "lon": -76.35649,
    "lat": 3.579375,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.402,
-    "mucuna>hortalizas": 0.565,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
@@ -1074,9 +983,8 @@
    "lat": 3.579375,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.554,
-    "mucuna>hortalizas": 0.413,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.783,
+    "canavalia>hortalizas": 0.217
    }
   },
   {
@@ -1084,39 +992,35 @@
    "lat": 3.579376,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.35568,
    "lat": 3.579376,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.467,
-    "mucuna>hortalizas": 0.5,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.35541,
    "lat": 3.579377,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.446,
-    "mucuna>hortalizas": 0.522,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.35514,
    "lat": 3.579377,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.478,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -1124,29 +1028,26 @@
    "lat": 3.579377,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.489,
-    "mucuna>hortalizas": 0.489,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
    "lon": -76.3546,
    "lat": 3.579378,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.457,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
    "lon": -76.35433,
    "lat": 3.579378,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.815,
+    "canavalia>hortalizas": 0.185
    }
   },
   {
@@ -1154,10 +1055,7 @@
    "lat": 3.579379,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1166,10 +1064,7 @@
    "lat": 3.579379,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1178,10 +1073,7 @@
    "lat": 3.579379,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.663,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1190,11 +1082,8 @@
    "lat": 3.57938,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.033,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1202,10 +1091,7 @@
    "lat": 3.57938,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.62,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.13,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1214,31 +1100,27 @@
    "lat": 3.579381,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.207,
-    "crotalaria>aji": 0.043,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.913,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.022
    }
   },
   {
    "lon": -76.35649,
    "lat": 3.579104,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
    "lon": -76.35622,
    "lat": 3.579104,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.391,
-    "mucuna>hortalizas": 0.565,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
@@ -1246,9 +1128,8 @@
    "lat": 3.579104,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.554,
-    "mucuna>hortalizas": 0.413,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.783,
+    "canavalia>hortalizas": 0.217
    }
   },
   {
@@ -1256,9 +1137,8 @@
    "lat": 3.579105,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -1266,9 +1146,8 @@
    "lat": 3.579105,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -1276,9 +1155,8 @@
    "lat": 3.579106,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.804,
+    "canavalia>hortalizas": 0.196
    }
   },
   {
@@ -1286,9 +1164,8 @@
    "lat": 3.579106,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.543,
-    "mucuna>hortalizas": 0.424,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -1296,11 +1173,8 @@
    "lat": 3.579106,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.054,
-    "sin_descanso>aji": 0.12,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1308,10 +1182,7 @@
    "lat": 3.579107,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1320,10 +1191,7 @@
    "lat": 3.579107,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.707,
-    "mucuna>hortalizas": 0.098,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1332,11 +1200,8 @@
    "lat": 3.579108,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.685,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.054,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1344,11 +1209,8 @@
    "lat": 3.579108,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.109,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1356,11 +1218,8 @@
    "lat": 3.579108,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.033,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1368,8 +1227,9 @@
    "lat": 3.579109,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.793,
-    "mucuna>hortalizas": 0.196
+    "crotalaria>hortalizas": 0.924,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.011
    }
   },
   {
@@ -1377,38 +1237,37 @@
    "lat": 3.579109,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.772,
-    "mucuna>hortalizas": 0.207
+    "crotalaria>hortalizas": 0.902,
+    "canavalia>hortalizas": 0.076,
+    "canavalia>maiz": 0.022
    }
   },
   {
    "lon": -76.35649,
    "lat": 3.578832,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.326,
-    "mucuna>hortalizas": 0.641,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
    "lon": -76.35622,
    "lat": 3.578833,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.348,
-    "mucuna>hortalizas": 0.62,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
    "lon": -76.35595,
    "lat": 3.578833,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.424,
-    "mucuna>hortalizas": 0.522,
-    "canavalia>hortalizas": 0.054
+    "crotalaria>hortalizas": 0.543,
+    "canavalia>hortalizas": 0.446,
+    "mucuna>hortalizas": 0.011
    }
   },
   {
@@ -1416,9 +1275,8 @@
    "lat": 3.578833,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.533,
-    "mucuna>hortalizas": 0.446,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -1426,9 +1284,8 @@
    "lat": 3.578834,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.5,
-    "mucuna>hortalizas": 0.478,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -1436,9 +1293,8 @@
    "lat": 3.578834,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.522,
-    "mucuna>hortalizas": 0.457,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.793,
+    "canavalia>hortalizas": 0.207
    }
   },
   {
@@ -1446,10 +1302,8 @@
    "lat": 3.578835,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1457,10 +1311,7 @@
    "lat": 3.578835,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.065,
-    "sin_descanso>aji": 0.109,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1469,11 +1320,8 @@
    "lat": 3.578835,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.609,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.065,
-    "sin_descanso>aji": 0.152,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1481,11 +1329,8 @@
    "lat": 3.578836,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.663,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.109,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1493,10 +1338,8 @@
    "lat": 3.578836,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1504,9 +1347,8 @@
    "lat": 3.578837,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1514,9 +1356,8 @@
    "lat": 3.578837,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1524,8 +1365,8 @@
    "lat": 3.578837,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.174
+    "crotalaria>hortalizas": 0.924,
+    "canavalia>hortalizas": 0.076
    }
   },
   {
@@ -1533,8 +1374,8 @@
    "lat": 3.578838,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.185
+    "crotalaria>hortalizas": 0.935,
+    "canavalia>hortalizas": 0.065
    }
   },
   {
@@ -1542,48 +1383,47 @@
    "lat": 3.578838,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.88,
-    "mucuna>hortalizas": 0.12
+    "crotalaria>hortalizas": 0.924,
+    "canavalia>hortalizas": 0.076
    }
   },
   {
    "lon": -76.356489,
    "lat": 3.578561,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.326,
-    "mucuna>hortalizas": 0.663,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.511,
+    "canavalia>hortalizas": 0.467,
+    "mucuna>hortalizas": 0.022
    }
   },
   {
    "lon": -76.356219,
    "lat": 3.578561,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.326,
-    "mucuna>hortalizas": 0.641,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.554,
+    "canavalia>hortalizas": 0.446
    }
   },
   {
    "lon": -76.355949,
    "lat": 3.578562,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.38,
-    "mucuna>hortalizas": 0.576,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.543,
+    "canavalia>hortalizas": 0.446,
+    "mucuna>hortalizas": 0.011
    }
   },
   {
    "lon": -76.355679,
    "lat": 3.578562,
-   "plan": "mucuna>hortalizas",
+   "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.446,
-    "mucuna>hortalizas": 0.511,
-    "canavalia>hortalizas": 0.043
+    "crotalaria>hortalizas": 0.543,
+    "canavalia>hortalizas": 0.435,
+    "mucuna>hortalizas": 0.022
    }
   },
   {
@@ -1591,8 +1431,8 @@
    "lat": 3.578563,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.913,
-    "mucuna>hortalizas": 0.087
+    "crotalaria>hortalizas": 0.946,
+    "canavalia>hortalizas": 0.054
    }
   },
   {
@@ -1600,9 +1440,8 @@
    "lat": 3.578563,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.87,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.043
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1610,10 +1449,8 @@
    "lat": 3.578563,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.837,
-    "mucuna>hortalizas": 0.098,
-    "crotalaria>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1621,11 +1458,8 @@
    "lat": 3.578564,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.772,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.054,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1633,11 +1467,8 @@
    "lat": 3.578564,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1645,11 +1476,8 @@
    "lat": 3.578565,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1657,11 +1485,8 @@
    "lat": 3.578565,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.707,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.065,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1669,11 +1494,8 @@
    "lat": 3.578565,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.793,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1681,9 +1503,8 @@
    "lat": 3.578566,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1691,10 +1512,7 @@
    "lat": 3.578566,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.663,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.076,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1703,10 +1521,7 @@
    "lat": 3.578567,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.663,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.076,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1715,10 +1530,8 @@
    "lat": 3.578567,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.098,
-    "sin_descanso>aji": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1726,9 +1539,8 @@
    "lat": 3.57829,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.717,
-    "mucuna>hortalizas": 0.272,
-    "crotalaria>aji": 0.011
+    "crotalaria>hortalizas": 0.989,
+    "canavalia>hortalizas": 0.011
    }
   },
   {
@@ -1736,9 +1548,8 @@
    "lat": 3.57829,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.304,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.946,
+    "canavalia>hortalizas": 0.054
    }
   },
   {
@@ -1746,9 +1557,8 @@
    "lat": 3.57829,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.293,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1756,9 +1566,8 @@
    "lat": 3.578291,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.261,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1766,8 +1575,9 @@
    "lat": 3.578291,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.848,
-    "mucuna>hortalizas": 0.152
+    "crotalaria>hortalizas": 0.924,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.011
    }
   },
   {
@@ -1775,9 +1585,8 @@
    "lat": 3.578292,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.065
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1785,10 +1594,8 @@
    "lat": 3.578292,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.098,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1796,11 +1603,8 @@
    "lat": 3.578292,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.793,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1808,10 +1612,7 @@
    "lat": 3.578293,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.685,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.087,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1820,11 +1621,8 @@
    "lat": 3.578293,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.054,
-    "sin_descanso>aji": 0.141,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1832,10 +1630,7 @@
    "lat": 3.578294,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.065,
-    "sin_descanso>aji": 0.13,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1844,10 +1639,7 @@
    "lat": 3.578294,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.62,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.13,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1856,10 +1648,7 @@
    "lat": 3.578294,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.63,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.109,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1868,10 +1657,7 @@
    "lat": 3.578295,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.62,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.12,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -1880,11 +1666,8 @@
    "lat": 3.578295,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.63,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1892,11 +1675,8 @@
    "lat": 3.578296,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.098,
-    "sin_descanso>aji": 0.087,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -1904,9 +1684,8 @@
    "lat": 3.578019,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.783,
-    "mucuna>hortalizas": 0.207,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.946,
+    "canavalia>hortalizas": 0.054
    }
   },
   {
@@ -1914,9 +1693,8 @@
    "lat": 3.578019,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.261,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1924,9 +1702,8 @@
    "lat": 3.578019,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.304,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -1934,8 +1711,9 @@
    "lat": 3.57802,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.772,
-    "mucuna>hortalizas": 0.207
+    "crotalaria>hortalizas": 0.891,
+    "canavalia>hortalizas": 0.065,
+    "canavalia>maiz": 0.043
    }
   },
   {
@@ -1943,10 +1721,7 @@
    "lat": 3.57802,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.717,
-    "mucuna>hortalizas": 0.098,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.065,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -1955,11 +1730,8 @@
    "lat": 3.578021,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.783,
-    "mucuna>hortalizas": 0.076,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1967,10 +1739,8 @@
    "lat": 3.578021,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1978,11 +1748,8 @@
    "lat": 3.578021,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.75,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -1990,10 +1757,7 @@
    "lat": 3.578022,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.707,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.065,
+    "crotalaria>hortalizas": 0.967,
     "canavalia>hortalizas": 0.033
    }
   },
@@ -2002,11 +1766,8 @@
    "lat": 3.578022,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.696,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.065,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2014,10 +1775,7 @@
    "lat": 3.578023,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2026,11 +1784,8 @@
    "lat": 3.578023,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.685,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.065,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2038,11 +1793,8 @@
    "lat": 3.578023,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.707,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2050,11 +1802,8 @@
    "lat": 3.578024,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.75,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2062,11 +1811,8 @@
    "lat": 3.578024,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.717,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.098,
-    "sin_descanso>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -2074,9 +1820,8 @@
    "lat": 3.577748,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.772,
-    "mucuna>hortalizas": 0.217,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2084,9 +1829,8 @@
    "lat": 3.577748,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.315,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2094,9 +1838,9 @@
    "lat": 3.577749,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.174,
-    "crotalaria>aji": 0.011
+    "crotalaria>hortalizas": 0.935,
+    "canavalia>hortalizas": 0.054,
+    "canavalia>maiz": 0.011
    }
   },
   {
@@ -2104,10 +1848,7 @@
    "lat": 3.577749,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.076,
-    "sin_descanso>aji": 0.109,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2116,11 +1857,8 @@
    "lat": 3.577749,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.717,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2128,10 +1866,8 @@
    "lat": 3.57775,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.804,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2139,11 +1875,8 @@
    "lat": 3.57775,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.707,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.054,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2151,11 +1884,8 @@
    "lat": 3.577751,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.761,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2163,10 +1893,7 @@
    "lat": 3.577751,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.696,
-    "mucuna>hortalizas": 0.12,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.076,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2175,10 +1902,7 @@
    "lat": 3.577751,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2187,11 +1911,8 @@
    "lat": 3.577752,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.087,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2199,11 +1920,8 @@
    "lat": 3.577752,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.761,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.022
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2211,9 +1929,8 @@
    "lat": 3.577753,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2221,11 +1938,8 @@
    "lat": 3.577753,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.793,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2233,8 +1947,8 @@
    "lat": 3.577477,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.848,
-    "mucuna>hortalizas": 0.152
+    "crotalaria>hortalizas": 0.935,
+    "canavalia>hortalizas": 0.065
    }
   },
   {
@@ -2242,10 +1956,8 @@
    "lat": 3.577478,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.75,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2253,10 +1965,7 @@
    "lat": 3.577478,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2265,10 +1974,7 @@
    "lat": 3.577478,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.772,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2277,10 +1983,7 @@
    "lat": 3.577479,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.75,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.043,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2289,10 +1992,8 @@
    "lat": 3.577479,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.783,
-    "mucuna>hortalizas": 0.109,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2300,11 +2001,8 @@
    "lat": 3.57748,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2312,10 +2010,7 @@
    "lat": 3.57748,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.63,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.109,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2324,10 +2019,7 @@
    "lat": 3.57748,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.674,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.065,
+    "crotalaria>hortalizas": 0.989,
     "canavalia>hortalizas": 0.011
    }
   },
@@ -2336,11 +2028,8 @@
    "lat": 3.577481,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.793,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.957,
+    "canavalia>hortalizas": 0.043
    }
   },
   {
@@ -2348,9 +2037,8 @@
    "lat": 3.577481,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.826,
-    "mucuna>hortalizas": 0.087,
-    "crotalaria>aji": 0.087
+    "crotalaria>hortalizas": 0.967,
+    "canavalia>hortalizas": 0.033
    }
   },
   {
@@ -2358,11 +2046,8 @@
    "lat": 3.577207,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.63,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2370,10 +2055,7 @@
    "lat": 3.577207,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2382,10 +2064,7 @@
    "lat": 3.577207,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.033,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2394,11 +2073,8 @@
    "lat": 3.577208,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.761,
-    "mucuna>hortalizas": 0.13,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.011,
-    "canavalia>hortalizas": 0.011
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2406,11 +2082,8 @@
    "lat": 3.577208,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.652,
-    "mucuna>hortalizas": 0.141,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.087,
-    "canavalia>hortalizas": 0.033
+    "crotalaria>hortalizas": 0.978,
+    "canavalia>hortalizas": 0.022
    }
   },
   {
@@ -2418,10 +2091,7 @@
    "lat": 3.577209,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.62,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.12,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2430,10 +2100,7 @@
    "lat": 3.576936,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.641,
-    "mucuna>hortalizas": 0.152,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.098,
+    "crotalaria>hortalizas": 0.978,
     "canavalia>hortalizas": 0.022
    }
   },
@@ -2442,10 +2109,8 @@
    "lat": 3.576936,
    "plan": "crotalaria>hortalizas",
    "p_mejor": {
-    "crotalaria>hortalizas": 0.728,
-    "mucuna>hortalizas": 0.163,
-    "crotalaria>aji": 0.087,
-    "sin_descanso>aji": 0.022
+    "crotalaria>hortalizas": 0.989,
+    "canavalia>hortalizas": 0.011
    }
   }
  ],
@@ -2454,13 +2119,104 @@
   "escenarios_climaticos": 23,
   "planes_evaluados": 53,
   "calibracion_val": {
-   "n_obs": 39326,
-   "rmse": 0.1004069522023201,
-   "mae": 0.075105682015419,
-   "sesgo": -0.008964454755187035,
-   "r2": 0.686808705329895,
-   "cobertura_80": 0.8153638814016172,
-   "ancho_80": 0.2284274697303772
+   "n_segmentos": 2395,
+   "regresion_ndvi": {
+    "simulador_bayesiano": {
+     "n_obs": 39326,
+     "rmse": 0.1006106436252594,
+     "mae": 0.07591452449560165,
+     "sesgo": -0.007748837117105722,
+     "r2": 0.6855367422103882,
+     "cobertura_80": 0.8136856024004475,
+     "ancho_80": 0.22873887419700623
+    },
+    "climatologia": {
+     "n_obs": 39326,
+     "rmse": 0.09976767003536224,
+     "mae": 0.07020799070596695,
+     "sesgo": 0.00644923048093915,
+     "r2": 0.6907841563224792
+    },
+    "gradient_boosting": {
+     "n_obs": 39326,
+     "rmse": 0.09773501753807068,
+     "mae": 0.07279130071401596,
+     "sesgo": -0.014718865975737572,
+     "r2": 0.7032556533813477
+    }
+   },
+   "clasificacion": {
+    "sin_dosel": {
+     "simulador_bayesiano": {
+      "n": 39326,
+      "prevalencia": 0.033387580735391345,
+      "auc_roc": 0.9101254172696641,
+      "auc_pr": 0.22837024835031147,
+      "precision": 0.2604608853850819,
+      "recall": 0.6542269611576542,
+      "f1": 0.3725872912600304,
+      "brier": 0.02733710967004299,
+      "umbral_prob": 0.29778775572776794
+     },
+     "climatologia": {
+      "n": 39326,
+      "prevalencia": 0.033387580735391345,
+      "auc_roc": 0.9110008343039095,
+      "auc_pr": 0.23375649730996712,
+      "precision": 0.2604608853850819,
+      "recall": 0.6542269611576542,
+      "f1": 0.3725872912600304,
+      "brier": 0.02714480087161064,
+      "umbral_prob": 0.23693953454494476
+     },
+     "gradient_boosting": {
+      "n": 39326,
+      "prevalencia": 0.033387580735391345,
+      "auc_roc": 0.919485004418559,
+      "auc_pr": 0.27198564700701333,
+      "precision": 0.286231884057971,
+      "recall": 0.6016755521706016,
+      "f1": 0.3879204517554628,
+      "brier": 0.027589701116085052,
+      "umbral_prob": 0.3008289039134979
+     }
+    },
+    "baja_cobertura": {
+     "simulador_bayesiano": {
+      "n": 39326,
+      "prevalencia": 0.1561308040482124,
+      "auc_roc": 0.9442572546878701,
+      "auc_pr": 0.8342332631381902,
+      "precision": 0.8013381369016984,
+      "recall": 0.7607491856677524,
+      "f1": 0.7805163338624781,
+      "brier": 0.05420194938778877,
+      "umbral_prob": 0.3112213909626007
+     },
+     "climatologia": {
+      "n": 39326,
+      "prevalencia": 0.1561308040482124,
+      "auc_roc": 0.9474962289344964,
+      "auc_pr": 0.840777681649771,
+      "precision": 0.8013381369016984,
+      "recall": 0.7607491856677524,
+      "f1": 0.7805163338624781,
+      "brier": 0.05119560286402702,
+      "umbral_prob": 0.5445705056190491
+     },
+     "gradient_boosting": {
+      "n": 39326,
+      "prevalencia": 0.1561308040482124,
+      "auc_roc": 0.9498017540460432,
+      "auc_pr": 0.8503462412036346,
+      "precision": 0.8127726400279184,
+      "recall": 0.7586319218241042,
+      "f1": 0.7847696066043299,
+      "brier": 0.05176708847284317,
+      "umbral_prob": 0.5080222487449646
+     }
+    }
+   }
   },
   "aviso": "Herramienta de apoyo: no reemplaza el criterio del agricultor ni la asesoría agronómica local."
  }

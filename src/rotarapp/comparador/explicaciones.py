@@ -29,7 +29,7 @@ def _fmt(x: float, unidad: str, dec: int = 0) -> str:
 
 def explicar(d: Decision, cultivos: dict[str, Cultivo], plagas: Plagas, entrada: Entrada,
              calib: dict, finca: Finca) -> dict[str, dict[str, list[str]]]:
-    val = calib["metricas"]["val"]["simulador_bayesiano"]
+    val = calib["metricas"]["val"]["regresion_ndvi"]["simulador_bayesiano"]
     out: dict[str, dict[str, list[str]]] = {}
     A = d.estrategias.get("A")
     for clave, e in d.estrategias.items():
@@ -62,9 +62,8 @@ def explicar(d: Decision, cultivos: dict[str, Cultivo], plagas: Plagas, entrada:
             di = m["ibs"]["p50"] - A["metricas"]["ibs"]["p50"]
             de = m["erosion"]["p50"] - A["metricas"]["erosion"]["p50"]
             benef.append(f"Agua: necesitaría {_fmt(m['riego']['p50'], 'mm/año')} de riego para no tener estrés ({'+' if dr >= 0 else '−'}{_fmt(abs(dr), 'mm')} frente a hoy).")
-            ds = m["salud"]["p50"] - A["metricas"]["salud"]["p50"]
-            benef.append(f"Salud del suelo: índice comparativo {m['salud']['p50']:.0f}/100 ({ds:+.0f} frente a hoy); "
-                         f"IBS {m['ibs']['p50']:.0f} ({di:+.0f}; 50 = lo típico de ese suelo, que aquí es caña).")
+            benef.append(f"Salud del suelo (IBS en las ventanas de suelo desnudo): {m['ibs']['p50']:.0f} "
+                         f"({di:+.0f} frente a hoy; 50 = lo típico de ese suelo).")
             benef.append(f"Erosión: {m['erosion']['p50']:.2f} t/ha/año ({de:+.2f} frente a hoy).")
         elif clave == "A":
             benef.append("No exige cambiar manejo, maquinaria ni mercado.")

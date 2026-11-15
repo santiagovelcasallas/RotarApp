@@ -30,6 +30,7 @@ PRIOR: dict[str, tuple[float, float]] = {
     "p_agot": (0.30, 0.70),
     "riego": (0.0, 1.0),
     "v0": (0.02, 0.30),
+    "latencia": (0.0, 6.0),   # décadas sin dosel tras la cosecha antes del rebrote
 }
 
 
