@@ -1,0 +1,45 @@
+{
+ "nombre": "Finca demo Palmira (bloque de prueba espacial)",
+ "municipio": "Palmira",
+ "poligono": {
+  "type": "Polygon",
+  "coordinates": [
+   [
+    [
+     -76.356358,
+     3.580867
+    ],
+    [
+     -76.352577,
+     3.580602
+    ],
+    [
+     -76.352302,
+     3.577617
+    ],
+    [
+     -76.354461,
+     3.5768
+    ],
+    [
+     -76.356624,
+     3.578154
+    ],
+    [
+     -76.356358,
+     3.580867
+    ]
+   ]
+  ]
+ },
+ "cultivo_anterior": "cana_azucar",
+ "plagas_anteriores": [
+  "Barrenadores del tallo"
+ ],
+ "prioridades": {
+  "ingreso": 0.25,
+  "agua": 0.25,
+  "suelo": 0.25,
+  "erosion": 0.25
+ }
+}
