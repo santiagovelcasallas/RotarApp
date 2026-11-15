@@ -17,6 +17,7 @@
 
 | Fuente | Uso |
 |---|---|
+| Capacidad de uso de las tierras (IGAC 2006, 1:100.000) | Filtro de cultivos viables por finca (`data/referencia/igac/`) |
 | Mapa de suelos (IGAC / SoilGrids) | Textura, drenaje, factor K, entradas de microbiota |
 | Índice ENSO (ONI) | Agrupar años climáticos para el Monte Carlo |
 | Evaluaciones agropecuarias municipales | Rendimientos para calibrar NDVI → rendimiento |

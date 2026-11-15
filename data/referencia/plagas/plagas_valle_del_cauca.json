@@ -1,0 +1,2192 @@
+{
+ "cultivos": {
+  "cana_azucar": "Caña de azúcar",
+  "maiz": "Maíz",
+  "arroz": "Arroz",
+  "sorgo": "Sorgo",
+  "algodon": "Algodón",
+  "hortalizas": "Hortalizas (general)",
+  "aji": "Ají",
+  "berenjena": "Berenjena",
+  "platano": "Plátano",
+  "cacao": "Cacao",
+  "frijol": "Fríjol",
+  "cafe": "Café",
+  "cana_panelera": "Caña panelera",
+  "guayaba": "Guayaba",
+  "chontaduro": "Chontaduro",
+  "borojo": "Borojó",
+  "aguacate": "Aguacate",
+  "soya": "Soya (extra: no está en el Excel; viene del doc de economía)"
+ },
+ "leyenda_evidencia": {
+  "A": "Específica del Valle del Cauca",
+  "B": "Colombia, no específica del Valle",
+  "C": "Otro país o fuente general"
+ },
+ "plagas": [
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Barrenadores del tallo",
+   "agente": "Diatraea spp. (D. saccharalis, D. indigenella, D. tabernella, D. busckella)",
+   "tipo": "insecto",
+   "parte_afectada": "tallo (corazón muerto desde la germinación hasta la cosecha)",
+   "evidencia": "A",
+   "situacion_en_valle": "Principal plaga de la caña en Colombia; en el valle del río Cauca crece D. tabernella. Asocaña: intensidad media 1,9 % vs. umbral 2,5 %; cada 1 % de infestación cuesta ~143 kg de azúcar/ha.",
+   "condiciones_favorables": "Oviposición de D. indigenella escasa en campos de menos de 6 meses (S01)",
+   "otros_hospedantes": [
+    "maiz",
+    "sorgo",
+    "cana_panelera"
+   ],
+   "nota_rotacion": "También daña maíz y sorgo en el Valle (S19). Que sirva de puente entre cultivos es inferencia: validar con Cenicaña. Control principal: enemigos naturales (Trichogramma exiguum).",
+   "fuentes": [
+    "S01",
+    "S02",
+    "S19"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Salivazo",
+   "agente": "Aeneolamia varia",
+   "tipo": "insecto",
+   "parte_afectada": "raíz y follaje (ninfas en espuma)",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA declaró emergencia fitosanitaria en 2007 en Yotoco, Buga, Tuluá y Riofrío (plaga antes no registrada en caña del Valle); umbral de la resolución: más de 2 ninfas/cepa. Ciclo ~62 días. Cenicaña la monitorea.",
+   "condiciones_favorables": "No verificado. Control cultural: aporques, control de gramíneas, labores que exponen huevos al sol (S63)",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "También en pastos de zonas ganaderas del Valle (S63).",
+   "fuentes": [
+    "S03",
+    "S04",
+    "S63",
+    "S02"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Roya naranja",
+   "agente": "Puccinia kuehnii",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicaña la lista entre las enfermedades principales para selección de variedades (carbón, roya marrón y naranja, mosaico).",
+   "condiciones_favorables": "Rocío nocturno y agua libre en la hoja, 22–24 °C, humedad relativa alta (fuente general, no del Valle) (S56)",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Manejo: variedades resistentes.",
+   "fuentes": [
+    "S05",
+    "S56"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Roya marrón (café)",
+   "agente": "Puccinia melanocephala",
+   "tipo": "hongo",
+   "parte_afectada": "hoja (plantas jóvenes)",
+   "evidencia": "A",
+   "situacion_en_valle": "Enfermedad principal del programa de mejoramiento de Cenicaña; ICA/Cenicaña seleccionaron 14 variedades resistentes a roya y carbón.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Manejo: variedades resistentes.",
+   "fuentes": [
+    "S05",
+    "S06"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Carbón",
+   "agente": "Sporisorium scitamineum (Ustilago scitaminea)",
+   "tipo": "hongo",
+   "parte_afectada": "cogollo (látigo)",
+   "evidencia": "A",
+   "situacion_en_valle": "Detectado en el valle del Cauca en 1981; el método más eficiente es la variedad resistente.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Manejo: variedades resistentes, semilla sana.",
+   "fuentes": [
+    "S06",
+    "S05"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Raquitismo de la soca (RSD)",
+   "agente": "Leifsonia xyli subsp. xyli",
+   "tipo": "bacteria",
+   "parte_afectada": "tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicaña: RSD, escaldadura y amarillamiento foliar son problema en Colombia; manejo solo preventivo.",
+   "condiciones_favorables": "Se disemina con semilla y herramientas",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Semilla saneada, desinfección de herramientas y cuchillas de cosechadoras.",
+   "fuentes": [
+    "S05"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Escaldadura de la hoja",
+   "agente": "Xanthomonas albilineans",
+   "tipo": "bacteria",
+   "parte_afectada": "hoja y tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "Ver RSD: manejo preventivo.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Semilla saneada, desinfección de herramientas.",
+   "fuentes": [
+    "S05"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Amarillamiento foliar",
+   "agente": "Sugarcane yellow leaf virus (SCYLV)",
+   "tipo": "virus",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Registrado en Colombia en mayo de 1998; lo transmite el pulgón Melanaphis sacchari.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Semilleros libres del virus.",
+   "fuentes": [
+    "S05",
+    "S57"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Mosaico",
+   "agente": "virus del mosaico de la caña",
+   "tipo": "virus",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicaña lo incluye entre las enfermedades principales; variedades nuevas resistentes.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Variedades resistentes.",
+   "fuentes": [
+    "S05"
+   ]
+  },
+  {
+   "cultivo_id": "cana_azucar",
+   "plaga": "Pulgón amarillo de la caña",
+   "agente": "Melanaphis sacchari",
+   "tipo": "insecto",
+   "parte_afectada": "hoja; vector de SCYLV",
+   "evidencia": "B",
+   "situacion_en_valle": "Presente en las zonas cañeras de Colombia.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "sorgo",
+    "maiz",
+    "arroz"
+   ],
+   "nota_rotacion": "Hospedantes secundarios maíz y arroz y primario sorgo según fuente general (C). En otros países saltó de la caña al sorgo; en el Valle no hay confirmación: riesgo por inferencia.",
+   "fuentes": [
+    "S57"
+   ]
+  },
+  {
+   "cultivo_id": "maiz",
+   "plaga": "Chicharrita del maíz / achaparramiento",
+   "agente": "Dalbulus maidis (vector de Spiroplasma kunkelii y fitoplasma)",
+   "tipo": "insecto vector + mollicutes",
+   "parte_afectada": "planta entera (enanismo, enrojecimiento)",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA la tiene bajo control legal en el Valle: registro de productores, fechas de venta de semilla y de siembra por semestre (campaña B-2026 vigente), destrucción de socas, eliminación de nacederas. ICA 2020: 14,33 % de incidencia del vector y 8,51 % de síntomas. En el Valle se reportaron hasta 10 aplicaciones químicas por ciclo.",
+   "condiciones_favorables": "El Niño favorece la población del vector (ICA 2023, S14)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Solo maíz entre los cultivos de la lista. El puente es el maíz voluntario (nacederas) y las socas: la rotación solo ayuda si se destruyen.",
+   "fuentes": [
+    "S13",
+    "S14",
+    "S15",
+    "S16"
+   ]
+  },
+  {
+   "cultivo_id": "maiz",
+   "plaga": "Gusano cogollero",
+   "agente": "Spodoptera frugiperda",
+   "tipo": "insecto",
+   "parte_afectada": "cogollo y hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Plaga que más pérdidas causa en maíz tropical; su control pesa ~10 % del costo de producción en Colombia. Nombrada junto a D. maidis en la resolución ICA B-2026 del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "arroz",
+    "sorgo",
+    "algodon",
+    "soya"
+   ],
+   "nota_rotacion": "Polífaga: rotar entre estos cultivos no la corta.",
+   "fuentes": [
+    "S13",
+    "S17"
+   ]
+  },
+  {
+   "cultivo_id": "maiz",
+   "plaga": "Barrenadores del tallo",
+   "agente": "Diatraea spp.",
+   "tipo": "insecto",
+   "parte_afectada": "tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "Daño evaluado en genotipos de maíz y sorgo en el Valle (estudio de Acta Agronómica; estudio antiguo).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_azucar",
+    "sorgo",
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Ver caña de azúcar.",
+   "fuentes": [
+    "S19"
+   ]
+  },
+  {
+   "cultivo_id": "maiz",
+   "plaga": "Gusano del fruto (mazorca)",
+   "agente": "Helicoverpa zea",
+   "tipo": "insecto",
+   "parte_afectada": "mazorca",
+   "evidencia": "B",
+   "situacion_en_valle": "Plaga de maíz en Colombia; también daña sorgo y algodón (fuente de 1974).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "sorgo",
+    "algodon"
+   ],
+   "nota_rotacion": "Polífaga.",
+   "fuentes": [
+    "S17",
+    "S18"
+   ]
+  },
+  {
+   "cultivo_id": "maiz",
+   "plaga": "Trozador",
+   "agente": "Agrotis ipsilon",
+   "tipo": "insecto",
+   "parte_afectada": "plántula",
+   "evidencia": "B",
+   "situacion_en_valle": "Listado como plaga de maíz en Colombia.",
+   "condiciones_favorables": "Plaga de climas más frescos que Nataima, Tolima (S22)",
+   "otros_hospedantes": [
+    "soya"
+   ],
+   "nota_rotacion": "Ocasional en soya (S22).",
+   "fuentes": [
+    "S17",
+    "S22"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Piricularia (quemado)",
+   "agente": "Pyricularia oryzae",
+   "tipo": "hongo",
+   "parte_afectada": "hoja, nudo, panícula",
+   "evidencia": "A",
+   "situacion_en_valle": "Entre las enfermedades más frecuentes del arroz de riego en el sur del Valle (UPRA 2025); se maneja con fungicidas.",
+   "condiciones_favorables": "25–28 °C y clima húmedo (manual general, no del Valle) (S12)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Semilla certificada, variedad, densidad baja de siembra (Fedearroz).",
+   "fuentes": [
+    "S09",
+    "S12"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Añublo de la vaina",
+   "agente": "Rhizoctonia solani",
+   "tipo": "hongo",
+   "parte_afectada": "vaina",
+   "evidencia": "A",
+   "situacion_en_valle": "Entre las enfermedades frecuentes del sur del Valle (UPRA 2025).",
+   "condiciones_favorables": "Mucha humedad y calor (manual general) (S12)",
+   "otros_hospedantes": [
+    "soya",
+    "frijol"
+   ],
+   "nota_rotacion": "R. solani también es endémico en soya (ICA 2005) y está en fríjol del Valle (1958). Inferencia: arroz→soya comparte patógeno.",
+   "fuentes": [
+    "S09",
+    "S12",
+    "S21",
+    "S66"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Pudrición de la vaina",
+   "agente": "Sarocladium oryzae",
+   "tipo": "hongo",
+   "parte_afectada": "vaina y panícula",
+   "evidencia": "A",
+   "situacion_en_valle": "Citada por UPRA entre las enfermedades del sistema de riego del sur del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Mancha parda / Helmintosporiosis",
+   "agente": "Helminthosporium oryzae",
+   "tipo": "hongo",
+   "parte_afectada": "hoja y grano",
+   "evidencia": "A",
+   "situacion_en_valle": "Citada por UPRA; ya era enfermedad dominante en el Valle en 1939.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Manchado del grano (bacterias)",
+   "agente": "Pseudomonas spp.",
+   "tipo": "bacteria",
+   "parte_afectada": "grano",
+   "evidencia": "A",
+   "situacion_en_valle": "Citada por UPRA; estudio sobre manchado del grano y calidad de semilla con la variedad Oryzica-1 en el Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Semilla certificada.",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Sogata y virus de la hoja blanca",
+   "agente": "Tagosodes orizicolus (vector) + Rice hoja blanca virus",
+   "tipo": "insecto vector + virus",
+   "parte_afectada": "planta entera",
+   "evidencia": "A",
+   "situacion_en_valle": "UPRA lista la sogata entre las plagas que se manejan con insecticidas en el sur del Valle (máximo 4 aplicaciones por ciclo). Fedearroz mide pérdidas por el virus en Norte de Santander (no Valle).",
+   "condiciones_favorables": "Altas temperaturas, poca lluvia y variedades susceptibles (fuente de Ecuador, C) (S11)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Malezas gramíneas y rebrote de arroz hospedan al vector (S12, fuente general).",
+   "fuentes": [
+    "S09",
+    "S10",
+    "S11",
+    "S12"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Cogollero",
+   "agente": "Spodoptera frugiperda",
+   "tipo": "insecto",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "UPRA lista el cogollero entre las plagas del arroz de riego del sur del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "sorgo",
+    "algodon",
+    "soya"
+   ],
+   "nota_rotacion": "Ver maíz.",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Chinche",
+   "agente": "género por confirmar (Oebalus spp. en otros países)",
+   "tipo": "insecto",
+   "parte_afectada": "grano",
+   "evidencia": "A",
+   "situacion_en_valle": "UPRA lista 'chinche' entre las plagas del arroz del sur del Valle sin dar especie.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Confirmar especie con Fedearroz.",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "arroz",
+   "plaga": "Cucarrón",
+   "agente": "por confirmar",
+   "tipo": "insecto",
+   "parte_afectada": "raíz/tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "UPRA lista 'cucarrón' entre las plagas del arroz del sur del Valle sin dar especie.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Confirmar especie con Fedearroz.",
+   "fuentes": [
+    "S09"
+   ]
+  },
+  {
+   "cultivo_id": "sorgo",
+   "plaga": "Barrenadores del tallo",
+   "agente": "Diatraea spp.",
+   "tipo": "insecto",
+   "parte_afectada": "tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "Daño evaluado en genotipos de sorgo y maíz en el Valle (estudio antiguo).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "cana_azucar",
+    "cana_panelera"
+   ],
+   "nota_rotacion": "Ver caña de azúcar.",
+   "fuentes": [
+    "S19"
+   ]
+  },
+  {
+   "cultivo_id": "sorgo",
+   "plaga": "Gusano del fruto",
+   "agente": "Helicoverpa zea",
+   "tipo": "insecto",
+   "parte_afectada": "panoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Daña sorgo en Colombia (fuente de 1974).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "algodon"
+   ],
+   "nota_rotacion": "Polífaga.",
+   "fuentes": [
+    "S18"
+   ]
+  },
+  {
+   "cultivo_id": "sorgo",
+   "plaga": "Cogollero",
+   "agente": "Spodoptera frugiperda",
+   "tipo": "insecto",
+   "parte_afectada": "cogollo",
+   "evidencia": "C",
+   "situacion_en_valle": "Plaga de sorgo en México (Senasica); no hay dato del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "arroz",
+    "algodon",
+    "soya"
+   ],
+   "nota_rotacion": "Ver maíz.",
+   "fuentes": [
+    "S64"
+   ]
+  },
+  {
+   "cultivo_id": "sorgo",
+   "plaga": "Pulgón amarillo del sorgo",
+   "agente": "Melanaphis sacchari / M. sorghi",
+   "tipo": "insecto",
+   "parte_afectada": "hoja",
+   "evidencia": "C",
+   "situacion_en_valle": "Plaga emergente del sorgo en Argentina y México. No hay confirmación en sorgo del Valle; sí en caña colombiana.",
+   "condiciones_favorables": "Falta de lluvia y calor lo favorecen en Argentina (C)",
+   "otros_hospedantes": [
+    "cana_azucar",
+    "maiz",
+    "arroz"
+   ],
+   "nota_rotacion": "Vigilar: está en la caña del Valle.",
+   "fuentes": [
+    "S57",
+    "S64"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Roya de la soya",
+   "agente": "Phakopsora meibomiae / P. pachyrhizi",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA declaró alerta sanitaria en 2004 en Valle y Cauca por P. meibomiae; reportada en Colombia desde 2004; P. pachyrhizi es la especie predominante en la Orinoquía.",
+   "condiciones_favorables": "Hojas húmedas y 8–28 °C (nota comercial citada en el doc plagas-enfermedades-rotacion; C)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S20",
+    "S23"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Pudrición de raíz y tallo",
+   "agente": "Phytophthora sojae / Phytophthora spp.",
+   "tipo": "oomiceto",
+   "parte_afectada": "raíz y tallo",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la considera endémica; Agrosavia: uno de los patógenos más limitantes en Colombia.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aji",
+    "cacao",
+    "aguacate"
+   ],
+   "nota_rotacion": "ICA 2005: soya continua sobre soya favorece el ciclo de las plagas.",
+   "fuentes": [
+    "S21",
+    "S23"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Rhizoctonia",
+   "agente": "Rhizoctonia solani",
+   "tipo": "hongo",
+   "parte_afectada": "raíz y tallo",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la considera endémica en soya.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "arroz",
+    "frijol"
+   ],
+   "nota_rotacion": "Ver arroz.",
+   "fuentes": [
+    "S21"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Defoliadores y chinches",
+   "agente": "Anticarsia gemmatalis, Spodoptera sunia, S. frugiperda, Pseudoplusia includens; Piezodorus guildinii; Tetranychus sp.",
+   "tipo": "insecto / ácaro",
+   "parte_afectada": "hoja y vaina",
+   "evidencia": "B",
+   "situacion_en_valle": "Estudio 1976–79 en Tolima (no Valle): 22 plagas, cinco principales.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "arroz",
+    "sorgo",
+    "algodon"
+   ],
+   "nota_rotacion": "S. frugiperda es polífaga.",
+   "fuentes": [
+    "S22"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Barrenador del cuello",
+   "agente": "Elasmopalpus lignosellus",
+   "tipo": "insecto",
+   "parte_afectada": "cuello de la raíz y tallo de plántula",
+   "evidencia": "B",
+   "situacion_en_valle": "En Tolima causó mucho daño en un lote de soya que siguió a sorgo.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "sorgo",
+    "maiz"
+   ],
+   "nota_rotacion": "Alerta de rotación: sorgo→soya. Estudio de Tolima de 1976–79, validar.",
+   "fuentes": [
+    "S22",
+    "S18"
+   ]
+  },
+  {
+   "cultivo_id": "soya",
+   "plaga": "Begomovirus (mosca blanca)",
+   "agente": "Bemisia tabaci (vector)",
+   "tipo": "insecto vector + virus",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Presente en fríjol y soya del Valle sin niveles críticos (cita de 2000–2001); epidemia en fríjol habichuela desde 2002.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "frijol",
+    "aji",
+    "algodon",
+    "hortalizas"
+   ],
+   "nota_rotacion": "Ver fríjol.",
+   "fuentes": [
+    "S24"
+   ]
+  },
+  {
+   "cultivo_id": "frijol",
+   "plaga": "Mosca blanca y virus del arrugamiento foliar",
+   "agente": "Bemisia tabaci biotipo B + begomovirus",
+   "tipo": "insecto vector + virus",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Epidemia desde 2002 en fríjol habichuela de Bugalagrande, Pradera, Rozo y Roldanillo, con incidencia sobre 80 %; los agricultores hacen hasta 12 aplicaciones.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "soya",
+    "aji",
+    "algodon",
+    "hortalizas",
+    "berenjena"
+   ],
+   "nota_rotacion": "Hospedero compartido con ají, hortalizas, soya y algodón.",
+   "fuentes": [
+    "S24",
+    "S27"
+   ]
+  },
+  {
+   "cultivo_id": "frijol",
+   "plaga": "Antracnosis",
+   "agente": "Colletotrichum lindemuthianum",
+   "tipo": "hongo",
+   "parte_afectada": "hoja, vaina, tallo",
+   "evidencia": "B",
+   "situacion_en_valle": "Guía CIAT: probablemente la enfermedad más importante. Manejo: eliminar residuos de cosecha y rotar.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "guayaba",
+    "aguacate",
+    "chontaduro"
+   ],
+   "nota_rotacion": "Colletotrichum de otros cultivos es otra especie/forma; no asumir cruce.",
+   "fuentes": [
+    "S25",
+    "S26"
+   ]
+  },
+  {
+   "cultivo_id": "frijol",
+   "plaga": "Pudriciones radiculares",
+   "agente": "Fusarium solani, Rhizoctonia solani, Sclerotium rolfsii",
+   "tipo": "hongos",
+   "parte_afectada": "raíz y cuello",
+   "evidencia": "A",
+   "situacion_en_valle": "Hongos de raíz más abundantes en fríjol del Valle según un estudio de 1958 (antiguo); Fusarium solani sigue citado como limitante.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "arroz",
+    "soya",
+    "aji"
+   ],
+   "nota_rotacion": "Hongos de suelo de amplio rango: rotar corta poco.",
+   "fuentes": [
+    "S66",
+    "S26"
+   ]
+  },
+  {
+   "cultivo_id": "frijol",
+   "plaga": "Mosaico común",
+   "agente": "virus del mosaico común del fríjol (BCMV)",
+   "tipo": "virus",
+   "parte_afectada": "hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Virus más difundido; lo transmiten áfidos y mosca blanca; control con variedades resistentes.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S25"
+   ]
+  },
+  {
+   "cultivo_id": "algodon",
+   "plaga": "Picudo del algodonero",
+   "agente": "Anthonomus grandis",
+   "tipo": "insecto",
+   "parte_afectada": "botones y cápsulas",
+   "evidencia": "B",
+   "situacion_en_valle": "Plaga de control oficial ICA; manejo con veda, trampas de feromona y destrucción de socas.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Nota: el algodón se cultiva sobre todo en Caribe y Tolima; verificar si va en la app para el Valle.",
+   "fuentes": [
+    "S30",
+    "S32"
+   ]
+  },
+  {
+   "cultivo_id": "algodon",
+   "plaga": "Gusanos rosados",
+   "agente": "Pectinophora gossypiella; Sacadodes pyralis",
+   "tipo": "insecto",
+   "parte_afectada": "cápsula",
+   "evidencia": "B",
+   "situacion_en_valle": "Listados por ICA entre las plagas del cultivo.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S30"
+   ]
+  },
+  {
+   "cultivo_id": "algodon",
+   "plaga": "Cogollero",
+   "agente": "Spodoptera frugiperda (y S. sunia, S. ornitogalli)",
+   "tipo": "insecto",
+   "parte_afectada": "hoja y cápsula",
+   "evidencia": "B",
+   "situacion_en_valle": "Listado por ICA; con el picudo, principales plagas en el Caribe.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "maiz",
+    "arroz",
+    "sorgo",
+    "soya"
+   ],
+   "nota_rotacion": "Polífaga.",
+   "fuentes": [
+    "S30",
+    "S32"
+   ]
+  },
+  {
+   "cultivo_id": "algodon",
+   "plaga": "Pulgones, mosca blanca, trips, bellotero",
+   "agente": "Aphis gossypii; Bemisia tabaci; trips; Heliothis virescens",
+   "tipo": "insecto",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Listados por ICA y por estudios del alto Magdalena.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "frijol",
+    "aji",
+    "soya",
+    "hortalizas"
+   ],
+   "nota_rotacion": "Mosca blanca compartida con fríjol, ají y hortalizas.",
+   "fuentes": [
+    "S30",
+    "S31"
+   ]
+  },
+  {
+   "cultivo_id": "algodon",
+   "plaga": "Mancha alternaria",
+   "agente": "Alternaria alternata",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Listada por ICA; la lluvia intensa favorece los hongos.",
+   "condiciones_favorables": "Lluvias frecuentes y humedad alta (ICA, alerta invernal)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S30"
+   ]
+  },
+  {
+   "cultivo_id": "hortalizas",
+   "plaga": "Mosca blanca",
+   "agente": "Bemisia tabaci biotipo B",
+   "tipo": "insecto",
+   "parte_afectada": "hoja; vector de virus",
+   "evidencia": "A",
+   "situacion_en_valle": "Plaga clave en hortalizas del Valle; también vector de virus en papaya, melón y maracuyá. Alta resistencia a organofosforados, carbamatos y piretroides.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "frijol",
+    "soya",
+    "aji",
+    "berenjena",
+    "algodon"
+   ],
+   "nota_rotacion": "Hospedero compartido.",
+   "fuentes": [
+    "S27",
+    "S58"
+   ]
+  },
+  {
+   "cultivo_id": "hortalizas",
+   "plaga": "Marchitez bacteriana",
+   "agente": "Ralstonia pseudosolanacearum",
+   "tipo": "bacteria",
+   "parte_afectada": "planta entera (marchitez)",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la prioriza en ají, berenjena, pimentón y tomate.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aji",
+    "berenjena",
+    "platano"
+   ],
+   "nota_rotacion": "En plátano el moko es R. solanacearum; las razas pueden diferir, verificar antes de asumir cruce.",
+   "fuentes": [
+    "S28",
+    "S38"
+   ]
+  },
+  {
+   "cultivo_id": "hortalizas",
+   "plaga": "Polilla del tomate y perforador del fruto",
+   "agente": "Tuta absoluta; Neoleucinodes elegantalis",
+   "tipo": "insecto",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "C",
+   "situacion_en_valle": "Guía FAO de tomate; sin dato del Valle. La categoría 'hortalizas' agrupa muchas especies: pedir la especie al agricultor.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "berenjena",
+    "aji"
+   ],
+   "nota_rotacion": "Solanáceas comparten plagas (inferencia).",
+   "fuentes": [
+    "S60"
+   ]
+  },
+  {
+   "cultivo_id": "hortalizas",
+   "plaga": "Roya de la cebolla y pudrición",
+   "agente": "Puccinia allii; Pectobacterium carotovorum",
+   "tipo": "hongo / bacteria",
+   "parte_afectada": "hoja y bulbo",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA las prioriza en cebolla y ajo.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S28"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Mosca blanca",
+   "agente": "Bemisia tabaci biotipo B",
+   "tipo": "insecto",
+   "parte_afectada": "hoja; vector de virus",
+   "evidencia": "A",
+   "situacion_en_valle": "Pimentón y ají son los dos cultivos más afectados por el biotipo B en el Valle; hasta 12 aplicaciones por ciclo.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "frijol",
+    "soya",
+    "hortalizas",
+    "berenjena",
+    "algodon"
+   ],
+   "nota_rotacion": "Hospedero compartido.",
+   "fuentes": [
+    "S27"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Picudo del ají",
+   "agente": "Anthonomus eugenii",
+   "tipo": "insecto",
+   "parte_afectada": "botón y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Plaga del ají en zonas cafeteras del Cauca; sin dato del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "berenjena"
+   ],
+   "nota_rotacion": "Solanácea (inferencia).",
+   "fuentes": [
+    "S29"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Chupadores y ácaros",
+   "agente": "Myzus sp.; Empoasca sp.; Tetranychus sp.",
+   "tipo": "insecto / ácaro",
+   "parte_afectada": "hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Citados en el estudio del Cauca.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S29"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Marchitez, tizón y pudrición del tallo",
+   "agente": "Fusarium oxysporum f. sp. capsici; Verticillium; Phytophthora capsici; Sclerotium rolfsii",
+   "tipo": "hongos / oomiceto",
+   "parte_afectada": "raíz, tallo",
+   "evidencia": "B",
+   "situacion_en_valle": "Enfermedades principales según estudio del Cauca.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "soya",
+    "frijol",
+    "cacao",
+    "aguacate"
+   ],
+   "nota_rotacion": "Patógenos de suelo de amplio rango.",
+   "fuentes": [
+    "S29"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Virus (potyvirus, geminivirus)",
+   "agente": "Potyvirus (áfidos); geminivirus (mosca blanca)",
+   "tipo": "virus",
+   "parte_afectada": "hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Moteado y enrollamiento de hoja.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "frijol",
+    "soya"
+   ],
+   "nota_rotacion": "Mosca blanca compartida.",
+   "fuentes": [
+    "S29"
+   ]
+  },
+  {
+   "cultivo_id": "aji",
+   "plaga": "Marchitez bacteriana",
+   "agente": "Ralstonia pseudosolanacearum",
+   "tipo": "bacteria",
+   "parte_afectada": "planta entera",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la prioriza en ají.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "berenjena",
+    "hortalizas"
+   ],
+   "nota_rotacion": "Ver hortalizas.",
+   "fuentes": [
+    "S28"
+   ]
+  },
+  {
+   "cultivo_id": "berenjena",
+   "plaga": "Ácaros, mosca blanca, trips y pulgones",
+   "agente": "Tetranychus spp.; Bemisia tabaci; Thrips palmi; Aphis/Myzus",
+   "tipo": "insecto / ácaro",
+   "parte_afectada": "hoja",
+   "evidencia": "C",
+   "situacion_en_valle": "Guías de Costa Rica y España; sin dato del Valle. La mosca blanca biotipo B del Valle es plaga clave de solanáceas (S27).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aji",
+    "hortalizas",
+    "frijol",
+    "soya",
+    "algodon"
+   ],
+   "nota_rotacion": "Inferencia por familia.",
+   "fuentes": [
+    "S27"
+   ]
+  },
+  {
+   "cultivo_id": "berenjena",
+   "plaga": "Marchitez bacteriana",
+   "agente": "Ralstonia pseudosolanacearum",
+   "tipo": "bacteria",
+   "parte_afectada": "planta entera",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la prioriza en berenjena.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aji",
+    "hortalizas"
+   ],
+   "nota_rotacion": "Ver hortalizas.",
+   "fuentes": [
+    "S28"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Sigatoka negra",
+   "agente": "Pseudocercospora fijiensis (Mycosphaerella fijiensis)",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Enfermedad frecuente e importante del plátano en Buenaventura (Universidad del Pacífico).",
+   "condiciones_favorables": "Épocas lluviosas la incrementan (ICA, alerta invernal) (S62)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Deshoje sanitario, drenaje, rotación de fungicidas (guía general).",
+   "fuentes": [
+    "S38",
+    "S62"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Marchitez por Fusarium (Mal de Panamá)",
+   "agente": "Fusarium oxysporum f. sp. cubense (raza 4 tropical = control oficial)",
+   "tipo": "hongo",
+   "parte_afectada": "raíz y sistema vascular",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA vigilaba lotes del Valle (Andalucía, Buga, Jamundí, Roldanillo, Tuluá, Vijes, Yumbo) para R4T en 2014; el laboratorio de Palmira hace el diagnóstico molecular. ESTADO ACTUAL EN EL VALLE: VERIFICAR con ICA (el boletín de 2014 decía que R4T no estaba en América).",
+   "condiciones_favorables": "Se disemina por suelo, material de siembra, herramientas, calzado y picudo negro",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Suelo infestado persiste; no hay rotación que lo limpie.",
+   "fuentes": [
+    "S39",
+    "S40"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Moko",
+   "agente": "Ralstonia solanacearum",
+   "tipo": "bacteria",
+   "parte_afectada": "planta entera",
+   "evidencia": "A",
+   "situacion_en_valle": "Listada entre las enfermedades frecuentes en Buenaventura.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aji",
+    "berenjena",
+    "hortalizas"
+   ],
+   "nota_rotacion": "Ver hortalizas: razas pueden diferir.",
+   "fuentes": [
+    "S38"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Picudo negro",
+   "agente": "Cosmopolites sordidus",
+   "tipo": "insecto",
+   "parte_afectada": "cormo",
+   "evidencia": "A",
+   "situacion_en_valle": "Plaga destacada en Buenaventura.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S38"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Picudo rayado",
+   "agente": "Metamasius hemipterus",
+   "tipo": "insecto",
+   "parte_afectada": "pseudotallo",
+   "evidencia": "A",
+   "situacion_en_valle": "Plaga destacada en Buenaventura; trampeos de 1968 mostraron poblaciones enormes en plataneras del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "chontaduro",
+    "cana_azucar"
+   ],
+   "nota_rotacion": "Atacan también caña y chontaduro.",
+   "fuentes": [
+    "S38",
+    "S41"
+   ]
+  },
+  {
+   "cultivo_id": "platano",
+   "plaga": "Nematodos",
+   "agente": "Radopholus similis; Helicotylenchus multicinctus; Meloidogyne incognita y M. javanica",
+   "tipo": "nematodo",
+   "parte_afectada": "raíz",
+   "evidencia": "A",
+   "situacion_en_valle": "Citados entre las enfermedades más frecuentes en Buenaventura.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S38"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Moniliasis",
+   "agente": "Moniliophthora roreri",
+   "tipo": "hongo",
+   "parte_afectada": "mazorca",
+   "evidencia": "B",
+   "situacion_en_valle": "Pérdidas de 40 a 100 % según manejo en Colombia; ICA: las enfermedades reducen producción hasta 50 %. Una mazorca esporulada a 2 m puede infectar 40 % de las vecinas.",
+   "condiciones_favorables": "Mal manejo y ambiente favorable (ICA)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Sin fuente específica del Valle; cartillas nacionales.",
+   "fuentes": [
+    "S42",
+    "S43"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Escoba de bruja",
+   "agente": "Moniliophthora perniciosa",
+   "tipo": "hongo",
+   "parte_afectada": "brotes y mazorca",
+   "evidencia": "B",
+   "situacion_en_valle": "Citada por ICA como enfermedad principal.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S42",
+    "S43"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Mazorca negra",
+   "agente": "Phytophthora spp. (P. palmivora)",
+   "tipo": "oomiceto",
+   "parte_afectada": "mazorca, tronco",
+   "evidencia": "B",
+   "situacion_en_valle": "Citada por ICA.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "soya",
+    "aji",
+    "aguacate"
+   ],
+   "nota_rotacion": "Ver soya.",
+   "fuentes": [
+    "S42",
+    "S44"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Llaga estrellada",
+   "agente": "Rosellinia spp.",
+   "tipo": "hongo",
+   "parte_afectada": "raíz",
+   "evidencia": "B",
+   "situacion_en_valle": "Citada por ICA.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aguacate"
+   ],
+   "nota_rotacion": "Aguacate: Rosellinia entre las pudriciones radicales priorizadas.",
+   "fuentes": [
+    "S42",
+    "S47"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Mal del machete",
+   "agente": "Ceratocystis fimbriata",
+   "tipo": "hongo",
+   "parte_afectada": "tronco",
+   "evidencia": "B",
+   "situacion_en_valle": "Citado en cartilla de cacao.",
+   "condiciones_favorables": "Entra por heridas de poda",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S44"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Chinche del cacao (Monalonion)",
+   "agente": "Monalonion dissimulatum",
+   "tipo": "insecto",
+   "parte_afectada": "fruto y brotes",
+   "evidencia": "B",
+   "situacion_en_valle": "Citado en cartilla de cacao.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aguacate"
+   ],
+   "nota_rotacion": "Monalonion velezangeli también está regulado en aguacate.",
+   "fuentes": [
+    "S44",
+    "S61"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Carmenta",
+   "agente": "Carmenta foraseminis; C. theobromae",
+   "tipo": "insecto",
+   "parte_afectada": "mazorca (daña la almendra)",
+   "evidencia": "B",
+   "situacion_en_valle": "En Huila ya está en 13 de 35 municipios productores; sin dato del Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Vigilar su llegada.",
+   "fuentes": [
+    "S45"
+   ]
+  },
+  {
+   "cultivo_id": "cacao",
+   "plaga": "Hormiga arriera",
+   "agente": "Atta spp.",
+   "tipo": "insecto",
+   "parte_afectada": "hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Citada en cartilla de cacao.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "borojo",
+    "aguacate",
+    "chontaduro"
+   ],
+   "nota_rotacion": "Polífaga.",
+   "fuentes": [
+    "S44"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Broca",
+   "agente": "Hypothenemus hampei",
+   "tipo": "insecto",
+   "parte_afectada": "fruto (cereza)",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicafé, jul. 2026: ~10 % de la caficultura del Valle supera 5 % de infestación (nivel de daño económico); el Valle está entre los departamentos con más afectación.",
+   "condiciones_favorables": "El Niño y el déficit hídrico favorecen la reproducción; ciclo ~60 días a 18 °C (S35)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Cosecha sanitaria antes de renovar.",
+   "fuentes": [
+    "S33",
+    "S34",
+    "S35"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Roya",
+   "agente": "Hemileia vastatrix",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicafé, ene. 2026: el Valle supera el promedio nacional (4,5 % de incidencia).",
+   "condiciones_favorables": "Temperatura media sobre 21,5 °C y meses cálidos (junio–septiembre) elevan la incidencia (estudio del Cauca, B) (S37)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Variedades resistentes.",
+   "fuentes": [
+    "S34",
+    "S37"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Minador de la hoja",
+   "agente": "Leucoptera coffeella",
+   "tipo": "insecto",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Bajo control natural; el nivel de daño económico es 30 % de hojas; Cenicafé vigila su aumento con El Niño.",
+   "condiciones_favorables": "El Niño",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S33",
+    "S36"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Arañita roja",
+   "agente": "Oligonychus yothersi",
+   "tipo": "ácaro",
+   "parte_afectada": "hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "Cenicafé la destaca en Cauca, Huila, Risaralda y Valle del Cauca; el uso generalizado de insecticidas la agrava.",
+   "condiciones_favorables": "Época seca",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S36"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Cochinilla harinosa aérea",
+   "agente": "Planococcus citri",
+   "tipo": "insecto",
+   "parte_afectada": "fruto y rama",
+   "evidencia": "B",
+   "situacion_en_valle": "Cenicafé pide vigilarla.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S36"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Mancha de hierro",
+   "agente": "Cercospora coffeicola",
+   "tipo": "hongo",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Estudio del Cauca; más frecuente con menos calor.",
+   "condiciones_favorables": "Contrario a roya y broca: otras épocas del año (S37)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S37"
+   ]
+  },
+  {
+   "cultivo_id": "cafe",
+   "plaga": "Mal rosado, gotera",
+   "agente": "por confirmar",
+   "tipo": "hongo",
+   "parte_afectada": "rama y hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Cenicafé las incluye en el monitoreo trimestral; sin dato específico del Valle en las fuentes revisadas.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S33"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Barrenador",
+   "agente": "Diatraea saccharalis",
+   "tipo": "insecto",
+   "parte_afectada": "tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA lo monitorea en caña panelera.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_azucar",
+    "maiz",
+    "sorgo"
+   ],
+   "nota_rotacion": "Ver caña de azúcar.",
+   "fuentes": [
+    "S07"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Salivazo",
+   "agente": "Aeneolamia varia; Mahanarva andigena, M. bipars, M. trifisa",
+   "tipo": "insecto",
+   "parte_afectada": "raíz y follaje",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA lo prioriza en 2026.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_azucar"
+   ],
+   "nota_rotacion": "Ver caña de azúcar.",
+   "fuentes": [
+    "S08"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Hormiga loca",
+   "agente": "Paratrechina (especie por confirmar)",
+   "tipo": "insecto",
+   "parte_afectada": "cultivo y entorno",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA la monitorea en caña panelera.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S07"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Barrenador gigante",
+   "agente": "por confirmar",
+   "tipo": "insecto",
+   "parte_afectada": "tallo",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA lo lista en la cartilla.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S07"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Carbón y roya",
+   "agente": "Sporisorium scitamineum; Puccinia melanocephala; P. kuehnii",
+   "tipo": "hongo",
+   "parte_afectada": "cogollo y hoja",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA los monitorea.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cana_azucar"
+   ],
+   "nota_rotacion": "Ver caña de azúcar.",
+   "fuentes": [
+    "S07"
+   ]
+  },
+  {
+   "cultivo_id": "cana_panelera",
+   "plaga": "Enfermedades foliares (otras)",
+   "agente": "Pokkah boeng (Fusarium); mancha de anillo; muermo rojo",
+   "tipo": "hongo",
+   "parte_afectada": "hoja",
+   "evidencia": "C",
+   "situacion_en_valle": "Estudio en Caquetá, no Valle.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S59"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Picudo de la guayaba",
+   "agente": "Conotrachelus psidii",
+   "tipo": "insecto",
+   "parte_afectada": "fruto",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA lo prioriza; estudio de distribución espacial en Roldanillo, Valle (Agrosavia/UNAL).",
+   "condiciones_favorables": "Adultos emergen en 20–30 días en época lluviosa; guayabos silvestres o abandonados cercanos sirven de reservorio (S51)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Eliminar frutos caídos y guayabos abandonados.",
+   "fuentes": [
+    "S47",
+    "S49",
+    "S51"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Mosca de la fruta",
+   "agente": "Anastrepha striata (Anastrepha spp.)",
+   "tipo": "insecto",
+   "parte_afectada": "fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la señala como plaga principal.",
+   "condiciones_favorables": "Lluvias aumentan la humedad (ICA)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S49"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Mota blanca",
+   "agente": "Capulinia linarosae",
+   "tipo": "insecto",
+   "parte_afectada": "hoja y rama",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la prioriza en 2024.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S47"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Enrollador de hojas",
+   "agente": "por confirmar",
+   "tipo": "insecto",
+   "parte_afectada": "brotes",
+   "evidencia": "A",
+   "situacion_en_valle": "Plaga limitante en guayaba ICA-1 del norte del Valle (Agrosavia).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S50"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Roña o clavo, antracnosis y roya",
+   "agente": "Pestalotia versicolor; Colletotrichum spp.",
+   "tipo": "hongo",
+   "parte_afectada": "fruto y hoja",
+   "evidencia": "B",
+   "situacion_en_valle": "Enfermedades limitantes de rendimiento y calidad.",
+   "condiciones_favorables": "Época lluviosa (ICA)",
+   "otros_hospedantes": [
+    "aguacate",
+    "chontaduro",
+    "frijol"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S49"
+   ]
+  },
+  {
+   "cultivo_id": "guayaba",
+   "plaga": "Trips y ácaros",
+   "agente": "Selenothrips rubrocinctus; Brevipalpus phoenicis; Argyresthia eugeniella",
+   "tipo": "insecto / ácaro",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Reportados en guayaba en Colombia.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aguacate"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S50"
+   ]
+  },
+  {
+   "cultivo_id": "chontaduro",
+   "plaga": "Picudo de la palma",
+   "agente": "Rhynchophorus palmarum",
+   "tipo": "insecto",
+   "parte_afectada": "estípite y corona (caída de coronas)",
+   "evidencia": "A",
+   "situacion_en_valle": "Crisis fitosanitaria en el Pacífico desde 2010; en Buenaventura murieron al menos 253.000 plantas (ICA 2015).",
+   "condiciones_favorables": "Deforestación y monocultivos favorecen a los picudos (S52)",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Los dos picudos atacan también palma de aceite.",
+   "fuentes": [
+    "S52",
+    "S53"
+   ]
+  },
+  {
+   "cultivo_id": "chontaduro",
+   "plaga": "Dynamis borassi",
+   "agente": "Dynamis borassi",
+   "tipo": "insecto",
+   "parte_afectada": "estípite",
+   "evidencia": "A",
+   "situacion_en_valle": "Junto con R. palmarum, agente de la caída de coronas.",
+   "condiciones_favorables": "Zonas perturbadas",
+   "otros_hospedantes": [],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S52"
+   ]
+  },
+  {
+   "cultivo_id": "chontaduro",
+   "plaga": "Complejo de barrenadores del estípite",
+   "agente": "Rhinostomus barbirostris; Metamasius hemipterus, M. dasyurus y otros",
+   "tipo": "insecto",
+   "parte_afectada": "estípite",
+   "evidencia": "A",
+   "situacion_en_valle": "Confirmado en el diagnóstico de Buenaventura (Pardo-Locarno 2014).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "platano",
+    "cana_azucar"
+   ],
+   "nota_rotacion": "Metamasius compartido con plátano y caña.",
+   "fuentes": [
+    "S53"
+   ]
+  },
+  {
+   "cultivo_id": "chontaduro",
+   "plaga": "Antracnosis",
+   "agente": "Colletotrichum spp.",
+   "tipo": "hongo",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "A",
+   "situacion_en_valle": "Se encontró en todos los frutales analizados en el Valle por la UNAL Palmira (incluye chontaduro).",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "aguacate",
+    "guayaba",
+    "frijol"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S58",
+    "S54"
+   ]
+  },
+  {
+   "cultivo_id": "chontaduro",
+   "plaga": "Hormiga arriera y loros",
+   "agente": "Atta cephalotes var. isthmicola",
+   "tipo": "insecto / ave",
+   "parte_afectada": "hoja y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Estudio antiguo en Valle y Chocó; los loros dañan el fruto.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "borojo",
+    "cacao",
+    "aguacate"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S54"
+   ]
+  },
+  {
+   "cultivo_id": "borojo",
+   "plaga": "Hormiga arriera",
+   "agente": "Atta cephalotes var. isthmicola",
+   "tipo": "insecto",
+   "parte_afectada": "hoja, plántula y fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "Principal daño biótico del borojó en el Valle (bajo Anchicayá y Calima) y Chocó, según un estudio antiguo. VACÍO: no se encontró otra plaga ni enfermedad documentada.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cacao",
+    "chontaduro",
+    "aguacate"
+   ],
+   "nota_rotacion": "Completar con ICA seccional Chocó/Valle o UNAL Palmira.",
+   "fuentes": [
+    "S55"
+   ]
+  },
+  {
+   "cultivo_id": "aguacate",
+   "plaga": "Pudrición radicular",
+   "agente": "Phytophthora cinnamomi (y otras pudriciones: Cylindrocarpon, Verticillium, Armillaria, Rosellinia)",
+   "tipo": "oomiceto",
+   "parte_afectada": "raíz",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA la prioriza; es la enfermedad más importante del aguacate en el mundo.",
+   "condiciones_favorables": "Hipoxia por mal drenaje y encharcamiento tras lluvias (Ramírez-Gil & Morales 2019) (S48)",
+   "otros_hospedantes": [
+    "soya",
+    "aji",
+    "cacao"
+   ],
+   "nota_rotacion": "Coincide con el Excel: no tolera encharcamiento. Suelo con drenaje deficiente = riesgo alto.",
+   "fuentes": [
+    "S47",
+    "S48"
+   ]
+  },
+  {
+   "cultivo_id": "aguacate",
+   "plaga": "Barrenadores del fruto y la semilla",
+   "agente": "Heilipus lauri; H. trifasciatus",
+   "tipo": "insecto",
+   "parte_afectada": "fruto y semilla",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA (2014) detectó H. lauri en el Valle (Argelia, Riofrío y otros municipios). Plagas cuarentenarias para exportar Hass.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Vigilancia oficial; recoger frutos caídos.",
+   "fuentes": [
+    "S46",
+    "S47"
+   ]
+  },
+  {
+   "cultivo_id": "aguacate",
+   "plaga": "Pasador del fruto",
+   "agente": "Stenoma catenifer",
+   "tipo": "insecto",
+   "parte_afectada": "fruto y rama",
+   "evidencia": "A",
+   "situacion_en_valle": "ICA (2014) la detectó en el Valle en Argelia, Palmira y Sevilla; no en Candelaria, Guacarí ni Riofrío.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [],
+   "nota_rotacion": "Vigilancia oficial.",
+   "fuentes": [
+    "S46",
+    "S47"
+   ]
+  },
+  {
+   "cultivo_id": "aguacate",
+   "plaga": "Antracnosis",
+   "agente": "Colletotrichum spp.",
+   "tipo": "hongo",
+   "parte_afectada": "flor y fruto",
+   "evidencia": "A",
+   "situacion_en_valle": "UNAL Palmira la halló en todos los frutales analizados del Valle (incluye aguacate).",
+   "condiciones_favorables": "Épocas lluviosas (ICA)",
+   "otros_hospedantes": [
+    "guayaba",
+    "chontaduro",
+    "frijol"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S58",
+    "S62"
+   ]
+  },
+  {
+   "cultivo_id": "aguacate",
+   "plaga": "Escolítinos, trips, Monalonion, hormiga arriera",
+   "agente": "Monalonion velezangeli; Phyllocnistis perseafolia; Atta spp.",
+   "tipo": "insecto",
+   "parte_afectada": "rama, hoja, fruto",
+   "evidencia": "B",
+   "situacion_en_valle": "ICA los lista en la cartilla de aguacate Hass y en plagas reguladas.",
+   "condiciones_favorables": "No verificado",
+   "otros_hospedantes": [
+    "cacao",
+    "borojo",
+    "guayaba"
+   ],
+   "nota_rotacion": "—",
+   "fuentes": [
+    "S47",
+    "S61"
+   ]
+  }
+ ],
+ "matriz_hospedantes": [
+  {
+   "plaga": "Diatraea spp. (barrenadores)",
+   "cultivos": {
+    "cana_azucar": "A",
+    "cana_panelera": "A",
+    "maiz": "A",
+    "sorgo": "A",
+    "arroz": "C"
+   },
+   "nota": "Puente entre gramíneas: inferencia, validar con Cenicaña."
+  },
+  {
+   "plaga": "Spodoptera frugiperda (cogollero)",
+   "cultivos": {
+    "maiz": "A",
+    "arroz": "A",
+    "sorgo": "C",
+    "algodon": "B",
+    "soya": "B"
+   },
+   "nota": "Polífaga; la rotación entre estos cultivos no la corta."
+  },
+  {
+   "plaga": "Helicoverpa zea",
+   "cultivos": {
+    "maiz": "B",
+    "sorgo": "B",
+    "algodon": "B"
+   },
+   "nota": "Fuente de 1974 para sorgo y algodón."
+  },
+  {
+   "plaga": "Bemisia tabaci biotipo B",
+   "cultivos": {
+    "frijol": "A",
+    "aji": "A",
+    "hortalizas": "A",
+    "soya": "A",
+    "algodon": "B",
+    "berenjena": "C"
+   },
+   "nota": "Resistente a insecticidas convencionales en Colombia; hospedero compartido."
+  },
+  {
+   "plaga": "Melanaphis sacchari",
+   "cultivos": {
+    "cana_azucar": "B",
+    "sorgo": "C",
+    "maiz": "C",
+    "arroz": "C"
+   },
+   "nota": "En el Valle solo está confirmado en caña."
+  },
+  {
+   "plaga": "Rhizoctonia solani",
+   "cultivos": {
+    "arroz": "A",
+    "soya": "B",
+    "frijol": "A"
+   },
+   "nota": "Frijol: estudio de 1958."
+  },
+  {
+   "plaga": "Sclerotium rolfsii",
+   "cultivos": {
+    "aji": "B",
+    "frijol": "A"
+   },
+   "nota": "Frijol: estudio de 1958."
+  },
+  {
+   "plaga": "Fusarium spp. (suelo)",
+   "cultivos": {
+    "frijol": "B",
+    "aji": "B",
+    "platano": "B"
+   },
+   "nota": "En plátano es F. oxysporum f. sp. cubense, específico de musáceas."
+  },
+  {
+   "plaga": "Phytophthora spp.",
+   "cultivos": {
+    "soya": "B",
+    "aji": "B",
+    "cacao": "B",
+    "aguacate": "B"
+   },
+   "nota": "Especies distintas por cultivo; no asumir cruce."
+  },
+  {
+   "plaga": "Colletotrichum spp.",
+   "cultivos": {
+    "frijol": "B",
+    "guayaba": "B",
+    "aguacate": "A",
+    "chontaduro": "A"
+   },
+   "nota": "Las especies/formas difieren entre cultivos."
+  },
+  {
+   "plaga": "Ralstonia solanacearum complex",
+   "cultivos": {
+    "aji": "B",
+    "berenjena": "B",
+    "hortalizas": "B",
+    "platano": "A"
+   },
+   "nota": "Razas distintas: verificar antes de asumir cruce."
+  },
+  {
+   "plaga": "Metamasius hemipterus",
+   "cultivos": {
+    "platano": "A",
+    "chontaduro": "A",
+    "cana_azucar": "A"
+   },
+   "nota": "Dato de caña de 1968."
+  },
+  {
+   "plaga": "Atta spp. (hormiga arriera)",
+   "cultivos": {
+    "borojo": "B",
+    "cacao": "B",
+    "aguacate": "B",
+    "chontaduro": "B"
+   },
+   "nota": "Polífaga."
+  },
+  {
+   "plaga": "Elasmopalpus lignosellus",
+   "cultivos": {
+    "soya": "B",
+    "sorgo": "B",
+    "maiz": "B"
+   },
+   "nota": "Daño fuerte en soya tras sorgo (Tolima 1976–79): alerta para rotación sorgo→soya."
+  },
+  {
+   "plaga": "Aeneolamia varia (salivazo)",
+   "cultivos": {
+    "cana_azucar": "A",
+    "cana_panelera": "A"
+   },
+   "nota": "También en pastos."
+  },
+  {
+   "plaga": "Dalbulus maidis",
+   "cultivos": {
+    "maiz": "A"
+   },
+   "nota": "Solo maíz; puente: socas y nacederas."
+  }
+ ],
+ "fuentes": {
+  "S01": {
+   "titulo": "Echeverri-Rubiano et al. / Rev. Colomb. Entomol. 44(2), 2018. Distribución espacio-temporal de Diatraea spp. en el valle del río Cauca",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/download/7330/9804/21267"
+  },
+  "S02": {
+   "titulo": "Agronegocios. Manejo fitosanitario de la caña (Asocaña)",
+   "url": "https://www.agronegocios.co/agricultura/la-agroindustria-de-la-cana-de-azucar-mantiene-un-manejo-fitosanitario-eficiente-4440617"
+  },
+  "S03": {
+   "titulo": "ICA. Resolución 1932 de 2007 (emergencia por salivazo en el Valle)",
+   "url": "https://normograma.invima.gov.co/normograma/docs/pdf/resolucion_ica_1932_2007.pdf"
+  },
+  "S04": {
+   "titulo": "Vanguardia, 2025. Salivazo: ciclo y distribución",
+   "url": "https://www.vanguardia.com/economia/local/2025/07/07/paneleros-de-santander-en-alerta-la-plaga-que-afectaria-a-los-cultivos-de-cana/"
+  },
+  "S05": {
+   "titulo": "La Gaceta, 2021. Cenicaña: manejo de enfermedades de la caña en Colombia",
+   "url": "https://www.lagaceta.com.ar/nota/917358/actualidad/cuentan-experiencia-manejo-enfermedades-cana-colombia.html"
+  },
+  "S06": {
+   "titulo": "ICA, Compendio 42 (2018). El carbón y la roya de la caña de azúcar (AGRIS)",
+   "url": "https://agris.fao.org/search/en/records/64745b6a96fdec8b71b6ea7d"
+  },
+  "S07": {
+   "titulo": "ICA. Cartilla de caña panelera: principales plagas y enfermedades",
+   "url": "https://www.ica.gov.co/getattachment/4b87aa13-4cb4-4f5d-915c-e4b672f57251/Cartilla-de-prueba.aspx"
+  },
+  "S08": {
+   "titulo": "ICA, abril 2026. Material para talleres de caña para panela",
+   "url": "https://www.ica.gov.co/areas/agricola/direccion-tecnica-de-sanidad-vegetal/proteccion-fitosanitaria-en-cana-de-azucar/desplegable/material-divulgativo/documento-impresion-talleres-ajustado-abril-2026.aspx"
+  },
+  "S09": {
+   "titulo": "UPRA, feb. 2025. Ficha de costos de arroz (sur del Valle)",
+   "url": "https://upra.gov.co/es-co/Evas_Documentos/01_FicCostArroz_20250226.pdf"
+  },
+  "S10": {
+   "titulo": "Fedearroz / Engormix. Pérdidas por el virus de la hoja blanca (Norte de Santander)",
+   "url": "https://www.engormix.com/agricultura/cultivo-arroz/perdidas-rendimiento-causadas-virus_a46679/"
+  },
+  "S11": {
+   "titulo": "Vistazo, 2025. Sogata en Ecuador (fuente de otro país)",
+   "url": "https://www.vistazo.com/enfoque/2025-09-03-plaga-sogata-cultivos-arroz-ecuador-alerta-DE10055372"
+  },
+  "S12": {
+   "titulo": "JICA. Manual de plagas del arroz (fuente general)",
+   "url": "https://www.jica.go.jp/project/panama/0603268/materials/pdf/04_manual/manual_06.pdf"
+  },
+  "S13": {
+   "titulo": "ICA Seccional Valle, Resolución 00016286 de 2026 (maíz, campaña B-2026)",
+   "url": "https://www.ica.gov.co/getattachment/84a89174-3bc6-4284-ad28-ba3ee3835403/2026R00016286.aspx"
+  },
+  "S14": {
+   "titulo": "ICA Seccional Valle, Resolución 00009597 de 2023 (maíz)",
+   "url": "https://www.ica.gov.co/getattachment/2183801b-d65b-4470-b390-62b0d25a4b27/2023R00009597.aspx"
+  },
+  "S15": {
+   "titulo": "ICA Seccional Valle, Resolución 889 de 2022 (maíz; datos de incidencia 2020)",
+   "url": "https://www.ica.gov.co/getattachment/67662fa7-195e-4ba4-979c-cfb993fa8648/2022R889.aspx"
+  },
+  "S16": {
+   "titulo": "Rodríguez Chalarca et al. Manejo de Dalbulus maidis en el Valle del Cauca",
+   "url": "https://core.ac.uk/download/479652107.pdf"
+  },
+  "S17": {
+   "titulo": "Jaramillo-Barrios et al. Nivel de daño económico de Spodoptera frugiperda en maíz (Rev. Fac. Nac. Agron.)",
+   "url": "https://www.redalyc.org/journal/1799/179962699007/179962699007.pdf"
+  },
+  "S18": {
+   "titulo": "Saldarriaga, 1974. Plagas del maíz y su control en Colombia (AGRIS)",
+   "url": "https://agris.fao.org/search/en/records/67dab6e3677d8be0233b62ec"
+  },
+  "S19": {
+   "titulo": "Acta Agronómica (UNAL). Daño de Diatraea spp. en maíz y sorgo en el Valle del Cauca (estudio antiguo)",
+   "url": "https://revistas.unal.edu.co/index.php/acta_agronomica/article/download/14721/15545/44214"
+  },
+  "S20": {
+   "titulo": "ICA Seccional Valle, Resolución 106 de 2004 (alerta por roya de la soya)",
+   "url": "https://normograma.com/keralty/compilacion/docs/resolucion_ica_0106_2004.htm"
+  },
+  "S21": {
+   "titulo": "ICA, Resolución 3834 de 2005 (sanidad vegetal de la soya)",
+   "url": "https://faolex.fao.org/docs/pdf/col62487.pdf"
+  },
+  "S22": {
+   "titulo": "Rev. Colomb. Entomol. Artrópodos en soya en el Tolima (1976–79)",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/download/10301/12690/31843"
+  },
+  "S23": {
+   "titulo": "Agrosavia (vía scite). Roya de la soya y Phytophthora sojae en Colombia",
+   "url": "https://scite.ai/authors/nathali-lopez-cardona-pgG34x"
+  },
+  "S24": {
+   "titulo": "Rev. Colomb. Entomol. Virus del arrugamiento foliar del fríjol y Bemisia tabaci en el Valle",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/download/9027/11533/28360"
+  },
+  "S25": {
+   "titulo": "CIAT. Guía de enfermedades y plagas del fríjol en Colombia",
+   "url": "https://cgspace.cgiar.org/rest/bitstreams/81477/retrieve"
+  },
+  "S26": {
+   "titulo": "Respuestas 19(2), 2014. Mosca blanca en fríjol (Santander)",
+   "url": "https://dialnet.unirioja.es/descarga/articulo/5364599.pdf"
+  },
+  "S27": {
+   "titulo": "Rev. Colomb. Entomol. Biotipo B de Bemisia tabaci, plaga de pimentón en el Valle del Cauca",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/download/8910/11418/28005"
+  },
+  "S28": {
+   "titulo": "ICA. Plagas priorizadas en hortalizas",
+   "url": "https://www.ica.gov.co/areas/agricola/direccion-tecnica-de-sanidad-vegetal/proteccion-fitosanitaria-en-hortalizas-aromaticas/desplegable/documentos-de-interes/tabla-1-plagas-priorizadas-en-hortalizas.aspx"
+  },
+  "S29": {
+   "titulo": "Estudio del ají en el Cauca (Dialnet)",
+   "url": "https://dialnet.unirioja.es/descarga/articulo/6117952.pdf"
+  },
+  "S30": {
+   "titulo": "ICA. Manejo fitosanitario del cultivo de algodón",
+   "url": "https://www.ica.gov.co/getattachment/a223d007-d6e6-4df0-a7fc-b0150cb6bbbb/Manejo-fitosanitario-del-cultivo-de-algodon.pdf"
+  },
+  "S31": {
+   "titulo": "Rev. Colomb. Entomol. Trips en algodón (alto Magdalena)",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/download/7310/9808/21271"
+  },
+  "S32": {
+   "titulo": "Osorio-Almanza et al. Picudo del algodonero en el Valle del Sinú",
+   "url": "https://www.redalyc.org/journal/5600/560064389007/560064389007.pdf"
+  },
+  "S33": {
+   "titulo": "Cenicafé, Boletín 20, tercer trimestre de 2026 (estado fitosanitario)",
+   "url": "https://publicaciones.cenicafe.org/index.php/fitosanitario/article/download/5668/6558/5484"
+  },
+  "S34": {
+   "titulo": "Cenicafé, Boletín 18, primer trimestre de 2026",
+   "url": "https://publicaciones.cenicafe.org/index.php/fitosanitario/article/download/4996/5598/4313"
+  },
+  "S35": {
+   "titulo": "Cenicafé. Manual del cafetero: plagas del café",
+   "url": "https://biblioteca.cenicafe.org/bitstream/10778/4340/1/cenbook-0026_24.pdf"
+  },
+  "S36": {
+   "titulo": "Cenicafé, Boletín 17, cuarto trimestre de 2025",
+   "url": "https://publicaciones.cenicafe.org/index.php/fitosanitario/article/download/4914/5130/3872"
+  },
+  "S37": {
+   "titulo": "Broca, roya y mancha de hierro en el Cauca (Dialnet)",
+   "url": "https://dialnet.unirioja.es/descarga/articulo/6117722.pdf"
+  },
+  "S38": {
+   "titulo": "Universidad del Pacífico. Compost y sanidad del plátano en Buenaventura",
+   "url": "https://atenaeditora.com.br/catalogo/dowload-post/88154"
+  },
+  "S39": {
+   "titulo": "ICA, 2014. Vigilancia de Fusarium R4T (incluye lotes del Valle)",
+   "url": "https://www.ica.gov.co/Areas/Agricola/Servicios/Epidemiologia-Agricola/BOLETINES/Nacionales/2014/RVF_Foc_R4T_2014_1-(1).aspx"
+  },
+  "S40": {
+   "titulo": "ICA, marzo 2026. Laboratorio fitosanitario de Palmira",
+   "url": "https://www.ica.gov.co/areas/oficina-asesora-de-planeacion/innovacion/innovateca/micrositio-innovacion-diagnostico-fitosanitario.aspx"
+  },
+  "S41": {
+   "titulo": "Acta Agronómica, 1968. Enfermedad del plátano en el Valle del Cauca (antiguo)",
+   "url": "https://revistas.unal.edu.co/index.php/acta_agronomica/article/download/48886/49951/238817"
+  },
+  "S42": {
+   "titulo": "ICA. Manejo fitosanitario del cacao",
+   "url": "https://www.ica.gov.co/getattachment/c01fa43b-cf48-497a-aa7f-51e6da3f7e96/-"
+  },
+  "S43": {
+   "titulo": "Encolombia. Control de las principales enfermedades del cacao",
+   "url": "https://encolombia.com/economia/agroindustria/noticias-agro/control-de-las-principales-enfermedades-del-cacao"
+  },
+  "S44": {
+   "titulo": "SENA. Cartilla de cacao (Antioquia)",
+   "url": "https://core.ac.uk/download/227079977.pdf"
+  },
+  "S45": {
+   "titulo": "Radio Nacional. Carmenta negra en cacao del Huila",
+   "url": "https://radionacional.co/noticias-colombia/alerta-sanitaria-en-huila-por-plagas-en-cultivos-de-cacao"
+  },
+  "S46": {
+   "titulo": "ICA, 2014. Vigilancia de plagas cuarentenarias del aguacate en el Valle",
+   "url": "https://www.ica.gov.co/Areas/Agricola/Servicios/Epidemiologia-Agricola/BOLETINES/Departamentos/2014/2014_RVF_PCAguacate-Valle-Mayo-Diciembre.aspx"
+  },
+  "S47": {
+   "titulo": "ICA, 2024. Especies y plagas priorizadas en frutales",
+   "url": "https://www.ica.gov.co/areas/agricola/direccion-tecnica-de-sanidad-vegetal/proteccion-fitosanitaria-en-frutales/desplegable/documentos-de-interes/anexo-3-lista-de-especies-y-plagas-priorizadas-en.aspx"
+  },
+  "S48": {
+   "titulo": "Ramírez-Gil & Morales, 2019. Patologías del aguacate Hass (Agronomía Colombiana)",
+   "url": "https://www.redalyc.org/journal/1803/180363225002/180363225002.pdf"
+  },
+  "S49": {
+   "titulo": "ICA. Manejo fitosanitario de la guayaba",
+   "url": "https://www.ica.gov.co/getattachment/00295b79-bcb0-4ab2-80f9-b6e3ab7218b8/-nbsp;Manejo-fitosanitario-del-cultivo-de-guayaba.aspx"
+  },
+  "S50": {
+   "titulo": "Corpoica. Enrollador de hojas en guayaba ICA-1 del norte del Valle",
+   "url": "https://www.redalyc.org/pdf/4499/449944865009.pdf"
+  },
+  "S51": {
+   "titulo": "Corpoica. Biología del picudo de la guayaba",
+   "url": "https://www.redalyc.org/pdf/4499/449945021009.pdf"
+  },
+  "S52": {
+   "titulo": "Rev. Colomb. Entomol. 46(2), 2020. Dynamis borassi en Buenaventura",
+   "url": "https://revistacolombianaentomologia.univalle.edu.co/index.php/SOCOLEN/article/view/7721"
+  },
+  "S53": {
+   "titulo": "Pardo-Locarno et al., 2014. Diagnóstico fitosanitario del chontaduro en Buenaventura",
+   "url": "https://repositorioslatinoamericanos.uchile.cl/handle/2250/3697198"
+  },
+  "S54": {
+   "titulo": "Acta Agronómica. Chontaduro en el Valle y Chocó (estudio antiguo)",
+   "url": "https://revistas.unal.edu.co/index.php/acta_agronomica/article/download/48341/49572/236550"
+  },
+  "S55": {
+   "titulo": "Acta Agronómica. El borojó, cultivo promisorio (estudio antiguo)",
+   "url": "https://revistas.unal.edu.co/index.php/acta_agronomica/article/download/48282/49526"
+  },
+  "S56": {
+   "titulo": "Avance Agroindustrial 35(1). Roya naranja (fuente general)",
+   "url": "https://core.ac.uk/download/158832994.pdf"
+  },
+  "S57": {
+   "titulo": "CONtexto ganadero. Pulgón Melanaphis sacchari en caña y sorgo",
+   "url": "https://www.contextoganadero.com/agricultura/conozca-algunos-datos-sobre-el-pulgon-y-como-afecta-los-cultivos-de-cana-de-azucar-y"
+  },
+  "S58": {
+   "titulo": "Portal Frutícola. UNAL Palmira: diagnóstico fitosanitario de 13 frutales del Valle",
+   "url": "https://www.portalfruticola.com/?p=43075"
+  },
+  "S59": {
+   "titulo": "Enfermedades foliares de la caña panelera (Caquetá)",
+   "url": "https://dialnet.unirioja.es/descarga/articulo/8128464.pdf"
+  },
+  "S60": {
+   "titulo": "FAO. Manejo de plagas del tomate",
+   "url": "https://www.fao.org/4/i3359s/i3359s.pdf"
+  },
+  "S61": {
+   "titulo": "ICA. Manejo fitosanitario del aguacate Hass",
+   "url": "https://www.ica.gov.co/getattachment/4b5b9b6f-ecfc-46e1-b9ca-b35cc1cefee2/-"
+  },
+  "S62": {
+   "titulo": "ICA. Parte agrícola: medidas para la temporada invernal",
+   "url": "https://www.ica.gov.co/Files/pdf/Parte-agricola.aspx"
+  },
+  "S63": {
+   "titulo": "ANEIA. El salivazo de la caña de azúcar",
+   "url": "https://aneia.uniandes.edu.co/el-salivazo-de-la-cana-de-azucar"
+  },
+  "S64": {
+   "titulo": "Senasica, Monitor Fitosanitario, mayo 2021 (sorgo en México)",
+   "url": "https://dj.senasica.gob.mx/Contenido/files/2021/mayo/Monitor_Fito_03052021_dd2beb51-1246-415f-9347-6d4ef89a5975.pdf"
+  },
+  "S66": {
+   "titulo": "Acta Agronómica, 1958. Enfermedades del fríjol en el Valle del Cauca (antiguo)",
+   "url": "https://revistas.unal.edu.co/index.php/acta_agronomica/article/download/49061/50156/239506"
+  }
+ }
+}
