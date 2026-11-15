@@ -45,8 +45,8 @@ En la zona plana el factor LS es bajo; el resultado se reporta así, sin inflarl
 - `rendimiento = potencial × factor_estrés_hídrico × (1 − pérdida_por_enfermedad)`
 - `ganancia = rendimiento × precio_local − costos`
 
-### 5. Índice de microbiota (`microbiota/`)
-Estima indicadores biológicos medibles (por ejemplo, carbono de biomasa microbiana, respiración, relación hongos/bacterias, micorrizas) a partir de proxies: suelo, clima, humedad, historial de rotación y vegetación. Debe responder a la rotación, porque esa es la base de la comparación. Se presenta siempre como **estimación con incertidumbre** e indica dónde conviene tomar una muestra de laboratorio.
+### 5. Índice de microbiota (`microbiota/`) — implementado
+**Índice Biológico del Suelo (IBS)**: estima las condiciones para la vida microbiana a partir de lo que el satélite sí ve: carbono superficial (C1, SOCI), residuo (C2, NDTI), perturbación por labranza o quema (C3, minNDTI) y raíz viva (C4, fracción del tiempo con NDVI > 0.3). Cada componente se compara con lo normal en su misma unidad de suelo IGAC; 50 = típico de ese suelo. Responde a la rotación porque C2–C4 salen de la serie de NDVI y del manejo que produce el simulador. Se presenta siempre como **estimación con incertidumbre** e indica dónde conviene tomar una muestra de laboratorio. Detalle, entradas, salidas y resultados en [microbiota.md](microbiota.md).
 
 ### 6. Comparador (`comparador/`)
 Combina los 4 puntajes con pesos que define el agricultor (agua, ingreso, suelo, erosión). Genera para cada rotación las 5 explicaciones que exige el reto: por qué se sugiere, evidencia, beneficios, vacíos de información y riesgos.
