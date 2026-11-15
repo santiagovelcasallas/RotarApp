@@ -1,0 +1,25 @@
+id,Cultivo,T_min,T_opt_min,T_opt_max,T_max,P_anual_min_mm,P_anual_max_mm,agua_min_mm,agua_max_mm,agua_unidad,HR_min,HR_max,pH_min,pH_opt_min,pH_opt_max,pH_max,alt_min_m,alt_opt_max_m,alt_max_m,Kc_medio,fija_N,rol
+cana_azucar,Caña de azúcar,22,24,28,30,1200,1800,1400,1800,año,60,80,5.5,6,7.5,8,0,1100,1600,1.25,False,Producción
+maiz,Maíz,20,24,28,30,600,1000,500,800,ciclo,50,80,5.8,5.8,7,7,0,1000,1800,1.2,False,Producción
+arroz,Arroz,24,25,30,32,1000,2000,800,1200,ciclo,70,85,5.5,6,6.5,7,0,1000,1000,1.2,False,Producción
+sorgo,Sorgo,20,25,32,38,400,800,450,650,ciclo,40,70,5.5,6,7.5,8,0,1500,1500,1.05,False,Producción
+algodon,Algodón,22,25,30,32,600,1000,700,1000,ciclo,50,70,6,6,7.5,7.5,0,1000,1000,1.18,False,Producción
+hortalizas,Hortalizas (general),12,15,28,30,600,1500,400,700,ciclo,60,80,6,6,7,7,0,2800,2800,1.05,False,Producción
+aji,Ají,20,24,28,30,600,1250,500,700,ciclo,60,80,5.8,5.8,7,7,0,1500,1500,1.05,False,Producción
+berenjena,Berenjena,22,24,28,30,600,1200,500,800,ciclo,60,75,5.5,6,6.5,6.8,0,1500,1500,1.05,False,Producción
+platano,Plátano,22,26,28,30,1800,2500,1200,1440,año,70,85,5.5,6,6.5,7,0,1000,1500,1.1,False,Producción
+cacao,Cacao,22,24,26,28,1500,2500,,,año,70,85,5.5,6,6.5,7,0,800,1000,1.05,False,Producción
+frijol,Fríjol,16,18,24,24,500,1200,300,500,ciclo,60,75,6,6,7,7,0,1600,1600,1.15,True,Ambos
+cafe,Café,18,19,22,24,1800,2800,1200,,año,70,85,5,5,6,6,1000,1800,2000,1,False,Producción
+cana_panelera,Caña panelera,18,20,26,28,1200,2000,,,año,70,85,5.5,6,7,7.5,800,1600,1800,1.25,False,Producción
+guayaba,Guayaba,18,23,28,30,1000,2000,,,año,60,80,5.5,6,7,7.5,0,1800,1800,0.9,False,Producción
+chontaduro,Chontaduro,22,24,28,28,2000,5000,,,año,80,90,4.5,4.5,6,6,0,800,1200,1,False,Producción
+borojo,Borojó,24,24,28,28,3000,7000,,,año,85,90,4.5,4.5,6,6,0,500,800,1,False,Producción
+aguacate,Aguacate,16,18,22,24,1200,2000,,,año,60,80,5.5,6,6,6.5,1800,2600,2600,0.85,False,Producción
+soya,Soya,20,24,28,32,500,1000,450,700,ciclo,60,80,5.5,6,7,7.5,0,1000,1200,1.15,True,Ambos
+mani,Maní,20,25,30,32,500,1000,450,700,ciclo,50,80,5.8,6,6.5,7,0,1200,1200,1.15,True,Ambos
+caupi,Fríjol caupí,20,25,30,35,400,900,300,500,ciclo,50,80,5.5,6,7,7.5,0,1500,1500,1.05,True,Ambos
+canavalia,Canavalia (abono verde),20,24,30,32,700,2000,400,800,ciclo,50,85,4.5,5.5,7,8,0,1800,1800,1,True,Descanso
+crotalaria,Crotalaria juncea (abono verde),20,25,30,35,500,1500,300,600,ciclo,50,80,5,6,7,7.5,0,1500,1500,1,True,Descanso
+mucuna,Mucuna (abono verde),20,24,28,30,1000,2500,500,900,ciclo,60,85,5,5.5,7,7.5,0,1500,1500,1,True,Descanso
+guandul,Guandul,18,24,30,35,600,1500,400,700,ciclo,50,80,5,5.5,7,7.5,0,2000,2000,1,True,Ambos
