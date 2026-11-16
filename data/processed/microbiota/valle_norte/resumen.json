@@ -1,0 +1,50 @@
+{
+ "zona": "valle_norte",
+ "periodo": [
+  "2020-01-04",
+  "2025-12-31"
+ ],
+ "escenas": 479,
+ "grupos_de_suelo": 67,
+ "cobertura_ibs_en_cultivo": 0.611,
+ "cobertura_c1_en_cultivo": 0.02,
+ "ibs_mediana_cultivo": 44.5,
+ "umbrales": {
+  "ndvi_desnudo": 0.25,
+  "ndvi_verde": 0.3,
+  "ndti_expuesto": 0.1,
+  "lluvia_seca_mm": 5.0,
+  "min_obs_desnudo": 2,
+  "min_anios": 2,
+  "min_obs": 3,
+  "ndti_solo_seco": false,
+  "meses_labranza": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12
+  ]
+ },
+ "bandas": [
+  "IBS",
+  "IBS_sin_C4",
+  "s_C1",
+  "s_C2",
+  "s_C3",
+  "s_C4",
+  "confianza"
+ ],
+ "advertencias": [
+  "IBS estima condiciones para la vida microbiana (residuo, perturbación, raíz viva, carbono); no mide microbiota. Sin calibración con datos de laboratorio.",
+  "50 = típico de ese grupo de suelo; no es comparable entre suelos distintos.",
+  "C1 (carbono por satélite) solo existe donde el suelo se vio expuesto y seco."
+ ]
+}
