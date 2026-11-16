@@ -115,9 +115,8 @@ def _con_vocacion(clase: np.ndarray) -> np.ndarray:
     admite, explica por qué en vez de recomendar una rotación."""
     ok = np.isin(rotacion_permitida(clase), ["plena", "restringida"])
     if ok.mean() < MIN_FRAC_APTA:
-        clases = sorted({str(c) for c, k in zip(clase, ok) if str(c) and not k})
-        raise ValueError(f"Su lote es sobre todo de clase IGAC {', '.join(clases)}: no es apto para cultivos transitorios. "
-                         "Lo recomendado ahí es cobertura permanente, agroforestería o protección; consulte a la UMATA o la CVC.")
+        # Clases IGAC 5-8 (montaña y occidente): mensaje definido por el equipo
+        raise ValueError("Estas zonas aún están en proceso de identificación.")
     return ok
 
 
