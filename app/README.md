@@ -63,5 +63,6 @@ Zonas con datos: Palmira – Candelaria y Roldanillo – La Unión – Toro. Fue
 |---|---|---|
 | API del modelo | AWS cuenta personal 809411919665, us-east-1: Lambda `rotarapp-api` (Python 3.12, 3008 MB, 60 s) detrás de API Gateway HTTP `stt69lu023` → https://stt69lu023.execute-api.us-east-1.amazonaws.com | `python deploy/empaquetar_lambda.py` → `aws s3 cp deploy/build/rotarapp-api.zip s3://rotarapp-deploy-809411919665/` → `aws lambda update-function-code --function-name rotarapp-api --s3-bucket rotarapp-deploy-809411919665 --s3-key rotarapp-api.zip` |
 | App web | Cloudflare Workers (archivos estáticos) `rotarapp` → https://rotarapp.rotarapp.workers.dev | En la app: `EXPO_PUBLIC_API_URL=<url API> npx expo export --platform web` y `npx wrangler deploy` (config en `wrangler.jsonc`) |
+| Página pública | **https://hyperluminic.com/rotarapp**: ruta `src/routes/rotarapp.tsx` del proyecto Lovable "Luminic Core" (iframe a pantalla completa hacia la app web, como `/demo`) | Nada que hacer al actualizar la app: el iframe siempre carga la última versión del Worker |
 
 Lotes de hasta ~108 ha de cultivo (1.200 celdas); las muestras se ajustan al tamaño para responder en menos de 30 s (límite de API Gateway).
