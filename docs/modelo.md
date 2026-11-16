@@ -27,6 +27,26 @@ siguiente cubra el suelo. El simulador la representa así:
 - **IBS sin C4:** solo C2 (residuo) y C3 (perturbación) medidos en las ventanas sin dosel, frente a
   lo normal del mismo suelo. La fracción del tiempo con planta verde (C4) no entra.
 
+## Estrés climático
+
+| Efecto | Dato | Cómo entra |
+|---|---|---|
+| Déficit hídrico | Lluvia y ET0 (POWER) | Balance FAO-56 → K_s en crecimiento y riego necesario |
+| Calor | Fracción de días con Tmax > Tmax crítica del cultivo (POWER diario) | Crecimiento × (1 − 0,5·h); en floración y cuaje, rendimiento × (1 − 0,8·h) |
+| Encharcamiento | Exceso sobre TAW, drenaje según arcilla (15–300 mm por década) | Agua encharcada E → crecimiento × (1 − sensibilidad·E/60 mm) |
+| Enfermedades por humedad | Fracción de días con lluvia ≥ 1 mm + anomalía de HR | La parte de hongos, bacterias y oomicetos del JSON escala con la hoja mojada |
+| Presión de fondo | — | 20 % de presión ambiental aunque se rote (esporas e insectos de fuera) |
+
+En la finca demo, pérdida por causa (crotalaria → cultivo): fríjol −16 % por calor (Tmax crítica
+30 °C; el 25 % de los días pasa de 30 °C), hortalizas −2 %, maíz y ají ~0 %; plagas y enfermedades
+−10 % a −11 %; encharcamiento < 1 %.
+
+**El encharcamiento sale casi nulo por una limitación de datos, no porque no ocurra:** POWER
+suaviza la lluvia (8 días > 50 mm en 25 años) y el paso de 10 días promedia los aguaceros. Hace
+falta lluvia diaria de GPM IMERG y paso diario en los días de lluvia fuerte. En Planetary Computer
+IMERG está guardado en bloques globales (leer un punto tarda ~25 horas para 21 años); la vía
+rápida es NASA GES DISC, que requiere usuario de Earthdata.
+
 ## Capas
 
 | Capa | Código | Qué hace |
@@ -114,6 +134,10 @@ mejor rotación en esos lotes. Lo que se valida es el simulador que la alimenta.
 | NDVI de suelo labrado | 0,18 (el calibrado en caña, 0,34, es lote con hojarasca) |
 | Abono verde como cobertura | NDTI 0,14 |
 | Residuo → % de suelo cubierto | NDTI 0,05 → 0 %, 0,15 → 80 % |
+| Tmax crítica (floración/cuaje) | fríjol 30, hortalizas 32, ají 33, maíz 35, sorgo 38 °C… (`cultivos_modelo.csv`) |
+| Sensibilidad al encharcamiento | arroz 0, caña 0,3, maíz 0,6, hortalizas/fríjol 0,9 (`cultivos_modelo.csv`) |
+| Drenaje por arcilla | 30 % → 150, 40 % → 50, 55 % → 15 mm por década |
+| Presión ambiental de plagas | 20 % |
 
 ## Vacíos conocidos
 

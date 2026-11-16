@@ -85,6 +85,13 @@ def cargar_zona(dir_region: Path) -> Zona:
     )
 
 
+def drenaje_mm_decada(clay_pct: NDArray[np.floating]) -> NDArray[np.float32]:
+    """Agua encharcada que drena en 10 días según la arcilla (supuesto): franco 300 mm,
+    arcilloso (40 %) 50 mm, vertisol (55 %) 15 mm."""
+    c = np.nan_to_num(clay_pct, nan=35.0)
+    return np.interp(c, [20, 30, 40, 55], [300, 150, 50, 15]).astype(np.float32)
+
+
 def awc_mm_por_m(clay_pct: NDArray[np.floating]) -> NDArray[np.float32]:
     """Agua disponible (mm por m de suelo) aproximada por arcilla: francos ~150, arcillas
     pesadas ~130 (pedotransferencia simplificada, supuesto)."""

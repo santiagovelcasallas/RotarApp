@@ -1,25 +1,25 @@
-id,rotable,ciclo_dias,frac_crecimiento,frac_senescencia,dosel_final,raiz_m,arcilla_opt_pct,arcilla_lim_pct,rend_pot_kg_ha,producto_precio,n_demanda_kg_ha,n_aporte_kg_ha,residuo,fuente
-cana_azucar,si,365,0.35,0.75,0.75,1.2,45,60,120000,caña (sin precio SIPSA),150,0,hojarasca_cana,supuesto: corte de 12 meses en el Valle
-maiz,si,120,0.40,0.70,0.2,1.0,35,50,6000,maíz amarillo trillado (proxy de grano),150,0,rastrojo_maiz,supuesto
-arroz,si,130,0.40,0.75,0.2,0.6,70,80,6000,arroz de primera (proxy de paddy),120,0,rastrojo_maiz,supuesto
-sorgo,si,110,0.40,0.70,0.2,1.0,55,70,4000,sin precio SIPSA,100,0,rastrojo_maiz,supuesto
-algodon,si,165,0.40,0.75,0.2,1.0,40,55,2500,sin precio SIPSA,100,0,rastrojo_maiz,supuesto
-hortalizas,si,100,0.35,0.80,0.4,0.5,27,40,30000,tomate chonto regional,150,0,suelo_labrado,supuesto (tomate)
-aji,si,180,0.30,0.85,0.4,0.6,27,40,15000,pimentón (proxy),120,0,suelo_labrado,supuesto
-berenjena,si,195,0.30,0.85,0.4,0.6,27,40,25000,sin precio SIPSA,120,0,suelo_labrado,supuesto
-frijol,si,85,0.40,0.70,0.2,0.6,27,40,1300,fríjol calima,0,30,rastrojo_soya,supuesto: aporte neto tras cosecha de grano
-soya,si,110,0.40,0.70,0.2,0.8,40,55,2300,sin precio SIPSA,0,40,rastrojo_soya,supuesto: aporte neto tras cosecha de grano
-mani,si,120,0.40,0.75,0.2,0.6,20,35,2000,sin precio SIPSA,0,40,rastrojo_soya,supuesto
-caupi,si,80,0.40,0.70,0.2,0.8,45,60,1200,sin precio SIPSA,0,50,rastrojo_soya,supuesto
-canavalia,si,105,0.45,1.0,1.0,0.8,60,75,0,abono verde (sin venta),0,150,abono_verde_incorporado,supuesto: incorporada en floración
-crotalaria,si,75,0.45,1.0,1.0,0.8,40,55,0,abono verde (sin venta),0,110,abono_verde_incorporado,supuesto: incorporada en floración
-mucuna,si,135,0.45,1.0,1.0,0.8,60,75,0,abono verde (sin venta),0,200,abono_verde_incorporado,supuesto: incorporada en floración
-guandul,si,210,0.35,0.85,0.4,1.5,40,55,1100,sin precio SIPSA,0,70,rastrojo_soya,supuesto
-platano,no,,,,,,,,,,,,,perenne: cambio de uso
-cacao,no,,,,,,,,,,,,,perenne: cambio de uso
-cafe,no,,,,,,,,,,,,,perenne: cambio de uso
-cana_panelera,no,,,,,,,,,,,,,semiperenne de ladera
-guayaba,no,,,,,,,,,,,,,perenne: cambio de uso
-chontaduro,no,,,,,,,,,,,,,perenne: cambio de uso
-borojo,no,,,,,,,,,,,,,perenne: cambio de uso
-aguacate,no,,,,,,,,,,,,,perenne: cambio de uso
+id,rotable,ciclo_dias,frac_crecimiento,frac_senescencia,dosel_final,raiz_m,arcilla_opt_pct,arcilla_lim_pct,tmax_critica_c,sens_encharcamiento,rend_pot_kg_ha,producto_precio,n_demanda_kg_ha,n_aporte_kg_ha,residuo,fuente
+cana_azucar,si,365,0.35,0.75,0.75,1.2,45,60,38,0.3,120000,caña (sin precio SIPSA),150,0,hojarasca_cana,supuesto: corte de 12 meses en el Valle
+maiz,si,120,0.40,0.70,0.2,1.0,35,50,35,0.6,6000,maíz amarillo trillado (proxy de grano),150,0,rastrojo_maiz,supuesto
+arroz,si,130,0.40,0.75,0.2,0.6,70,80,35,0.0,6000,arroz de primera (proxy de paddy),120,0,rastrojo_maiz,supuesto
+sorgo,si,110,0.40,0.70,0.2,1.0,55,70,38,0.4,4000,sin precio SIPSA,100,0,rastrojo_maiz,supuesto
+algodon,si,165,0.40,0.75,0.2,1.0,40,55,36,0.6,2500,sin precio SIPSA,100,0,rastrojo_maiz,supuesto
+hortalizas,si,100,0.35,0.80,0.4,0.5,27,40,32,0.9,30000,tomate chonto regional,150,0,suelo_labrado,supuesto (tomate)
+aji,si,180,0.30,0.85,0.4,0.6,27,40,33,0.9,15000,pimentón (proxy),120,0,suelo_labrado,supuesto
+berenjena,si,195,0.30,0.85,0.4,0.6,27,40,34,0.8,25000,sin precio SIPSA,120,0,suelo_labrado,supuesto
+frijol,si,85,0.40,0.70,0.2,0.6,27,40,30,0.9,1300,fríjol calima,0,30,rastrojo_soya,supuesto: aporte neto tras cosecha de grano
+soya,si,110,0.40,0.70,0.2,0.8,40,55,34,0.5,2300,sin precio SIPSA,0,40,rastrojo_soya,supuesto: aporte neto tras cosecha de grano
+mani,si,120,0.40,0.75,0.2,0.6,20,35,35,0.8,2000,sin precio SIPSA,0,40,rastrojo_soya,supuesto
+caupi,si,80,0.40,0.70,0.2,0.8,45,60,36,0.6,1200,sin precio SIPSA,0,50,rastrojo_soya,supuesto
+canavalia,si,105,0.45,1.0,1.0,0.8,60,75,38,0.3,0,abono verde (sin venta),0,150,abono_verde_incorporado,supuesto: incorporada en floración
+crotalaria,si,75,0.45,1.0,1.0,0.8,40,55,38,0.7,0,abono verde (sin venta),0,110,abono_verde_incorporado,supuesto: incorporada en floración
+mucuna,si,135,0.45,1.0,1.0,0.8,60,75,36,0.3,0,abono verde (sin venta),0,200,abono_verde_incorporado,supuesto: incorporada en floración
+guandul,si,210,0.35,0.85,0.4,1.5,40,55,37,0.8,1100,sin precio SIPSA,0,70,rastrojo_soya,supuesto
+platano,no,,,,,,,,,,,,,,,perenne: cambio de uso
+cacao,no,,,,,,,,,,,,,,,perenne: cambio de uso
+cafe,no,,,,,,,,,,,,,,,perenne: cambio de uso
+cana_panelera,no,,,,,,,,,,,,,,,semiperenne de ladera
+guayaba,no,,,,,,,,,,,,,,,perenne: cambio de uso
+chontaduro,no,,,,,,,,,,,,,,,perenne: cambio de uso
+borojo,no,,,,,,,,,,,,,,,perenne: cambio de uso
+aguacate,no,,,,,,,,,,,,,,,perenne: cambio de uso

@@ -134,4 +134,5 @@ def clima_de_segmentos(s: Segmentos, clima: ClimaDecadal) -> dict[str, NDArray[n
     def g(a: NDArray[np.float64]) -> NDArray[np.float32]:
         ext = np.concatenate([a.reshape(-1), np.tile(np.nanmean(a, axis=0), 2)])
         return ext[idx][:, None, :].astype(np.float32)
-    return {"lluvia": g(clima.lluvia), "et0": g(clima.et0), "temp": g(clima.t_media)}
+    return {"lluvia": g(clima.lluvia), "et0": g(clima.et0), "temp": g(clima.t_media),
+            "calor": {u: g(v) for u, v in clima.frac_calor.items()}, "mojado": g(clima.frac_lluvia)}

@@ -29,6 +29,8 @@ class Cultivo:
     dosel_final: float     # dosel al cosechar (grano seco 0,2; caña madura 0,75)
     raiz_m: float
     arcilla: tuple[float, float]  # % arcilla: hasta [0] sin efecto, en [1] rinde la mitad (textura del Excel)
+    tmax_critica: float   # °C: por encima, la floración o el cuaje fallan (supuesto)
+    sens_encharcamiento: float  # 0 tolera (arroz) … 1 muy sensible
     rend_pot_kg_ha: float
     n_demanda: float
     n_aporte: float
@@ -51,6 +53,7 @@ class Plagas:
     compartidas: dict[str, dict[str, int]]
     n_por_cultivo: dict[str, int]
     hospedantes_por_plaga: dict[str, set[str]]   # nombre de plaga (minúsculas) → cultivos
+    frac_humeda: dict[str, float] = None  # fracción de sus plagas que son hongos/bacterias/oomicetos
 
     def presion(self, anterior: str, siguiente: str) -> float | None:
         """Fracción de las plagas del cultivo siguiente que el anterior deja en el lote.
@@ -88,6 +91,7 @@ def cargar_cultivos(raiz: Path = RAIZ) -> dict[str, Cultivo]:
             ciclo_dias=int(m["ciclo_dias"]), frac_crecimiento=_f(m["frac_crecimiento"]),
             frac_senescencia=_f(m["frac_senescencia"]), dosel_final=_f(m["dosel_final"]), raiz_m=_f(m["raiz_m"]),
             arcilla=(_f(m["arcilla_opt_pct"]), _f(m["arcilla_lim_pct"])),
+            tmax_critica=_f(m["tmax_critica_c"]), sens_encharcamiento=_f(m["sens_encharcamiento"]),
             rend_pot_kg_ha=_f(m["rend_pot_kg_ha"]), n_demanda=_f(m["n_demanda_kg_ha"]),
             n_aporte=_f(m["n_aporte_kg_ha"]), residuo=m["residuo"],
             precio_cop_kg=float(precio) if precio else None, producto_precio=m["producto_precio"],
@@ -104,6 +108,7 @@ def cargar_plagas(raiz: Path = RAIZ) -> Plagas:
     pj = json.loads((raiz / "plagas" / "plagas_valle_del_cauca.json").read_text(encoding="utf-8"))
     comp: dict[str, dict[str, set[str]]] = {}
     n: dict[str, int] = {}
+    humedas: dict[str, int] = {}
     hosp: dict[str, set[str]] = {}
 
     def add(a: str, b: str, g: str) -> None:
@@ -112,6 +117,8 @@ def cargar_plagas(raiz: Path = RAIZ) -> Plagas:
     for p in pj["plagas"]:
         a, g = p["cultivo_id"], _genero(p["agente"])
         n[a] = n.get(a, 0) + 1
+        if re.search(r"hongo|bacteria|oomiceto", p.get("tipo", "")):
+            humedas[a] = humedas.get(a, 0) + 1
         hs = {a, *(p.get("otros_hospedantes") or [])}
         hosp.setdefault(p["plaga"].lower(), set()).update(hs)
         for b in hs - {a}:
@@ -123,4 +130,5 @@ def cargar_plagas(raiz: Path = RAIZ) -> Plagas:
             for b in cs:
                 if a != b:
                     add(a, b, g)
-    return Plagas({a: {b: len(s) for b, s in d.items()} for a, d in comp.items()}, n, hosp)
+    return Plagas({a: {b: len(s) for b, s in d.items()} for a, d in comp.items()}, n, hosp,
+                  {a: humedas.get(a, 0) / k for a, k in n.items()})

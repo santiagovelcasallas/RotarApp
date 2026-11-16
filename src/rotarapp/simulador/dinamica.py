@@ -8,11 +8,15 @@ Estado por píxel y por muestra (escenario climático × parámetros del posteri
   V  fracción de dosel (0..1); NDVI = a + (NDVI_max − a)·V
 
 Ecuaciones (Euler explícito, dt = 1 década):
-  dV/dt = k·f_T(T)·K_s(W)·V·(1 − V)            crecimiento logístico hasta la senescencia
+  dV/dt = k·f_T(T)·K_s(W)·K_e(E)·f_c·V·(1 − V)  crecimiento logístico hasta la senescencia
   dV/dt = −k_sen·V                              senescencia, hasta la cosecha
   dW/dt = lluvia + riego − K_s·Kc(V)·ET0        el exceso sobre TAW drena
   K_s   = clip(W / ((1 − p)·TAW), 0, 1)         FAO-56: sin estrés hasta agotar p·TAW
   f_T   = trapecio que vale 1 en el óptimo del Excel, 0,5 en sus límites y 0 a 3 °C fuera
+  f_c   = 1 − 0,5·h  calor: h = fracción de días de la década con Tmax > Tmax crítica del cultivo;
+          en floración y cuaje el rendimiento se castiga con 1 − 0,8·h
+  dE/dt = exceso sobre TAW − drenaje(arcilla)   agua encharcada (mm)
+  K_e   = clip(1 − sensibilidad·E / 60 mm, 0, 1)  estrés por encharcamiento
 
 Todas las entradas se pasan con forma (T, D, P) o broadcastable: D = muestras, P = píxeles.
 """
@@ -32,6 +36,10 @@ V_LLENO = 0.9        # dosel "cerrado"
 KC_SUELO = 0.30      # evaporación de suelo desnudo
 KC_INICIAL = 0.35
 MARGEN_T = 3.0       # °C fuera del rango del Excel donde f_T llega a 0
+E_REF_MM = 60.0      # agua encharcada que satura la zona de raíces
+E_MAX_MM = 120.0     # por encima escurre
+CALOR_CRECIMIENTO = 0.5
+CALOR_FLORACION = 0.8
 
 
 @dataclass(frozen=True)
@@ -68,6 +76,7 @@ class Resultado:
     deficit_mm: F        # (T, D, P) ETc potencial − ETc real: riego que evitaría el estrés
     activo: NDArray[np.int16]   # (T,) índice de la siembra activa, −1 si no hay cultivo
     rend_relativo: list[F]      # por siembra, (D, P): biomasa real / biomasa sin estrés
+    encharcamiento_mm: F | None = None   # (T, D, P) agua encharcada al final de la década
 
 
 def f_temperatura(t: NDArray[np.floating], c: Cultivo) -> NDArray[np.floating]:
@@ -83,11 +92,22 @@ def tasa_base(c: Cultivo, v0: F, decadas: float) -> F:
     return (num / max(c.frac_crecimiento * decadas, 1.0)).astype(np.float32)
 
 
+def frac_calor(calor: dict[int, F], umbral: float, t: int) -> F:
+    """Fracción de días con Tmax > umbral en la década t, interpolando entre umbrales enteros."""
+    us = sorted(calor)
+    u0 = min(max(int(np.floor(umbral)), us[0]), us[-1]); u1 = min(u0 + 1, us[-1])
+    w = float(np.clip(umbral - u0, 0.0, 1.0))
+    return ((1 - w) * calor[u0][t] + w * calor[u1][t]).astype(np.float32)
+
+
 def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
-            th: Parametros, w0_frac: float = 0.7) -> Resultado:
+            th: Parametros, w0_frac: float = 0.7, calor: dict[int, F] | None = None,
+            drenaje_mm: F | None = None) -> Resultado:
     """Corre una secuencia de siembras sobre T décadas.
 
     lluvia, et0, temp: (T, Dc, Pc) broadcastable a (T, D, P). awc_mm_m: (1|D, P).
+    calor: umbral °C → (T, Dc, Pc) fracción de días con Tmax > umbral (None = sin estrés por calor).
+    drenaje_mm: (1|D, P) agua encharcada que drena por década (None = drenaje instantáneo).
     """
     T = lluvia.shape[0]
     forma = np.broadcast_shapes(lluvia.shape[1:], th.k_mult.shape, awc_mm_m.shape)
@@ -99,7 +119,8 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
     Vp = V.copy()                                  # dosel potencial (sin estrés ni frío/calor)
     raiz0 = siembras[0].cultivo.raiz_m if siembras else 0.5
     W = (w0_frac * awc_mm_m * raiz0 * np.ones(forma)).astype(np.float32)
-    out_V, out_ks, out_def = (np.empty((T, *forma), np.float32) for _ in range(3))
+    out_V, out_ks, out_def, out_E = (np.empty((T, *forma), np.float32) for _ in range(4))
+    E = np.zeros(forma, np.float32)
     real = [np.zeros(forma, np.float32) for _ in siembras]
     pot = [np.zeros(forma, np.float32) for _ in siembras]
     k_cache: dict[int, tuple[F, F, int, int]] = {}
@@ -118,6 +139,8 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
                 k_cache[i] = (kb, np.full_like(kb, ksen), sen, L)
             kb, ksen, sen, L = k_cache[i]
             edad = t - s.inicio
+            flor = int(round(c.frac_crecimiento * L))
+            h = frac_calor(calor, c.tmax_critica, t) if calor is not None else np.float32(0.0)
             if edad == 0:
                 V = np.full(forma, V_COSECHA, np.float32)
                 Vp = V.copy()
@@ -141,25 +164,33 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
         ks = np.clip(W / np.maximum(umbral, 1e-3), 0.0, 1.0)
         eta = ks * etc
         deficit = etc - eta
-        W = np.clip(W + lluvia[t] - eta, 0.0, taw)
+        Wn = W + lluvia[t] - eta
+        W = np.clip(Wn, 0.0, taw)
+        if drenaje_mm is not None:
+            E = np.minimum(E + np.maximum(Wn - taw, 0.0), E_MAX_MM)
+            E = np.maximum(E - drenaje_mm, 0.0).astype(np.float32)
+        sens = c.sens_encharcamiento if i >= 0 else 0.0
+        ke = np.clip(1.0 - sens * E / E_REF_MM, 0.0, 1.0)
         # Se reporta el estado al inicio de la década (lo que ve el satélite en ese paso)
         out_V[t] = V
-        out_ks[t], out_def[t] = ks, deficit
+        out_ks[t], out_def[t], out_E[t] = ks, deficit, E
 
         if i >= 0:
             nuevo = ~emergio & (edad >= th.lat())
             V = np.where(nuevo, th.v0, V)
             Vp = np.where(nuevo, th.v0, Vp)
             emergio = emergio | nuevo
+            fc = 1.0 - CALOR_CRECIMIENTO * h
             if edad < sen:
-                V = V + kb * fT * ks * V * (1 - V)
+                V = V + kb * fT * ks * ke * fc * V * (1 - V)
                 Vp = Vp + kb * Vp * (1 - Vp)
             else:
                 V = V * np.exp(-ksen)
                 Vp = Vp * np.exp(-ksen)
             V = np.where(emergio, np.clip(V, 0.0, 1.0), V_COSECHA).astype(np.float32)
             Vp = np.where(emergio, np.clip(Vp, 0.0, 1.0), V_COSECHA).astype(np.float32)
-            real[i] += np.where(emergio, V * fT * ks, 0.0)
+            fy = (1.0 - CALOR_FLORACION * h) if flor <= edad < max(sen, flor + 1) else fc
+            real[i] += np.where(emergio, V * fT * ks * ke * fy, 0.0)
             pot[i] += np.where(emergio, Vp, 0.0)
             if t + 1 == s.fin or t + 1 == T:
                 V = np.full(forma, V_COSECHA, np.float32)
@@ -169,4 +200,4 @@ def simular(siembras: list[Siembra], lluvia: F, et0: F, temp: F, awc_mm_m: F,
 
     ndvi = (th.ndvi_suelo + (th.ndvi_max - th.ndvi_suelo) * out_V).astype(np.float32)
     rel = [np.where(p > 0, r / np.maximum(p, 1e-6), np.nan).astype(np.float32) for r, p in zip(real, pot)]
-    return Resultado(out_V, ndvi, out_ks, out_def, activo, rel)
+    return Resultado(out_V, ndvi, out_ks, out_def, activo, rel, out_E)

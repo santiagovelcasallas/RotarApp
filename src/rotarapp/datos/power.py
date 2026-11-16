@@ -18,6 +18,7 @@ from numpy.typing import NDArray
 
 URL = "https://power.larc.nasa.gov/api/temporal/daily/point"
 VARIABLES = ("T2M", "T2M_MAX", "T2M_MIN", "RH2M", "PRECTOTCORR", "ALLSKY_SFC_SW_DWN", "TOA_SW_DWN")
+UMBRALES_CALOR = tuple(range(28, 41))
 PASO_DIAS = 10  # décadas: 36 por año (la última del mes absorbe los días sobrantes)
 
 F64 = NDArray[np.float64]
@@ -59,6 +60,17 @@ class ClimaDecadal:
     lluvia: F64    # mm en la década
     et0: F64       # mm en la década
     dias: F64      # días de la década
+    frac_calor: dict[int, F64] = None   # umbral °C → fracción de días con Tmax > umbral
+    frac_lluvia: F64 = None             # fracción de días con lluvia ≥ 1 mm (mojado de hoja)
+    lluvia_max_dia: F64 = None          # mm del día más lluvioso de la década
+
+    def calor(self, umbral: float) -> F64:
+        """Fracción de días con Tmax > umbral, interpolando entre umbrales enteros."""
+        u0 = int(np.floor(umbral)); u1 = u0 + 1
+        a, b = self.frac_calor[min(max(u0, UMBRALES_CALOR[0]), UMBRALES_CALOR[-1])], \
+            self.frac_calor[min(max(u1, UMBRALES_CALOR[0]), UMBRALES_CALOR[-1])]
+        w = umbral - u0
+        return (1 - w) * a + w * b
 
     def anio(self, a: int) -> int:
         return self.anios.index(a)
@@ -118,7 +130,9 @@ def a_decadas(c: ClimaDiario) -> ClimaDecadal:
     completos = [a for a in anios if sum(1 for d in c.fechas if d.year == a) >= 365]
     idx = {a: i for i, a in enumerate(completos)}
     shape = (len(completos), 36)
-    suma = {k: np.zeros(shape) for k in ("t", "hr", "ll", "et")}
+    suma = {k: np.zeros(shape) for k in ("t", "hr", "ll", "et", "mojado")}
+    calor = {u: np.zeros(shape) for u in UMBRALES_CALOR}
+    lmax = np.zeros(shape)
     n = np.zeros(shape)
     et0 = c.et0()
     for j, d in enumerate(c.fechas):
@@ -127,7 +141,12 @@ def a_decadas(c: ClimaDiario) -> ClimaDecadal:
         a, k = idx[d.year], decada_del_anio(d)
         suma["t"][a, k] += c.t2m[j]; suma["hr"][a, k] += c.hr[j]
         suma["ll"][a, k] += c.lluvia[j]; suma["et"][a, k] += et0[j]; n[a, k] += 1
-    return ClimaDecadal(completos, suma["t"] / n, suma["hr"] / n, suma["ll"], suma["et"], n)
+        suma["mojado"][a, k] += c.lluvia[j] >= 1.0
+        lmax[a, k] = max(lmax[a, k], c.lluvia[j])
+        for u in UMBRALES_CALOR:
+            calor[u][a, k] += c.tmax[j] > u
+    return ClimaDecadal(completos, suma["t"] / n, suma["hr"] / n, suma["ll"], suma["et"], n,
+                        {u: v / n for u, v in calor.items()}, suma["mojado"] / n, lmax)
 
 
 def fecha_decada(anio: int, k: int) -> date:

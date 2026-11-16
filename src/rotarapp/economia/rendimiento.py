@@ -20,7 +20,10 @@ N_MINERALIZACION_120D = 60.0   # kg N/ha en 120 días con IBS típico (50)
 RECUPERACION_LEGUMINOSA = 0.5  # fracción del aporte de la leguminosa que toma el cultivo siguiente
 PERDIDA_MAX_SIN_N = 0.6        # pérdida de rendimiento con cero N disponible
 PERDIDA_MAX_PLAGAS = 0.30
+PERDIDA_TOPE = 0.60
 PRESION_SIN_DATOS = 0.15       # prior cuando el JSON no tiene plagas del cultivo
+PRESION_AMBIENTE = 0.20        # plagas y esporas que llegan de fuera del lote aunque se rote
+FRAC_HUMEDA_SIN_DATOS = 0.40   # fracción de enfermedades por humedad si el JSON no tiene el cultivo
 EXTRA_PLAGA_REPORTADA = 0.5
 
 
@@ -53,6 +56,16 @@ def presion_plagas(c: Cultivo, anterior: Cultivo | None, plagas: Plagas,
     return p, con_datos
 
 
-def perdida_plagas(presion: float, hr_ciclo: NDArray[np.floating], hr_media: float) -> F:
-    f_hum = np.clip(1 + (np.asarray(hr_ciclo) - hr_media) / 20.0, 0.7, 1.3)
-    return (PERDIDA_MAX_PLAGAS * presion * f_hum).astype(np.float32)
+def perdida_plagas(presion: float, frac_humeda: float | None, mojado_ciclo: NDArray[np.floating],
+                   mojado_medio: float, hr_ciclo: NDArray[np.floating], hr_media: float) -> F:
+    """Pérdida por plagas y enfermedades.
+
+    presión total = ambiente + arrastre del cultivo anterior. La parte de hongos, bacterias y
+    oomicetos (según el JSON) escala con la frecuencia de días con lluvia del ciclo (hoja mojada)
+    y con la anomalía de humedad relativa; la de insectos no.
+    """
+    p = PRESION_AMBIENTE + (1 - PRESION_AMBIENTE) * presion
+    fh = FRAC_HUMEDA_SIN_DATOS if frac_humeda is None else frac_humeda
+    f_moj = np.clip(np.asarray(mojado_ciclo) / max(mojado_medio, 1e-3), 0.5, 2.0)
+    f_hr = np.clip(1 + (np.asarray(hr_ciclo) - hr_media) / 20.0, 0.7, 1.3)
+    return np.minimum(PERDIDA_MAX_PLAGAS * p * ((1 - fh) + fh * f_moj * f_hr), PERDIDA_TOPE).astype(np.float32)

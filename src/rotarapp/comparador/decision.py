@@ -103,22 +103,27 @@ class Escenarios:
     et0: F
     temp: F
     hr_media_ciclo: F   # (T, D) para promediar por ciclo
+    mojado: F           # (T, D) fracción de días con lluvia ≥ 1 mm
+    calor: dict[int, F]  # umbral °C → (T, D, 1) fracción de días con Tmax > umbral
     lluvia_anual: F     # (D, 1)
     th: Parametros      # muestras para cultivos sin calibrar (prior + parámetros de sensor)
     th_cana: Parametros  # posterior completo de caña
     fechas: list[date]
     hr_media: float
+    mojado_medio: float
 
 
 def escenarios(clima: ClimaDecadal, post_muestras: dict[str, F], post_pesos: F,
                s0: int, k_post: int = 4, semilla: int = 0) -> Escenarios:
     rng = np.random.default_rng(semilla)
-    serie = {k: getattr(clima, k).reshape(-1) for k in ("lluvia", "et0", "t_media", "hr")}
+    serie = {k: getattr(clima, k).reshape(-1) for k in ("lluvia", "et0", "t_media", "hr", "frac_lluvia")}
     inicios = [a * 36 + s0 for a in range(len(clima.anios)) if a * 36 + s0 + HORIZONTE <= serie["lluvia"].size]
     Y, D = len(inicios), len(inicios) * k_post
     idx = np.array(inicios)[None, :] + np.arange(HORIZONTE)[:, None]            # (T, Y)
     rep = lambda a: np.repeat(a[idx], k_post, axis=1).astype(np.float32)        # (T, D)
     ll, et, tt, hr = rep(serie["lluvia"]), rep(serie["et0"]), rep(serie["t_media"]), rep(serie["hr"])
+    moj = rep(serie["frac_lluvia"])
+    calor = {u: rep(v.reshape(-1))[:, :, None] for u, v in clima.frac_calor.items()}
 
     j = rng.choice(post_pesos.size, size=D, p=post_pesos / post_pesos.sum())
     col = lambda v: np.asarray(v, np.float32).reshape(-1, 1)
@@ -131,9 +136,9 @@ def escenarios(clima: ClimaDecadal, post_muestras: dict[str, F], post_pesos: F,
                          latencia=col(post_muestras["latencia"][j]), **sensor)   # rebrote de soca
     anio0 = clima.anios[0]
     fechas = [fecha_decada(anio0 + (s0 + t) // 36, (s0 + t) % 36) for t in range(HORIZONTE)]
-    return Escenarios(ll[:, :, None], et[:, :, None], tt[:, :, None], hr,
+    return Escenarios(ll[:, :, None], et[:, :, None], tt[:, :, None], hr, moj, calor,
                       (ll.sum(axis=0) / (HORIZONTE / 36)).reshape(-1, 1), th, th_cana, fechas,
-                      float(np.nanmean(serie["hr"])))
+                      float(np.nanmean(serie["hr"])), float(np.nanmean(serie["frac_lluvia"])))
 
 
 # ---------------------------------------------------------------- secuencias
@@ -199,7 +204,9 @@ def evaluar(plan: Plan, finca: Finca, esc: Escenarios, cultivos: dict[str, Culti
     sec = secuencia(plan, cultivos, barbecho=max(int(round(entrada.dias_barbecho / 10)), 0))
     anterior0 = cultivos.get(entrada.cultivo_anterior or "")
     th = esc.th_cana if plan.actual and plan.produccion == "cana_azucar" else esc.th
-    r = simular(sec, esc.lluvia, esc.et0, esc.temp, finca.awc[None, :], th)
+    from rotarapp.datos.prototipo import drenaje_mm_decada
+    r = simular(sec, esc.lluvia, esc.et0, esc.temp, finca.awc[None, :], th, calor=esc.calor,
+                drenaje_mm=drenaje_mm_decada(finca.arcilla)[None, :])
     D, P = r.ndvi.shape[1:]
     anios = HORIZONTE / 36
 
@@ -219,7 +226,9 @@ def evaluar(plan: Plan, finca: Finca, esc: Escenarios, cultivos: dict[str, Culti
         if not con_datos:   # registra el cultivo al que le faltan datos, no al que sí los tiene
             sin_datos.update(x.id for x in (c, anterior) if x is not None and plagas.n_por_cultivo.get(x.id, 0) == 0)
         hr_ciclo = esc.hr_media_ciclo[s.inicio:s.fin].mean(axis=0)[:, None]          # (D, 1)
-        perdida = ec.perdida_plagas(pres, hr_ciclo, esc.hr_media)
+        moj_ciclo = esc.mojado[s.inicio:s.fin].mean(axis=0)[:, None]
+        perdida = ec.perdida_plagas(pres, plagas.frac_humeda.get(c.id), moj_ciclo, esc.mojado_medio,
+                                    hr_ciclo, esc.hr_media)
         bio = np.nan_to_num(r.rend_relativo[i]) * ftex * f_ph(finca.ph, c)[None, :]
         y = (c.rend_pot_kg_ha * bio * ec.f_nitrogeno(c, n_disp) * (1 - perdida)).astype(np.float32)
         # ciclos truncados por el horizonte cuentan en proporción

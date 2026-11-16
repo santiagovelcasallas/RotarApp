@@ -15,11 +15,15 @@ PL = cargar_plagas()
 P = 4
 
 
-def _clima(anios: int = 6, lluvia_dec: float = 35.0) -> ClimaDecadal:
+def _clima(anios: int = 6, lluvia_dec: float = 35.0, dias_calor: float = 0.0) -> ClimaDecadal:
+    """dias_calor: fracción de días con Tmax > 30 °C (y la mitad de eso > 32 °C)."""
     sh = (anios, 36)
     rng = np.random.default_rng(0)
+    calor = {u: np.full(sh, dias_calor if u <= 30 else dias_calor / 2 if u <= 32 else 0.0)
+             for u in range(28, 41)}
     return ClimaDecadal(list(range(2001, 2001 + anios)), np.full(sh, 24.0), np.full(sh, 75.0),
-                        rng.uniform(0.3, 1.7, sh) * lluvia_dec, np.full(sh, 42.0), np.full(sh, 10.0))
+                        rng.uniform(0.3, 1.7, sh) * lluvia_dec, np.full(sh, 42.0), np.full(sh, 10.0),
+                        calor, np.full(sh, 0.5), np.full(sh, lluvia_dec / 4))
 
 
 def _finca(clase: str = "3") -> dc.Finca:
@@ -98,3 +102,28 @@ def test_salud_premia_cobertura_continua(base) -> None:
     abono = _eval(dc.Plan("mucuna", "maiz"), base).ibs
     solo = _eval(dc.Plan(None, "maiz"), base).ibs
     assert np.nanmedian(abono) > np.nanmedian(solo)
+
+
+def _rend(plan: dc.Plan, cultivo: str, clima: ClimaDecadal, finca: dc.Finca | None = None) -> float:
+    esc = _esc(clima)
+    e = dc.evaluar(plan, finca or _finca(), esc, C, PL, _ref(), dc.Entrada(cultivo_anterior="maiz"), 24.0)
+    return float(np.nanmedian(e.rendimientos[cultivo]))
+
+
+def test_calor_castiga_mas_al_frijol_que_al_sorgo() -> None:
+    fresco, caliente = _clima(), _clima(dias_calor=0.6)
+    caida = lambda c: 1 - _rend(dc.Plan(None, c), c, caliente) / _rend(dc.Plan(None, c), c, fresco)
+    assert caida("frijol") > 0.2          # Tmax crítica 30 °C
+    assert caida("sorgo") < 0.02          # Tmax crítica 38 °C
+
+
+def test_encharcamiento_castiga_frijol_en_arcilla_y_no_al_arroz() -> None:
+    humedo = _clima(lluvia_dec=150.0)
+    f = lambda v: np.full(P, v, np.float32)
+    arcilla = dc.Finca(np.arange(P, dtype=np.int32), np.zeros(P, np.int32), np.array(["3"] * P, dtype=object),
+                       f(6.5), f(1000), f(50), f(2.5), f(1.5), f(150), np.ones(P, np.int32), f(50))
+    normal = _clima(lluvia_dec=45.0)
+    # mismo suelo arcilloso, lluvia normal vs muy húmeda: aísla el encharcamiento de la textura
+    caida = lambda c: 1 - _rend(dc.Plan(None, c), c, humedo, arcilla) / _rend(dc.Plan(None, c), c, normal, arcilla)
+    assert caida("frijol") > 0.15
+    assert caida("arroz") < 0.05

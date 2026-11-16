@@ -51,8 +51,10 @@ def a_parametros(m: dict[str, F], idx: NDArray[np.integer] | None = None) -> Par
 
 def simular_segmentos(seg: Segmentos, clima: dict[str, F], th: Parametros, cana: Cultivo) -> F:
     """NDVI simulado (VENTANA, D, S): rebrote de caña desde la cosecha detectada."""
+    from rotarapp.datos.prototipo import drenaje_mm_decada
     r = simular([Siembra(cana, 0, VENTANA)], clima["lluvia"], clima["et0"], clima["temp"],
-                seg.awc[None, :], th, w0_frac=0.5)
+                seg.awc[None, :], th, w0_frac=0.5, calor=clima.get("calor"),
+                drenaje_mm=drenaje_mm_decada(seg.rasgos["arcilla"])[None, :])
     return r.ndvi
 
 
