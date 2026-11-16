@@ -56,3 +56,12 @@ La salida la arma `src/rotarapp/comparador/app.py` (tipos en `src/data/modelo.ts
 | Mi suelo | `suelo.salud`, `suelo.erosion` | IBS por celda (huecos de nube rellenados con vecinos a 150 m) y erosión RUSLE con el manejo de hoy |
 
 Zonas con datos: Palmira – Candelaria y Roldanillo – La Unión – Toro. Fuera de ellas la app avisa.
+
+## Publicación (en producción)
+
+| Pieza | Dónde | Cómo actualizar |
+|---|---|---|
+| API del modelo | AWS cuenta personal 809411919665, us-east-1: Lambda `rotarapp-api` (Python 3.12, 3008 MB, 60 s) detrás de API Gateway HTTP `stt69lu023` → https://stt69lu023.execute-api.us-east-1.amazonaws.com | `python deploy/empaquetar_lambda.py` → `aws s3 cp deploy/build/rotarapp-api.zip s3://rotarapp-deploy-809411919665/` → `aws lambda update-function-code --function-name rotarapp-api --s3-bucket rotarapp-deploy-809411919665 --s3-key rotarapp-api.zip` |
+| App web | Cloudflare Workers (archivos estáticos) `rotarapp` → https://rotarapp.rotarapp.workers.dev | En la app: `EXPO_PUBLIC_API_URL=<url API> npx expo export --platform web` y `npx wrangler deploy` (config en `wrangler.jsonc`) |
+
+Lotes de hasta ~108 ha de cultivo (1.200 celdas); las muestras se ajustan al tamaño para responder en menos de 30 s (límite de API Gateway).

@@ -18,6 +18,7 @@ from rotarapp.datos.cultivos import Cultivo, Plagas, cargar_cultivos, cargar_pla
 from rotarapp.microbiota import Referencia
 
 RAIZ = Path(__file__).resolve().parents[2]
+MAX_CELDAS = 1200   # ~108 ha de cultivo a 30 m
 PRIORIDADES = {"ingreso": "Ganar más", "agua": "Gastar menos agua", "suelo": "Cuidar el suelo", "erosion": "Evitar la erosión"}
 
 
@@ -173,8 +174,13 @@ class Servicio:
         fecha, dec_ = proxima_siembra(hoy or date.today())
         entrada = dc.Entrada(anterior, list(req.get("plagas", [])), pesos, decada_siembra=dec_,
                              precios={k: float(v) for k, v in (req.get("precios_cop_kg") or {}).items()})
+        if finca.n > MAX_CELDAS:
+            raise ValueError(f"El lote es muy grande para el piloto (máximo ~{MAX_CELDAS * dc.HA_POR_PIXEL:.0f} ha de cultivo). "
+                             "Divídalo en lotes más pequeños.")
+        # Muestras del posterior por escenario climático según el tamaño, para responder en < 30 s
+        k_post = 4 if finca.n <= 150 else 2 if finca.n <= 400 else 1
         esc = dc.escenarios(zm.clima, {k: np.array(v, np.float32) for k, v in self.post["muestras"].items()},
-                            np.array(self.post["pesos"], np.float32), entrada.decada_siembra)
+                            np.array(self.post["pesos"], np.float32), entrada.decada_siembra, k_post=k_post)
         t_media = float(np.nanmean(zm.clima.t_media))
         planes = dc.planes_candidatos(self.cultivos, entrada)
         evals = [dc.evaluar(p, finca, esc, self.cultivos, self.plagas, zm.ref, entrada, t_media) for p in planes]

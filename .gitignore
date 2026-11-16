@@ -29,3 +29,4 @@ credentials*.json
 # Sistema
 .DS_Store
 Thumbs.db
+deploy/build/
