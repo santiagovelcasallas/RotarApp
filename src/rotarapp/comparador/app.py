@@ -179,7 +179,9 @@ class Constructor:
             rasgos.append("la parte de clase IGAC 4 (con restricciones)")
         elif c4 < c4_t - 0.15:
             rasgos.append("la parte de clase IGAC 3")
-        ibs, ibs_t = np.nanmean(self.f.ibs_obs[pix]), np.nanmean(self.f.ibs_obs)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)   # fuera de las zonas piloto no hay IBS observado
+            ibs, ibs_t = np.nanmean(self.f.ibs_obs[pix]), np.nanmean(self.f.ibs_obs)
         if np.isfinite(ibs) and ibs < ibs_t - 5:
             rasgos.append("el suelo con menor salud biológica")
         elif np.isfinite(ibs) and ibs > ibs_t + 5:

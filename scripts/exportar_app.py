@@ -36,15 +36,11 @@ def main() -> None:
                                                 ensure_ascii=False, indent=1), encoding="utf-8")
     zonas = json.loads((d / "zonas-habilitadas.json").read_text(encoding="utf-8"))
     zonas["actualizado"] = date.today().isoformat()
-    zonas["nota"] = ("Zonas piloto con datos del modelo (cajas de 20 × 20 km del prototipo NASA_IBS). "
+    zonas["nota"] = ("Todo el Valle del Cauca (contorno simplificado; el modelo valida con los polígonos IGAC). "
                      "Generado por RotarApp/scripts/exportar_app.py.")
-    zonas["mensajeFueraDeZona"] = ("Por ahora RotarApp tiene datos en " + " y ".join(z["nombre"] for z in cat["zonas"])
-                                   + ". Pronto llegaremos a todo el Valle del Cauca.")
-    zonas["zonas"]["features"] = [{
-        "type": "Feature", "id": z["id"],
-        "properties": {"nombre": z["nombre"], "tipo": "zona piloto", "habilitada": True, "color": "#1F6B4A"},
-        "geometry": {"type": "Polygon", "coordinates": [z["anillo"]]},
-    } for z in cat["zonas"]]
+    zonas["mensajeFueraDeZona"] = "Por ahora RotarApp solo funciona en el Valle del Cauca. Pronto llegaremos a más regiones."
+    contorno = json.loads((RAIZ / "data/referencia/valle/contorno_app.json").read_text(encoding="utf-8"))["feature"]
+    zonas["zonas"]["features"] = [contorno]
     (d / "zonas-habilitadas.json").write_text(json.dumps(zonas, ensure_ascii=False, indent=2), encoding="utf-8")
     demo = s.recomendar({"poligono": LOTE_EJEMPLO, "cultivos_anteriores": ["cana_azucar"],
                          "plagas": ["Barrenadores del tallo"], "prioridades": ["suelo"]})

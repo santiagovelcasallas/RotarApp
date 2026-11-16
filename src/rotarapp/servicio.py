@@ -8,17 +8,20 @@ import time
 from dataclasses import dataclass
 from datetime import date, timedelta
 from pathlib import Path
+from typing import Callable
 
 import numpy as np
 
 from rotarapp.comparador import decision as dc
 from rotarapp.comparador.app import Constructor, Malla
-from rotarapp.datos import power, prototipo
+from rotarapp.datos import power, prototipo, valle
+from rotarapp.filtro.aptitud import rotacion_permitida
 from rotarapp.datos.cultivos import Cultivo, Plagas, cargar_cultivos, cargar_plagas
 from rotarapp.microbiota import Referencia
 
 RAIZ = Path(__file__).resolve().parents[2]
 MAX_CELDAS = 1200   # ~108 ha de cultivo a 30 m
+MIN_FRAC_APTA = 0.25  # si menos de un cuarto del lote admite transitorios, no se recomienda rotación
 PRIORIDADES = {"ingreso": "Ganar más", "agua": "Gastar menos agua", "suelo": "Cuidar el suelo", "erosion": "Evitar la erosión"}
 
 
@@ -88,6 +91,7 @@ def finca_y_malla(z: prototipo.Zona, poligono_lonlat: list[tuple[float, float]])
     cultivo = z.cls[fi, co] == prototipo.CLASE_CULTIVO
     if not cultivo.any():
         raise ValueError("Según la cobertura 2017–2023 este lote no es de cultivo (bosque, pasto o construcción).")
+    cultivo = cultivo & _con_vocacion(z.cap_clase[fi, co])
     a_ll = Transformer.from_crs(z.crs, "EPSG:4326", always_xy=True)
     xc, yc = z.xy(fi, co)
     h = abs(a) / 2
@@ -104,6 +108,47 @@ def finca_y_malla(z: prototipo.Zona, poligono_lonlat: list[tuple[float, float]])
     idx = np.full(fi.size, -1, np.int64)
     idx[cultivo] = np.arange(int(cultivo.sum()))
     return finca, Malla(anillos, np.column_stack([lon_c, lat_c]), cultivo, idx, ibs.astype(np.float32))
+
+
+def _con_vocacion(clase: np.ndarray) -> np.ndarray:
+    """Celdas cuya clase IGAC admite cultivos transitorios (plena o restringida). Si ninguna la
+    admite, explica por qué en vez de recomendar una rotación."""
+    ok = np.isin(rotacion_permitida(clase), ["plena", "restringida"])
+    if ok.mean() < MIN_FRAC_APTA:
+        clases = sorted({str(c) for c, k in zip(clase, ok) if str(c) and not k})
+        raise ValueError(f"Su lote es sobre todo de clase IGAC {', '.join(clases)}: no es apto para cultivos transitorios. "
+                         "Lo recomendado ahí es cobertura permanente, agroforestería o protección; consulte a la UMATA o la CVC.")
+    return ok
+
+
+def finca_y_malla_valle(v: valle.DatosValle, poligono_lonlat: list[tuple[float, float]],
+                        ibs_estimado: "Callable[[np.ndarray], np.ndarray]") -> tuple[dc.Finca, Malla, float]:
+    """Finca para cualquier lote del Valle con las capas generales; el IBS se estima con la
+    muestra de la zona piloto más cercana (ver Servicio.ibs_por_clase)."""
+    lon, lat, _, _, anillos = valle.malla_utm(poligono_lonlat)
+    if lon.size == 0:
+        raise ValueError("El lote es muy pequeño: dibuje un lote de al menos 30 × 30 m.")
+    clase = v.clase(lon, lat)
+    if (clase == "").all():
+        raise ValueError("El lote queda fuera del Valle del Cauca.")
+    cultivo = ~np.isin(clase.astype(str), list(valle.NO_CULTIVO))
+    if not cultivo.any():
+        raise ValueError("Según el mapa del IGAC el lote es cuerpo de agua o zona urbana.")
+    cultivo = cultivo & _con_vocacion(clase)
+    elev = v.elevacion(lon, lat)
+    clay, ph, soc = v.suelo(lon, lat)
+    pend = v.pendiente(lon, lat)
+    m = cultivo
+    n = int(m.sum())
+    ibs = ibs_estimado(clase).astype(np.float32)
+    finca = dc.Finca(np.arange(n, dtype=np.int32), np.zeros(n, np.int32), clase[m], ph[m].astype(np.float32),
+                     elev[m].astype(np.float32), clay[m].astype(np.float32), soc[m].astype(np.float32),
+                     pend[m].astype(np.float32), prototipo.awc_mm_por_m(clay[m]),
+                     np.full(n, valle.GRUPO_GENERAL, np.int32), ibs[m])
+    idx = np.full(lon.size, -1, np.int64)
+    idx[m] = np.arange(n)
+    malla = Malla(anillos, np.column_stack([lon, lat]), m, idx, np.where(m, ibs, np.nan).astype(np.float32))
+    return finca, malla, float(np.nanmedian(elev[m]))
 
 
 def ibs_relleno(ibs: np.ndarray, fi: np.ndarray, co: np.ndarray, radio: int = 2) -> np.ndarray:
@@ -138,6 +183,27 @@ class Servicio:
             cargar_zona_modelo("palmira_candelaria", "Palmira – Candelaria", dir_nasa_ibs / "valle", mic / "palmira_candelaria/referencia_suelos.json"),
             cargar_zona_modelo("valle_norte", "Roldanillo – La Unión – Toro", dir_nasa_ibs / "valle_norte", mic / "valle_norte/referencia_suelos.json"),
         ]
+        self.valle = valle.cargar(RAIZ / "data/referencia/valle")
+        self.ibs_muestra = {z.id: self._ibs_por_clase(z) for z in self.zonas}
+
+    @staticmethod
+    def _ibs_por_clase(zm: ZonaModelo) -> tuple[tuple[float, float], dict[str, float], float]:
+        """Centro (lon, lat) y mediana del IBS observado en cultivo por clase IGAC de una zona piloto."""
+        z = zm.zona
+        ok = (z.cls == prototipo.CLASE_CULTIVO) & np.isfinite(z.ibs)
+        clases = z.cap_clase[ok].astype(str)
+        vals = z.ibs[ok]
+        por_clase = {c: float(np.median(vals[clases == c])) for c in np.unique(clases) if (clases == c).sum() >= 200}
+        lons = [p[0] for p in zm.anillo_lonlat]; lats = [p[1] for p in zm.anillo_lonlat]
+        return (float(np.mean(lons)), float(np.mean(lats))), por_clase, float(np.median(vals))
+
+    def ibs_estimado(self, lon: float, lat: float) -> tuple[str, "Callable[[np.ndarray], np.ndarray]"]:
+        """IBS típico por clase IGAC en la zona piloto más cercana: no es el IBS de ese lote, es una
+        estimación con una muestra de la misma región del Valle."""
+        zid = min(self.ibs_muestra, key=lambda k: (self.ibs_muestra[k][0][0] - lon) ** 2 + (self.ibs_muestra[k][0][1] - lat) ** 2)
+        _, por_clase, general = self.ibs_muestra[zid]
+        nombre = next(z.nombre for z in self.zonas if z.id == zid)
+        return nombre, lambda clase: np.array([por_clase.get(str(c), general) for c in clase], np.float64)
 
     def catalogo(self) -> dict:
         todos = json.loads((RAIZ / "data/referencia/plagas/plagas_valle_del_cauca.json").read_text(encoding="utf-8"))
@@ -158,11 +224,20 @@ class Servicio:
         pts = [(float(p["longitude"]), float(p["latitude"])) for p in req["poligono"]]
         lon_c, lat_c = float(np.mean([p[0] for p in pts])), float(np.mean([p[1] for p in pts]))
         zm = next((z for z in self.zonas if z.contiene(lon_c, lat_c)), None)
-        if zm is None:
-            raise ValueError("Por ahora el modelo solo tiene datos para "
-                             + " y ".join(z.nombre for z in self.zonas) + ". Dibuje su lote dentro de esas zonas.")
-        finca, malla = finca_y_malla(zm.zona, pts)
         avisos: list[str] = []
+        if zm is not None:
+            finca, malla = finca_y_malla(zm.zona, pts)
+            clima, ref, nombre_zona = zm.clima, zm.ref, zm.nombre
+            excluidas = "no son de cultivo según la cobertura 2017–2023 o su clase IGAC no admite transitorios"
+        elif self.valle is not None and self.valle.en_valle(lon_c, lat_c):
+            zona_ibs, f_ibs = self.ibs_estimado(lon_c, lat_c)
+            finca, malla, elev = finca_y_malla_valle(self.valle, pts, f_ibs)
+            clima, ref, nombre_zona = self.valle.clima(lon_c, lat_c, elev), self.valle.ref, "Valle del Cauca"
+            excluidas = "son agua, zona urbana o de una clase IGAC que no admite transitorios"
+            avisos.append(f"Fuera de las zonas piloto: suelo de SoilGrids (250 m), relieve SRTM y clima NASA POWER corregido a "
+                          f"{elev:.0f} m. La salud del suelo (IBS) se estima con la muestra de {zona_ibs}, la zona piloto más cercana, según la clase IGAC de cada celda.")
+        else:
+            raise ValueError("Por ahora RotarApp solo funciona en el Valle del Cauca. Dibuje su lote dentro del departamento.")
         anteriores = [c for c in req.get("cultivos_anteriores", []) if c]
         anterior = next((c for c in anteriores if c in self.cultivos), None)
         if len(anteriores) > 1:
@@ -179,24 +254,23 @@ class Servicio:
                              "Divídalo en lotes más pequeños.")
         # Muestras del posterior por escenario climático según el tamaño, para responder en < 30 s
         k_post = 4 if finca.n <= 150 else 2 if finca.n <= 400 else 1
-        esc = dc.escenarios(zm.clima, {k: np.array(v, np.float32) for k, v in self.post["muestras"].items()},
+        esc = dc.escenarios(clima, {k: np.array(v, np.float32) for k, v in self.post["muestras"].items()},
                             np.array(self.post["pesos"], np.float32), entrada.decada_siembra, k_post=k_post)
-        t_media = float(np.nanmean(zm.clima.t_media))
+        t_media = float(np.nanmean(clima.t_media))
         planes = dc.planes_candidatos(self.cultivos, entrada)
-        evals = [dc.evaluar(p, finca, esc, self.cultivos, self.plagas, zm.ref, entrada, t_media) for p in planes]
+        evals = [dc.evaluar(p, finca, esc, self.cultivos, self.plagas, ref, entrada, t_media) for p in planes]
         dec = dc.decidir(planes, evals, entrada)
         area = float(len(malla.modelada) * dc.HA_POR_PIXEL)
         datos = Constructor(dec, finca, malla, esc, self.cultivos, self.plagas, entrada, self.metr, fecha,
-                            float(np.nanmean(zm.clima.lluvia.sum(axis=1)))).construir(area)
+                            float(np.nanmean(clima.lluvia.sum(axis=1)))).construir(area)
         if (~malla.modelada).any():
-            avisos.append(f"{int((~malla.modelada).sum())} de {len(malla.modelada)} celdas no son de cultivo según la cobertura "
-                          "2017–2023 (construcción, árboles o pasto); se muestran en gris.")
+            avisos.append(f"{int((~malla.modelada).sum())} de {len(malla.modelada)} celdas {excluidas}; se muestran en gris.")
         avisos.append("El ingreso es bruto: todavía no descuenta costos de producción.")
         if anterior == "cana_azucar" and "cana_azucar" not in entrada.precios:
             avisos.append("Sin precio de la caña: el plan de hoy no tiene ingreso comparable.")
         val = self.metr["metricas"]["val"]
         return {
-            "zona": zm.nombre, "area_ha": round(area, 2), "n_celdas": len(malla.modelada),
+            "zona": nombre_zona, "area_ha": round(area, 2), "n_celdas": len(malla.modelada),
             "celdas": [{"ring": [{"latitude": la, "longitude": lo} for lo, la in r]} for r in malla.anillos],
             "modelada": malla.modelada.tolist(),
             "planes": datos["planes"], "suelo": datos["suelo"], "avisos": avisos,

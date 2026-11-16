@@ -28,7 +28,7 @@ def main() -> None:
                     "--implementation", "cp", "--python-version", PY, "--only-binary=:all:", "numpy<2.3", "pyproj"], check=True)
     shutil.copy(RAIZ / "deploy/lambda_handler.py", tmp / "lambda_handler.py")
     shutil.copytree(RAIZ / "src/rotarapp", tmp / "src/rotarapp", ignore=shutil.ignore_patterns("__pycache__"))
-    for rel in ["data/referencia/cultivos", "data/referencia/plagas", "data/processed/modelo/calibracion"]:
+    for rel in ["data/referencia/cultivos", "data/referencia/plagas", "data/processed/modelo/calibracion", "data/referencia/valle"]:
         shutil.copytree(RAIZ / rel, tmp / rel)
     for z in ("palmira_candelaria", "valle_norte"):
         (tmp / f"data/processed/microbiota/{z}").mkdir(parents=True)
