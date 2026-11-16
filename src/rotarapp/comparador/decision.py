@@ -94,6 +94,21 @@ class Evaluacion:
     factible: NDArray[np.bool_]  # (P,)
     factor_clase: F              # (P,)
     sin_datos_plagas: list[str]
+    siembras: list["DetalleSiembra"] = field(default_factory=list)
+    perdida: F | None = None     # (D, P) pérdida media por plagas y enfermedades en cultivos de venta
+    cobertura: F | None = None   # (D, P) fracción del tiempo con dosel (NDVI > 0,3)
+
+
+@dataclass
+class DetalleSiembra:
+    cultivo: str
+    inicio: int          # década del horizonte
+    fin: int
+    rendimiento: F       # (D, P) kg/ha
+    ingreso: F           # (D, P) COP/ha (NaN si no tiene precio; 0 si es abono verde)
+    riego: F             # (D, P) mm que evitarían el estrés en el ciclo
+    perdida: F           # (D, 1) fracción perdida por plagas y enfermedades
+    tras_cobertura: bool # se siembra directo sobre un abono verde
 
 
 # ---------------------------------------------------------------- escenarios y parámetros
@@ -218,6 +233,8 @@ def evaluar(plan: Plan, finca: Finca, esc: Escenarios, cultivos: dict[str, Culti
     sin_datos: set[str] = set()
     sin_precio = False
     anterior, bio_ant = anterior0, np.float32(1.0)
+    detalle: list[DetalleSiembra] = []
+    perdidas: list[F] = []
     for i, s in enumerate(sec):
         c = s.cultivo
         ftex = f_textura(finca.arcilla, c)[None, :]
@@ -233,13 +250,20 @@ def evaluar(plan: Plan, finca: Finca, esc: Escenarios, cultivos: dict[str, Culti
         y = (c.rend_pot_kg_ha * bio * ec.f_nitrogeno(c, n_disp) * (1 - perdida)).astype(np.float32)
         # ciclos truncados por el horizonte cuentan en proporción
         frac = (s.fin - s.inicio) / max(int(round(c.ciclo_dias / 10)), 1)
+        precio = entrada.precio(c)
+        ing_s = (y * precio * min(frac, 1.0)) if precio is not None else (
+            np.zeros_like(y) if c.rend_pot_kg_ha <= 0 else np.full_like(y, np.nan))
         if c.rend_pot_kg_ha > 0:
             rend.setdefault(c.id, []).append(y)
-            precio = entrada.precio(c)
+            perdidas.append(np.broadcast_to(perdida, y.shape))
             if precio is not None:
-                ingreso += y * precio * min(frac, 1.0)
+                ingreso += ing_s
             elif c.rol != "Ambos" or c.id == plan.produccion:
                 sin_precio = True       # cultivo de venta sin precio: ingreso desconocido
+        detalle.append(DetalleSiembra(c.id, s.inicio, s.fin, y, ing_s.astype(np.float32),
+                                      r.deficit_mm[s.inicio:s.fin].sum(axis=0).astype(np.float32),
+                                      np.asarray(perdida, np.float32),
+                                      anterior is not None and anterior.solo_descanso))
         anterior, bio_ant = c, bio
 
     # Suelo y erosión: en caña el lote cosechado queda con hojarasca (NDVI de suelo calibrado);
@@ -268,7 +292,9 @@ def evaluar(plan: Plan, finca: Finca, esc: Escenarios, cultivos: dict[str, Culti
     return Evaluacion(plan, np.where(sin_precio, np.nan, ingreso / anios).astype(np.float32),
                       (r.deficit_mm.sum(axis=0) / anios).astype(np.float32), ibs.astype(np.float32),
                       ero, {k: np.mean(v, axis=0) for k, v in rend.items()}, factible, fclase,
-                      sorted(sin_datos))
+                      sorted(sin_datos), detalle,
+                      np.mean(perdidas, axis=0).astype(np.float32) if perdidas else np.zeros((D, P), np.float32),
+                      (ndvi_s > 0.3).mean(axis=0).astype(np.float32))
 
 
 def ndti_estado(programa: F, V: F) -> F:

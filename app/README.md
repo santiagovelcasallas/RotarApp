@@ -1,37 +1,58 @@
 # app/
 
-La interfaz vive en **Lovable**. La app no simula: envía la finca al modelo y muestra el resultado.
+La interfaz es la app **Expo (React Native)** del equipo (`rotarapp`, rama `conexion-modelo`). La
+app conserva su diseño; cada dato de ejemplo se reemplazó por la salida del modelo.
 
-## Entrada (lo que envía la app)
+## Cómo correrlo
+
+1. API del modelo (necesita los datos del prototipo `NASA_IBS/data`):
+
+   ```bash
+   python scripts/api.py --datos C:/Users/santi/NASA_IBS/data --puerto 8000
+   ```
+
+   Para un celular en la misma red: `--host 0.0.0.0` y en la app `EXPO_PUBLIC_API_URL=http://<ip>:8000`.
+
+2. App (en la carpeta de la app): `npx expo start --web` o `npx expo start` para Expo Go.
+
+3. Datos fijos de la app (catálogos, zonas piloto y el resultado del lote de ejemplo, para que la
+   demo funcione sin conexión):
+
+   ```bash
+   python scripts/exportar_app.py <carpeta de la app>
+   ```
+
+## API
+
+| Ruta | Qué hace |
+|---|---|
+| `GET /salud` | Comprueba que el modelo está arriba |
+| `GET /catalogo` | Cultivos, plagas (con hospedantes), prioridades y zonas piloto |
+| `POST /recomendacion` | Calcula el lote (3–20 s) |
+
+Entrada de `POST /recomendacion` (lo que envía la pantalla de preguntas):
 
 ```json
 {
-  "nombre": "Finca La Esperanza",
-  "municipio": "Palmira",
-  "poligono": {"type": "Polygon", "coordinates": [[[lon, lat], ...]]},
-  "cultivo_anterior": "cana_azucar",
-  "plagas_anteriores": ["Barrenadores del tallo"],
-  "prioridades": {"ingreso": 0.25, "agua": 0.25, "suelo": 0.25, "erosion": 0.25},
+  "poligono": [{"latitude": 3.56, "longitude": -76.31}, ...],
+  "cultivos_anteriores": ["cana_azucar"],
+  "plagas": ["Barrenadores del tallo"],
+  "prioridades": ["agua"],
   "precios_cop_kg": {"cana_azucar": 150}
 }
 ```
 
-`cultivo_anterior`, `plagas_anteriores` y `precios_cop_kg` son opcionales. Los ids de cultivo y los
-nombres de plaga son los de `data/referencia/`. Ejemplo: `data/ejemplos/finca_demo.json`.
+## Qué alimenta cada pantalla
 
-```bash
-python scripts/recomendar_finca.py data/ejemplos/finca_demo.json
-```
+La salida la arma `src/rotarapp/comparador/app.py` (tipos en `src/data/modelo.ts` de la app):
 
-## Salida (`data/processed/modelo/fincas/<nombre>/resultado.json`)
+| Pantalla | Campo | Contenido |
+|---|---|---|
+| Preguntas | `GET /catalogo` (o `catalogo.json`) | Cultivos y plagas del modelo; las plagas se filtran por el cultivo anterior; nueva pregunta de prioridades |
+| Planes | `planes[]` | 3 planes: recomendado (por zonas), alternativa y lo que hace hoy. Campañas, ejes Suelo/Agua/Sanidad/Erosión/Dinero frente a hoy, confianza = P(mejor plan), alertas |
+| Dónde va cada cultivo | `celdas`, `planes[i].campanas[j]` | Celdas de 30 m: color = cultivo, intensidad = probabilidad de que el plan sea el mejor ahí (mapa de calor); reparto, dónde va y por qué; escenarios seco/normal/húmedo; vacíos y riesgos |
+| Dinero | `planes[i].dinero` | Ingreso bruto por campaña (SIPSA 2026); abonos verdes marcados como "no se vende" |
+| Calendario | `planes[i].calendario` | Fechas de siembra y cosecha simuladas; siembra directa en sistemas con cobertura; riego por cultivo |
+| Mi suelo | `suelo.salud`, `suelo.erosion` | IBS por celda (huecos de nube rellenados con vecinos a 150 m) y erosión RUSLE con el manejo de hoy |
 
-| Campo | Contenido |
-|---|---|
-| `area_ha`, `n_pixeles`, `clases_igac` | Finca rasterizada a 30 m |
-| `estrategias.A/B/C` | Actual, mejor plan único, por zonas: `planes`, `nombres`, `metricas` (p10/p50/p90 de ingreso COP/ha/año, riego mm/año, ibs, salud, erosión t/ha/año, utilidad) y `explicacion` (`por_que`, `evidencia`, `beneficios`, `vacios`, `riesgos`) |
-| `estrategias.C.p_mejor_que_B` | Probabilidad de que la rotación por zonas supere al mejor plan único |
-| `zonas` | Plan, área y probabilidad media de cada zona |
-| `pixeles` | `lon`, `lat`, `plan` asignado y `p_mejor` de los 5 planes principales: **el mapa de calor** |
-| `ranking_planes` | Los 5 planes más probables con sus medianas y rendimientos |
-| `planes_sin_precio` | Planes que no compiten por ingreso (p. ej. renovación de caña) con sus métricas de agua, suelo y erosión |
-| `modelo` | Muestras, escenarios, métricas de validación y el aviso de que no reemplaza al agrónomo |
+Zonas con datos: Palmira – Candelaria y Roldanillo – La Unión – Toro. Fuera de ellas la app avisa.
